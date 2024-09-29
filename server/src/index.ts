@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { connect } from "mongoose";
 import cors from "cors";
+import stationRoute from "./routes/stationData";
 import floodRoute from "./routes/floodData";
 
 dotenv.config();
@@ -27,7 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => res.send("OK"));
 
-app.use("/api/v1/floodData", floodRoute);
+app.use("/api/v1/station", stationRoute);
+app.use("/api/v1/flood", floodRoute);
 
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);

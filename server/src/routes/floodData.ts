@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAndAddFloodData, getFloodData } from '../controllers/floodData';
+import { getFloodData, getAndAddFloodData } from '../controllers/floodData';
 
 const router = express.Router();
 

@@ -1,4 +1,4 @@
-import FloodData from "../models/FloodData";
+import FloodData from "../models/StationData";
 import { FLOOD_DATA_URL } from "./const";
 import axios from 'axios';
 
@@ -8,3 +8,4 @@ export const fetchFloodData = async () => {
   console.log('Flood data inserted');
   return floodData;
 }
+
