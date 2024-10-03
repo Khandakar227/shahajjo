@@ -2,6 +2,7 @@ import axios from "axios";
 import { Request, Response } from "express";
 import { FLOOD_DATA_URL } from "../libs/const";
 import FloodData from "../models/FloodData";
+import getLatestFloodData from "../libs/getLatestFloodData";
 
 export const getFloodData = async (req: Request, res: Response) => {
     try {
@@ -35,6 +36,20 @@ export const getAndAddFloodData = async (req: Request, res: Response) => {
         res.status(500).json({
             error: true,
             message: `Unexpected error occured on the server. ${err.message}`,
-        });   
+        });
+    }
+}
+
+export const getLatestFloodInfo = async (req: Request, res: Response) => {
+    try {
+        const data = await getLatestFloodData();
+        res.status(200).json(data);
+    } catch (error) {
+        const err = error as Error;
+        console.log(err.message);
+        res.status(500).json({
+            error: true,
+            message: `Unexpected error occured on the server. ${err.message}`,
+        });
     }
 }
