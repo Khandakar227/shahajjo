@@ -33,10 +33,10 @@ const getLatestFloodData = async () => {
           district: 1,
           upazilla: 1,
           union: 1,
+          wl_date: "$latestFloodData.wl_date",
+          waterlevel: "$latestFloodData.waterlevel",
           dangerlevel: 1,
           riverhighestwaterlevel: 1,
-          'latestFloodData.wl_date': 1,
-          'latestFloodData.waterlevel': 1,
         },
       },
     ]);
