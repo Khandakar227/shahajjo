@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
-import 'package:shahajjo/components/map.dart';
+import 'package:shahajjo/components/flood_map.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
             child: SizedBox(
           height: screenHeight -
               appBarHeight, // Adjust the height to exclude the app bar
-          child: const MapSample(),
+          child: const FloodMonitorMap(),
         )));
   }
 }

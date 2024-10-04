@@ -22,7 +22,7 @@ export const getAndAddFloodData = async (req: Request, res: Response) => {
     try {
         const data = await axios.get(FLOOD_DATA_URL);
         let fdata = [] as any[];
-        
+        // console.log(data);
         Object.keys(data.data).forEach(async (key) => {
             let date = Object.keys(data.data[key])[0];
             const floodData = {st_id: key, wl_date: date, waterlevel: data.data[key][date] };
