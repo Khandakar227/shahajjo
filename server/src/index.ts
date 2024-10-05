@@ -1,9 +1,11 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import dotenv from "dotenv";
 import { connect } from "mongoose";
 import cors from "cors";
 import stationRoute from "./routes/stationData";
+import cron from 'node-cron';
 import floodRoute from "./routes/floodData";
+import { taskFetchFloodData } from "./libs/cron";
 
 dotenv.config();
 
@@ -34,3 +36,6 @@ app.use("/api/v1/flood", floodRoute);
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
+
+// A cron job to fetch flood data every 6 hours
+cron.schedule('0 6,12 * * *', taskFetchFloodData, { scheduled: true });
