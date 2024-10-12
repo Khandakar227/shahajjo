@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shahajjo/views/gestures_page.dart';
 
 const appMenuItems = [
   {
@@ -12,6 +13,10 @@ const appMenuItems = [
   {
     'title': 'সেটিংস',
     'route': '/settings',
+  },
+  {
+    'title': 'Gestures',
+    'route': '/gestures',
   },
 ];
 
@@ -30,21 +35,29 @@ class _MyAppbarState extends State<MyAppbar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
-        title: Text(widget.title),
-        actions: [
-          PopupMenuButton(
-            itemBuilder: (context) => [
-              for (var item in appMenuItems)
-                PopupMenuItem(
-                  value: item['route'],
-                  child: Text(item['title']!),
-                ),
-            ],
-            onSelected: (value) {},
-            position: PopupMenuPosition.under,
-          )
-        ]);
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+      title: Text(widget.title),
+      actions: [
+        PopupMenuButton(
+          itemBuilder: (context) => [
+            for (var item in appMenuItems)
+              PopupMenuItem(
+                value: item['route'],
+                child: Text(item['title']!),
+              ),
+          ],
+          onSelected: (value) {
+            if (value == '/gestures') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const GesturesPage()),
+              );
+            }
+          },
+          position: PopupMenuPosition.under,
+        ),
+      ],
+    );
   }
 }
