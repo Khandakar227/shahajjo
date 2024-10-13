@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/views/home.dart';
 import 'package:shahajjo/utils/utils.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const App());
 }
 
@@ -15,7 +18,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Shahajjo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFF005E)),
         useMaterial3: true,
       ),
       home: const HomePage(title: 'সাহায্য'),

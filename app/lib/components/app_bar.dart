@@ -13,6 +13,10 @@ const appMenuItems = [
     'title': 'সেটিংস',
     'route': '/settings',
   },
+  {
+    'title': '  Login',
+    'route': '/login_page',
+  },
 ];
 
 class MyAppbar extends StatefulWidget implements PreferredSizeWidget {

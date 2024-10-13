@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "899849457523",
+    "project_id": "shahajjo-44f91",
+    "storage_bucket": "shahajjo-44f91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899849457523:android:09c88f835ecd315ca3ff06",
+        "android_client_info": {
+          "package_name": "com.example.shahajjo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5sIFCf8WzEHJGMwueMgo20BHzR7qWZMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
