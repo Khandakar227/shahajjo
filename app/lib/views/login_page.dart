@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../components/firebase_auth.dart';
+import './dev_menu.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -20,8 +23,19 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class AndroidLarge1 extends StatelessWidget {
+class AndroidLarge1 extends StatefulWidget {
   const AndroidLarge1({super.key});
+
+  @override
+  _AndroidLarge1State createState() => _AndroidLarge1State();
+}
+
+class _AndroidLarge1State extends State<AndroidLarge1> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
+
+  final FirebaseAuthServices _authServices = FirebaseAuthServices();
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +99,7 @@ class AndroidLarge1 extends StatelessWidget {
                 ),
                 child: Center(
                   child: TextField(
+                    controller: _emailController,
                     cursorColor: Color(0xFFCE0014),
                     style: TextStyle(
                       color: Colors.black,
@@ -123,6 +138,7 @@ class AndroidLarge1 extends StatelessWidget {
                 ),
                 child: Center(
                   child: TextField(
+                    controller: _passwordController,
                     obscureText: true,
                     cursorColor: Color(0xFFCE0014),
                     style: TextStyle(
@@ -158,9 +174,7 @@ class AndroidLarge1 extends StatelessWidget {
               // Login Button
               Center(
                 child: GestureDetector(
-                  onTap: () {
-                    // Handle login action
-                  },
+                  onTap: _isLoading ? null : _handleLogin,
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.25,
                     height: MediaQuery.of(context).size.height * 0.05,
@@ -171,15 +185,25 @@ class AndroidLarge1 extends StatelessWidget {
                       ),
                     ),
                     alignment: Alignment.center,
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.height * 0.02,
-                        fontFamily: 'Jost',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    child: _isLoading
+                        ? SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.02,
+                              fontFamily: 'Jost',
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                   ),
                 ),
               ),
@@ -187,28 +211,33 @@ class AndroidLarge1 extends StatelessWidget {
 
               // "Create Now" Section
               Center(
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Do not have an account? ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 11,
-                          fontFamily: 'Jost',
-                          fontWeight: FontWeight.w500,
+                child: GestureDetector(
+                  onTap: () {
+                    // Handle navigation to sign up page
+                  },
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Do not have an account? ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 11,
+                            fontFamily: 'Jost',
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: 'Create Now',
-                        style: TextStyle(
-                          color: Color(0xFFCE0014),
-                          fontSize: 11,
-                          fontFamily: 'Jost',
-                          fontWeight: FontWeight.w600,
+                        TextSpan(
+                          text: 'Create Now',
+                          style: TextStyle(
+                            color: Color(0xFFCE0014),
+                            fontSize: 11,
+                            fontFamily: 'Jost',
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -216,39 +245,45 @@ class AndroidLarge1 extends StatelessWidget {
 
               // Sign in with Google
               Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: MediaQuery.of(context).size.height * 0.05,
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFF5F5F5),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(44),
+                child: GestureDetector(
+                  onTap: () {
+                    // Handle Google sign in
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFF5F5F5),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(44),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.height * 0.03,
-                        height: MediaQuery.of(context).size.height * 0.03,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/google_logo.png'),
-                            fit: BoxFit.fill,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.height * 0.03,
+                          height: MediaQuery.of(context).size.height * 0.03,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/google_logo.png'),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                      Text(
-                        'Sign in with Google',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: MediaQuery.of(context).size.height * 0.02,
-                          fontFamily: 'Jost',
-                          fontWeight: FontWeight.w400,
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.02),
+                        Text(
+                          'Sign in with Google',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.height * 0.02,
+                            fontFamily: 'Jost',
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -256,39 +291,45 @@ class AndroidLarge1 extends StatelessWidget {
 
               // Sign in with Apple
               Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: MediaQuery.of(context).size.height * 0.05,
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFF5F5F5),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(44),
+                child: GestureDetector(
+                  onTap: () {
+                    // Handle Apple sign in
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFF5F5F5),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(44),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.height * 0.03,
-                        height: MediaQuery.of(context).size.height * 0.03,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/apple_logo.png'),
-                            fit: BoxFit.fill,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.height * 0.03,
+                          height: MediaQuery.of(context).size.height * 0.03,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/apple_logo.png'),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                      Text(
-                        'Sign in with Apple',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: MediaQuery.of(context).size.height * 0.02,
-                          fontFamily: 'Jost',
-                          fontWeight: FontWeight.w400,
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.02),
+                        Text(
+                          'Sign in with Apple',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.height * 0.02,
+                            fontFamily: 'Jost',
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -297,5 +338,47 @@ class AndroidLarge1 extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _handleLogin() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      await _authServices.signIn(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
+
+      Fluttertoast.showToast(
+        msg: "Logged in successfully",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => DevMenu()),
+      );
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: "Login failed: ${e.toString()}",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 }
