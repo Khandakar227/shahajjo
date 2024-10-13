@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../views/login_page.dart';
 
 const appMenuItems = [
   {
@@ -14,8 +15,8 @@ const appMenuItems = [
     'route': '/settings',
   },
   {
-    'title': '  Login',
-    'route': '/login_page',
+    'title': 'Login',
+    'route': '/login',
   },
 ];
 
@@ -46,7 +47,16 @@ class _MyAppbarState extends State<MyAppbar> {
                   child: Text(item['title']!),
                 ),
             ],
-            onSelected: (value) {},
+            onSelected: (value) {
+              if (value == '/login') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
+              } else {
+                Navigator.pushNamed(context, value);
+              }
+            },
             position: PopupMenuPosition.under,
           )
         ]);

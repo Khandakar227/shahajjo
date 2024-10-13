@@ -39,11 +39,10 @@ android {
         applicationId = "com.example.shahajjo"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = flutter.minSdkVersion
+        minSdkVersion 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
-        minSdkVersion flutter.minSdkVersion
 
         resValue "string", "google_maps_key", localProperties['MAPS_API_KEY']
     }
@@ -64,7 +63,6 @@ flutter {
 dependencies {
   // Import the Firebase BoM
   implementation platform('com.google.firebase:firebase-bom:33.4.0')
-
 
   // TODO: Add the dependencies for Firebase products you want to use
   // When using the BoM, don't specify versions in Firebase dependencies
