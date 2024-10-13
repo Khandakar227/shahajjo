@@ -12,7 +12,20 @@
           "package_name": "com.example.shahajjo"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "899849457523-s8tjm3r91sr9spfpu14b1144ml3bs64f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shahajjo",
+            "certificate_hash": "a76628922e00d5ba593ea16d109c0a4905235159"
+          }
+        },
+        {
+          "client_id": "899849457523-dft92d77uaveu3319rqk3fb3fungpdsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyD5sIFCf8WzEHJGMwueMgo20BHzR7qWZMU"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899849457523-dft92d77uaveu3319rqk3fb3fungpdsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

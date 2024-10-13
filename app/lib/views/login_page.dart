@@ -1,11 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../components/firebase_auth.dart';
 import './dev_menu.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -246,9 +253,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
               // Sign in with Google
               Center(
                 child: GestureDetector(
-                  onTap: () {
-                    // Handle Google sign in
-                  },
+                  onTap: _isLoading ? null : signInWithGoogle,
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.5,
                     height: MediaQuery.of(context).size.height * 0.05,
@@ -292,9 +297,11 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
               // Sign in with Apple
               Center(
                 child: GestureDetector(
-                  onTap: () {
-                    // Handle Apple sign in
-                  },
+                  onTap: _isLoading
+                      ? null
+                      : () {
+                          // Handle Apple sign in
+                        },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.5,
                     height: MediaQuery.of(context).size.height * 0.05,
@@ -356,7 +363,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.green,
+        backgroundColor: const Color(0xFFCE0014),
         textColor: Colors.white,
         fontSize: 16.0,
       );
@@ -364,6 +371,56 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => DevMenu()),
+      );
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: "Login failed: ${e.toString()}",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  signInWithGoogle() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+      AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      print(userCredential.user?.displayName);
+
+      // Navigate to dev menu
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const DevMenu()),
+      );
+
+      Fluttertoast.showToast(
+        msg: "Logged in successfully",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: const Color(0xFFCE0014),
+        textColor: Colors.white,
+        fontSize: 16.0,
       );
     } catch (e) {
       Fluttertoast.showToast(
