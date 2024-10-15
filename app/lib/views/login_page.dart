@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../components/firebase_auth.dart';
 import './dev_menu.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import './phone_number_login.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -248,7 +249,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                   onTap: _isLoading ? null : signInWithGoogle,
                   child: Container(
                     decoration: ShapeDecoration(
-                      color: const Color(0xFFE9E8DC),
+                      color: const Color(0xFFDDDDDD),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -274,6 +275,51 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                   ),
                 ),
               ),
+
+              SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+
+              //Login with Phone
+              Center(
+                child: GestureDetector(
+                  onTap: _isLoading
+                      ? null
+                      : () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PhoneLoginPage()),
+                          );
+                        },
+                  child: Container(
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFDDDDDD),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 40, // Desired width
+                          height: 40, // Desired height
+                          child: Image.asset(
+                            'assets/smartphone.png',
+                          ),
+                        ),
+                        const Text(
+                          'Phone Number দিয়ে সাইন ইন',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
