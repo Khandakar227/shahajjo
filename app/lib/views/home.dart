@@ -1,6 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
-import 'package:shahajjo/components/flood_map.dart';
+
+List<Map<String, String>> features = [
+  {
+    'label': 'বন্যা পর্যবেক্ষণ',
+    'image': 'assets/icons/flood.png',
+    'navigateTo': 'flood-monitor'
+  },
+  {
+    'label': 'ঘটনা পর্যবেক্ষণ',
+    'image': 'assets/icons/alert.png',
+    'navigateTo': 'incident-monitor'
+  },
+  {
+    'label': 'ঘটনা যোগ করুন',
+    'image': 'assets/icons/notify.png',
+    'navigateTo': 'add-incident'
+  },
+  {
+    'label': 'একাউন্ট',
+    'image': 'assets/icons/user.png',
+    'navigateTo': 'account'
+  },
+  {
+    'label': 'সেটিংস',
+    'image': 'assets/icons/settings.png',
+    'navigateTo': 'settings'
+  },
+  {
+    'label': 'নোটিফিকেশন',
+    'image': 'assets/icons/bell.png',
+    'navigateTo': 'notification'
+  },
+];
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -13,16 +45,42 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    const double appBarHeight = kToolbarHeight;
-
     return Scaffold(
         appBar: MyAppbar(title: widget.title),
         body: SafeArea(
-            child: SizedBox(
-          height: screenHeight -
-              appBarHeight, // Adjust the height to exclude the app bar
-          child: const FloodMonitorMap(),
+            child: Center(
+          heightFactor: 1.2,
+          widthFactor: double.infinity,
+          child: SingleChildScrollView(
+              child: Wrap(
+            runAlignment: WrapAlignment.center,
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 25,
+            children: features.map((feature) {
+              return pageButton(
+                  feature['label']!, feature['image'], feature['navigateTo']);
+            }).toList(),
+          )),
         )));
+  }
+
+  Widget pageButton(String label, imgPath, navigateTo) {
+    return TextButton(
+      onPressed: () {
+        print(navigateTo);
+        Navigator.pushNamed(context, '/$navigateTo');
+      },
+      child: Column(mainAxisSize: MainAxisSize.min, children: [
+        Image.asset(
+          imgPath,
+          height: 60,
+        ),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 12),
+        )
+      ]),
+    );
   }
 }
