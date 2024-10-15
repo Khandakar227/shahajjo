@@ -49,7 +49,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,12 +72,11 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
               // Welcome Text
               Center(
                 child: Text(
-                  'Welcome Back!',
+                  'আপনার একাউন্টে লগ ইন করুন',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFFCE0014),
                     fontSize: MediaQuery.of(context).size.height * 0.03,
-                    fontFamily: 'Jost',
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -86,11 +85,10 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
 
               // Email Section
               Text(
-                'Email:',
+                'ইমেইল:',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: MediaQuery.of(context).size.height * 0.015,
-                  fontFamily: 'Jost',
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -107,12 +105,12 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                 child: Center(
                   child: TextField(
                     controller: _emailController,
-                    cursorColor: Color(0xFFCE0014),
-                    style: TextStyle(
+                    cursorColor: const Color(0xFFCE0014),
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 14,
                     ),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 12),
@@ -125,11 +123,10 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
 
               // Password Section
               Text(
-                'Password:',
+                'পাসওয়ার্ড:',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: MediaQuery.of(context).size.height * 0.015,
-                  fontFamily: 'Jost',
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -147,12 +144,12 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                   child: TextField(
                     controller: _passwordController,
                     obscureText: true,
-                    cursorColor: Color(0xFFCE0014),
-                    style: TextStyle(
+                    cursorColor: const Color(0xFFCE0014),
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 14,
                     ),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 12),
@@ -164,14 +161,13 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
               // Forgot Password aligned to the right
-              Align(
+              const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  'Forgot Password?',
+                  'পাসওয়ার্ড ভুলে গিয়েছেন?',
                   style: TextStyle(
                     color: Color(0xFFCE0014),
                     fontSize: 12,
-                    fontFamily: 'Jost',
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -193,7 +189,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                     ),
                     alignment: Alignment.center,
                     child: _isLoading
-                        ? SizedBox(
+                        ? const SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
@@ -202,12 +198,11 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                             ),
                           )
                         : Text(
-                            'Login',
+                            'লগইন',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.02,
-                              fontFamily: 'Jost',
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -222,24 +217,22 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                   onTap: () {
                     // Handle navigation to sign up page
                   },
-                  child: Text.rich(
+                  child: const Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Do not have an account? ',
+                          text: 'অ্যাকাউন্ট নেই? ',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 11,
-                            fontFamily: 'Jost',
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         TextSpan(
-                          text: 'Create Now',
+                          text: ' এখনই তৈরি করুন',
                           style: TextStyle(
                             color: Color(0xFFCE0014),
                             fontSize: 11,
-                            fontFamily: 'Jost',
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -249,89 +242,30 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-
               // Sign in with Google
               Center(
                 child: GestureDetector(
                   onTap: _isLoading ? null : signInWithGoogle,
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: MediaQuery.of(context).size.height * 0.05,
                     decoration: ShapeDecoration(
-                      color: const Color(0xFFF5F5F5),
+                      color: const Color(0xFFE9E8DC),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(44),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: MediaQuery.of(context).size.height * 0.03,
-                          height: MediaQuery.of(context).size.height * 0.03,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/google_logo.png'),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                        Image.asset(
+                          'assets/google_logo.png',
+                          width: 40,
+                          height: 40,
                         ),
-                        SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.02),
-                        Text(
-                          'Sign in with Google',
+                        const Text(
+                          'Google দিয়ে সাইন ইন',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.height * 0.02,
-                            fontFamily: 'Jost',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-
-              // Sign in with Apple
-              Center(
-                child: GestureDetector(
-                  onTap: _isLoading
-                      ? null
-                      : () {
-                          // Handle Apple sign in
-                        },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: MediaQuery.of(context).size.height * 0.05,
-                    decoration: ShapeDecoration(
-                      color: const Color(0xFFF5F5F5),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(44),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.height * 0.03,
-                          height: MediaQuery.of(context).size.height * 0.03,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/apple_logo.png'),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.02),
-                        Text(
-                          'Sign in with Apple',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: MediaQuery.of(context).size.height * 0.02,
-                            fontFamily: 'Jost',
+                            fontSize: 14,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
