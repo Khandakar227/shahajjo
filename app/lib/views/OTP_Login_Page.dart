@@ -6,8 +6,7 @@ import './dev_menu.dart';
 class OtpLoginPage extends StatefulWidget {
   final String verificationId;
 
-  const OtpLoginPage({Key? key, required this.verificationId})
-      : super(key: key);
+  const OtpLoginPage({super.key, required this.verificationId});
 
   @override
   _OtpLoginPageState createState() => _OtpLoginPageState();

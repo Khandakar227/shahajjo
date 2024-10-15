@@ -287,7 +287,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PhoneLoginPage()),
+                                builder: (context) => const PhoneLoginPage()),
                           );
                         },
                   child: Container(
@@ -350,7 +350,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => DevMenu()),
+        MaterialPageRoute(builder: (context) => const DevMenu()),
       );
     } catch (e) {
       Fluttertoast.showToast(
