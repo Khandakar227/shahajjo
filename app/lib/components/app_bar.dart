@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/views/gestures_page.dart';
+import 'package:shahajjo/views/volume_handler.dart'; // Import the VolumeHandler page
 
 const appMenuItems = [
   {
@@ -17,6 +18,10 @@ const appMenuItems = [
   {
     'title': 'Gestures',
     'route': '/gestures',
+  },
+  {
+    'title': 'VolumeHandler',
+    'route': '/volume-handler',
   },
 ];
 
@@ -52,6 +57,11 @@ class _MyAppbarState extends State<MyAppbar> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const GesturesPage()),
+              );
+            } else if (value == '/volume-handler') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const VolumeButtonHandler()),
               );
             }
           },
