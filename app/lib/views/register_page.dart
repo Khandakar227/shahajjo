@@ -1,16 +1,17 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:shahajjo/components/TextInput.dart';
 import 'package:shahajjo/utils/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
           child: ListView(
             shrinkWrap: true,
             children: const [
-              LoginForm(),
+              RegisterForm(),
             ],
           ),
         ),
@@ -28,15 +29,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
 
   @override
-  _LoginFormState createState() => _LoginFormState();
+  _RegisterFormState createState() => _RegisterFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _RegisterFormState extends State<RegisterForm> {
   String phoneNumber = "";
+  String name = "";
+
   bool _isLoading = false;
 
   @override
@@ -67,7 +70,7 @@ class _LoginFormState extends State<LoginForm> {
               // Welcome Text
               Center(
                 child: Text(
-                  'আপনার একাউন্টে লগ ইন করুন',
+                  'নতুন একাউন্ট তৈরি করুন',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFFCE0014),
@@ -77,49 +80,22 @@ class _LoginFormState extends State<LoginForm> {
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-
-              Text(
-                'মোবাইল নাম্বার:',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: MediaQuery.of(context).size.height * 0.015,
-                  fontWeight: FontWeight.w500,
-                ),
+              // User Name
+              TextInput(
+                label: 'নাম:',
+                onChanged: (value) => name = value,
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.06,
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFDDDDDD),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                child: Center(
-                  child: TextField(
-                    onChanged: (value) => phoneNumber = value,
-                    keyboardType: TextInputType.phone,
-                    cursorColor: const Color(0xFFCE0014),
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                      isDense: true,
-                    ),
-                  ),
-                ),
-              ),
+              // Phone number
+              TextInput(
+                  label: 'মোবাইল নাম্বার',
+                  onChanged: (value) => phoneNumber = value),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
-              // Login Button
+              // Register Button
               Center(
                 child: GestureDetector(
-                  onTap: _isLoading ? null : _handleLogin,
+                  onTap: _isLoading ? null : _handleRegister,
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.25,
                     height: MediaQuery.of(context).size.height * 0.05,
@@ -140,7 +116,7 @@ class _LoginFormState extends State<LoginForm> {
                             ),
                           )
                         : Text(
-                            'লগইন',
+                            'নিবন্ধন করুন',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize:
@@ -155,7 +131,7 @@ class _LoginFormState extends State<LoginForm> {
 
               // "Create Now" Section
               const Center(
-                child: CreatNow(),
+                child: LoginNow(),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             ],
@@ -165,13 +141,13 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  void _handleLogin() async {
+  void _handleRegister() async {
     setState(() {
       _isLoading = true;
     });
 
     try {
-      showToast("লগ ইন সফল হয়েছে", Toast.LENGTH_SHORT);
+      showToast("লগ ইন সফল হয়েছে $name, $phoneNumber", Toast.LENGTH_SHORT);
     } catch (e) {
       showToast("লগ ইন সম্ভব হয়নি: ${e.toString()}", Toast.LENGTH_SHORT);
     } finally {
@@ -182,8 +158,8 @@ class _LoginFormState extends State<LoginForm> {
   }
 }
 
-class CreatNow extends StatelessWidget {
-  const CreatNow({
+class LoginNow extends StatelessWidget {
+  const LoginNow({
     super.key,
   });
 
@@ -193,7 +169,7 @@ class CreatNow extends StatelessWidget {
       TextSpan(
         children: [
           const TextSpan(
-            text: 'অ্যাকাউন্ট নেই? ',
+            text: 'অ্যাকাউন্ট আছে? ',
             style: TextStyle(
               color: Colors.black,
               fontSize: 14,
@@ -201,16 +177,13 @@ class CreatNow extends StatelessWidget {
             ),
           ),
           TextSpan(
-              text: ' এখনই তৈরি করুন',
+              text: 'লগ ইন করুন',
               style: const TextStyle(
                 color: Color(0xFFCE0014),
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  Navigator.pushNamed(context, '/register');
-                }),
+              recognizer: TapGestureRecognizer()..onTap = () {}),
         ],
       ),
     );
