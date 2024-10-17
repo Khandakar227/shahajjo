@@ -89,9 +89,10 @@ export const loginByPhone = async(req:Request, res:Response) => {
 export const verifyOTP = async(req:Request, res:Response) => {
     try {
         const { otp, mobileNo } = req.body;
-        const user = await User.findOne({ phoneNumber: mobileNo });
+        let phoneNumber = parsePhoneNumber(mobileNo);
+        const user = await User.findOne({ phoneNumber });
         if(!user) return res.status(404).json({ error: true, message: "User not found" });
-        console.log(user.otpExpiresAt, new Date());
+        
         if(user.otpExpiresAt < new Date()) return res.status(401).json({ error: true, message: "OTP has expired" });
         if (user.otp != otp) return res.status(401).json({ error: true, message: "Invalid OTP" });
 
