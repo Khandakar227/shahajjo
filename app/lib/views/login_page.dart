@@ -3,6 +3,8 @@ import '../components/firebase_auth.dart';
 import './dev_menu.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+//firebase messaging
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -42,7 +44,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        SizedBox(
           width: MediaQuery.of(context).size.width * 0.8,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,12 +102,12 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                 child: Center(
                   child: TextField(
                     controller: _emailController,
-                    cursorColor: Color(0xFFCE0014),
-                    style: TextStyle(
+                    cursorColor: const Color(0xFFCE0014),
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 14,
                     ),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 12),
@@ -140,12 +142,12 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                   child: TextField(
                     controller: _passwordController,
                     obscureText: true,
-                    cursorColor: Color(0xFFCE0014),
-                    style: TextStyle(
+                    cursorColor: const Color(0xFFCE0014),
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 14,
                     ),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 12),
@@ -157,7 +159,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
               // Forgot Password aligned to the right
-              Align(
+              const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
                   'Forgot Password?',
@@ -186,7 +188,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                     ),
                     alignment: Alignment.center,
                     child: _isLoading
-                        ? SizedBox(
+                        ? const SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
@@ -215,7 +217,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
                   onTap: () {
                     // Handle navigation to sign up page
                   },
-                  child: Text.rich(
+                  child: const Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
@@ -363,7 +365,7 @@ class _AndroidLarge1State extends State<AndroidLarge1> {
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => DevMenu()),
+        MaterialPageRoute(builder: (context) => const DevMenu()),
       );
     } catch (e) {
       Fluttertoast.showToast(
