@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shahajjo/views/add_Incident_page.dart';
 import 'package:shahajjo/views/flood_monitor.dart';
 import 'package:shahajjo/views/home.dart';
 import 'package:shahajjo/utils/utils.dart';
@@ -32,6 +33,14 @@ class App extends StatelessWidget {
             case '/flood-monitor':
               builder = (BuildContext context) =>
                   const FloodMonitorePage(title: 'বন্যা পর্যবেক্ষণ');
+              break;
+            case '/incident-monitor':
+              builder = (BuildContext context) =>
+                  const IncidentMonitorPage(title: 'ঘটনা পর্যবেক্ষণ');
+              break;
+            case '/add-incident':
+              builder = (BuildContext context) =>
+                  const AddIncidentPage(title: 'জরুরি ঘটনা যোগ করুন');
               break;
             case '/incident-monitor':
               builder = (BuildContext context) =>

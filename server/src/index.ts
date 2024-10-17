@@ -5,6 +5,7 @@ import cors from "cors";
 import stationRoute from "./routes/stationData";
 import cron from 'node-cron';
 import floodRoute from "./routes/floodData";
+import userRoute from "./routes/user";
 import { taskFetchFloodData } from "./libs/cron";
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(cors({
     origin: "*",
     methods: "GET,POST,PUT,DELETE",
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -32,6 +34,7 @@ app.get("/", (req, res) => res.send("OK"));
 
 app.use("/api/v1/station", stationRoute);
 app.use("/api/v1/flood", floodRoute);
+app.use("/api/v1/user", userRoute);
 
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
