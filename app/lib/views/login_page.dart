@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/utils/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shahajjo/views/otp_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -35,6 +36,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final AuthService _authService = AuthService();
   String phoneNumber = "";
   bool _isLoading = false;
 
@@ -174,10 +176,15 @@ class _LoginFormState extends State<LoginForm> {
         showToast("মোবাইল নাম্বার দিন", Toast.LENGTH_SHORT);
         return;
       }
-      // requestOtp(phoneNumber).then((value) {
-      //   Navigator.pushNamed(context, "/otp", arguments: phoneNumber);
-      // });
-      Navigator.pushNamed(context, "/otp", arguments: phoneNumber);
+
+      _authService.requestOtp(phoneNumber).then((value) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => OtpPage(phoneNumber: phoneNumber)));
+      }).catchError((e) {
+        showToast("লগ ইন সম্ভব হয়নি: ${e.toString()}", Toast.LENGTH_SHORT);
+      });
     } catch (e) {
       showToast("লগ ইন সম্ভব হয়নি: ${e.toString()}", Toast.LENGTH_SHORT);
     } finally {

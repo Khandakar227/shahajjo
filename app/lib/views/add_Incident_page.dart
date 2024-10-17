@@ -58,7 +58,12 @@ class _AddIncidentPageState extends State<AddIncidentPage> {
                         print(_formData);
                       }
                     },
-                    child: const Text("জমা দিন")),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFCE0014),
+                      foregroundColor: Colors.white,
+                    ),
+                    child:
+                        const Text("জমা দিন", style: TextStyle(fontSize: 18))),
               ],
             ),
           ),

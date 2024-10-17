@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shahajjo/views/account.dart';
 import 'package:shahajjo/views/add_Incident_page.dart';
 import 'package:shahajjo/views/flood_monitor.dart';
 import 'package:shahajjo/views/home.dart';
@@ -6,7 +7,6 @@ import 'package:shahajjo/utils/utils.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shahajjo/views/incident_monitor.dart';
 import 'package:shahajjo/views/login_page.dart';
-import 'package:shahajjo/views/otp_page.dart';
 import 'package:shahajjo/views/register_page.dart';
 
 void main() async {
@@ -28,14 +28,13 @@ class App extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFF005E)),
           useMaterial3: true,
         ),
-        home: const HomePage(title: 'সাহায্য'),
+        home: AuthWrapper(),
         navigatorKey: navigatorKey,
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder;
           switch (settings.name) {
             case '/home':
-              builder =
-                  (BuildContext context) => const HomePage(title: 'সাহায্য');
+              builder = (BuildContext context) => AuthWrapper();
               break;
             case '/flood-monitor':
               builder = (BuildContext context) =>
@@ -49,14 +48,15 @@ class App extends StatelessWidget {
               builder = (BuildContext context) =>
                   const AddIncidentPage(title: 'জরুরি ঘটনা যোগ করুন');
               break;
+            case '/account':
+              builder =
+                  (BuildContext context) => const AccountPage(title: 'একাউন্ট');
+              break;
             case '/register':
               builder = (BuildContext context) => const RegisterPage();
               break;
             case '/login':
               builder = (BuildContext context) => const LoginPage();
-              break;
-            case "/otp":
-              builder = (BuildContext context) => const OtpPage();
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

@@ -70,7 +70,6 @@ class _HomePageState extends State<HomePage> {
   Widget pageButton(String label, imgPath, navigateTo) {
     return TextButton(
       onPressed: () {
-        print(navigateTo);
         Navigator.pushNamed(context, '/$navigateTo');
       },
       child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -90,15 +89,19 @@ class _HomePageState extends State<HomePage> {
 class AuthWrapper extends StatelessWidget {
   final AuthService _authService = AuthService();
 
+  AuthWrapper({super.key});
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<bool>(
       future: _authService.isLoggedIn(), // Check if the user is logged in
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-              child:
-                  CircularProgressIndicator()); // Show loading spinner while checking
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         } else if (snapshot.hasData && snapshot.data == true) {
           return const HomePage(
               title: 'সাহায্য'); // If logged in, go to HomePage
