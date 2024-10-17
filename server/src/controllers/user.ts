@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { isPhoneNo, parsePhoneNumber, sendOTP } from "../libs/otp";
 import { logger } from "../libs/logger";
 import { User } from "../models/User";
-import { createJwtToken } from "../libs/jwt";
+import { createJwtToken, verifyJwtToken } from "../libs/jwt";
 
 
 export const register = async(req:Request, res:Response) => {
@@ -108,6 +108,38 @@ export const verifyOTP = async(req:Request, res:Response) => {
         res.status(500).json({
             error: true,
             message: `Unexpected error occured on the server. ${err.message}`,
+        });
+    }
+}
+// Middleware to check if the token is valid
+export const checkTokenValidity = async(req:Request, res:Response, next:NextFunction) => {
+    try {
+        const token = req.headers.authorization?.split(" ")[1];
+        if (!token) return res.status(400).json({ error: true, message: "Token is required" });
+        const decoded = verifyJwtToken(token);
+        res.locals.user = decoded;
+        next();
+    } catch (error) {
+        const err = error as Error;
+        console.log(err.message);
+        res.status(500).json({
+            error: true,
+            message: `${err.message}`,
+        });
+    }
+}
+
+export const verifyToken = async(req:Request, res:Response) => {
+    try {
+        const user = res.locals.user;
+        if(user) res.status(200).json({ error: false });
+        else res.status(401).json({ error: true, message: "Invalid token" });
+    } catch (error) {
+        const err = error as Error;
+        console.log(err.message);
+        res.status(500).json({
+            error: true,
+            message: `${err.message}`,
         });
     }
 }

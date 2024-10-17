@@ -6,3 +6,7 @@ export const createJwtToken = (payload: any) => {
         expiresIn: "10d",
     });
 }
+
+export const verifyJwtToken = (token: string) => {
+    return jwt.verify(token, process.env.JWT_SECRET as string);
+}

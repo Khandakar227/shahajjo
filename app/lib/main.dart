@@ -3,9 +3,15 @@ import 'package:shahajjo/views/add_Incident_page.dart';
 import 'package:shahajjo/views/flood_monitor.dart';
 import 'package:shahajjo/views/home.dart';
 import 'package:shahajjo/utils/utils.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:shahajjo/views/incident_monitor.dart';
+import 'package:shahajjo/views/login_page.dart';
+import 'package:shahajjo/views/otp_page.dart';
+import 'package:shahajjo/views/register_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const App());
 }
 
@@ -18,7 +24,8 @@ class App extends StatelessWidget {
     return MaterialApp(
         title: 'Shahajjo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          primarySwatch: createMaterialColor(const Color(0xFFFF005E)),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFF005E)),
           useMaterial3: true,
         ),
         home: const HomePage(title: 'সাহায্য'),
@@ -42,9 +49,14 @@ class App extends StatelessWidget {
               builder = (BuildContext context) =>
                   const AddIncidentPage(title: 'জরুরি ঘটনা যোগ করুন');
               break;
-            case '/incident-monitor':
-              builder = (BuildContext context) =>
-                  const IncidentMonitorPage(title: 'ঘটনা পর্যবেক্ষণ');
+            case '/register':
+              builder = (BuildContext context) => const RegisterPage();
+              break;
+            case '/login':
+              builder = (BuildContext context) => const LoginPage();
+              break;
+            case "/otp":
+              builder = (BuildContext context) => const OtpPage();
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "899849457523",
+    "project_id": "shahajjo-44f91",
+    "storage_bucket": "shahajjo-44f91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899849457523:android:09c88f835ecd315ca3ff06",
+        "android_client_info": {
+          "package_name": "com.example.shahajjo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899849457523-s8tjm3r91sr9spfpu14b1144ml3bs64f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shahajjo",
+            "certificate_hash": "a76628922e00d5ba593ea16d109c0a4905235159"
+          }
+        },
+        {
+          "client_id": "899849457523-dft92d77uaveu3319rqk3fb3fungpdsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5sIFCf8WzEHJGMwueMgo20BHzR7qWZMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899849457523-dft92d77uaveu3319rqk3fb3fungpdsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

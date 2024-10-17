@@ -64,7 +64,7 @@ class MapSampleState extends State<FloodMonitorMap> {
         child: FloatingActionButton(
           onPressed: showMapLegend,
           tooltip: 'Map Legend',
-          backgroundColor: Colors.blue[800],
+          backgroundColor: Colors.red[800],
           foregroundColor: Colors.white,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(28))),

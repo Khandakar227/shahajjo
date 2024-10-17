@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
+import 'package:shahajjo/services/auth.dart';
+import 'package:shahajjo/views/login_page.dart';
 
 List<Map<String, String>> features = [
   {
@@ -81,6 +83,29 @@ class _HomePageState extends State<HomePage> {
           style: const TextStyle(fontSize: 12),
         )
       ]),
+    );
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  final AuthService _authService = AuthService();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<bool>(
+      future: _authService.isLoggedIn(), // Check if the user is logged in
+      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+              child:
+                  CircularProgressIndicator()); // Show loading spinner while checking
+        } else if (snapshot.hasData && snapshot.data == true) {
+          return const HomePage(
+              title: 'সাহায্য'); // If logged in, go to HomePage
+        } else {
+          return const LoginPage(); // If not logged in, go to LoginPage
+        }
+      },
     );
   }
 }

@@ -1,8 +1,9 @@
 import express from 'express';
-import { loginByPhone, register, verifyOTP } from '../controllers/user';
+import { checkTokenValidity, loginByPhone, register, verifyOTP, verifyToken } from '../controllers/user';
 
 const router = express.Router();
 
+router.get('/token', checkTokenValidity, verifyToken);
 router.post('/register', register);
 router.post('/phone-login', loginByPhone);
 router.post('/verify-otp', verifyOTP);
