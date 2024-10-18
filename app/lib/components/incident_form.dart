@@ -10,7 +10,7 @@ class IncidentForm extends StatefulWidget {
 class _IncidentFormState extends State<IncidentForm> {
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return const Form(
         child: Column(
       children: [],
     ));

@@ -8,9 +8,12 @@ class AuthService {
 
   Future<bool> isLoggedIn() async {
     String? token = await _storage.read(key: 'auth_token');
+
+    // Check if the token is null
     if (token == null) {
-      return false; // Not logged in
+      return false;
     }
+
     bool isTokenVerified = await _verifyToken(token);
 
     if (!isTokenVerified) {

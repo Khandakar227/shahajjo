@@ -21,7 +21,7 @@ class _IncidentMonitorState extends State<IncidentMonitorPage> {
             child: SizedBox(
           height: screenHeight -
               appBarHeight, // Adjust the height to exclude the app bar
-          child: SizedBox(),
+          child: const SizedBox(),
         )));
   }
 }

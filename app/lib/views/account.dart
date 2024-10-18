@@ -21,7 +21,7 @@ class _AccountState extends State<AccountPage> {
             child: SizedBox(
           height: screenHeight -
               appBarHeight, // Adjust the height to exclude the app bar
-          child: SizedBox(),
+          child: const SizedBox(),
         )));
   }
 }
