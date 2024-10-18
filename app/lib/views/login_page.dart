@@ -4,7 +4,6 @@ import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/utils/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shahajjo/views/otp_page.dart';
-import 'package:shahajjo/services/firebase_notification.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
