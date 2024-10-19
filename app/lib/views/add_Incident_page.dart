@@ -12,10 +12,10 @@ class AddIncidentPage extends StatefulWidget {
 
 class _AddIncidentPageState extends State<AddIncidentPage> {
   final _formKey = GlobalKey<FormState>();
-  final Map<String, String> _formData = {
+  final Map<String, dynamic> _formData = {
     "des": "",
-    "mobileNo": "",
-    "incidentType": ""
+    "incidentType": "",
+    "showPhoneNo": false
   };
 
   @override
@@ -49,21 +49,33 @@ class _AddIncidentPageState extends State<AddIncidentPage> {
                   },
                 ),
                 _input("বিবরণ", "desc", "বিবরণ", true, TextInputType.multiline),
-                _input("ফোন নাম্বার(বাধ্যতামূলক নয়)", "mobileNo",
-                    "মোবাইল নাম্বার", false),
-                ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        print(_formData);
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFCE0014),
-                      foregroundColor: Colors.white,
-                    ),
-                    child:
-                        const Text("জমা দিন", style: TextStyle(fontSize: 18))),
+                CheckboxListTile(
+                  title: const Text("ফোন নম্বর পাবলিক করতে টিক দিন?"),
+                  value: _formData["showPhoneNo"],
+                  onChanged: (v) {
+                    setState(() {
+                      _formData["showPhoneNo"] = v!;
+                    });
+                  },
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          print(_formData);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFCE0014),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      child: const Text("জমা দিন",
+                          style: TextStyle(fontSize: 18))),
+                )
               ],
             ),
           ),

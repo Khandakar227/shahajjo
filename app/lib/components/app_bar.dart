@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../views/login_page.dart';
+import 'package:shahajjo/views/volume_handler.dart'; // Import the VolumeHandler page
 
 const appMenuItems = [
   {
@@ -15,8 +15,8 @@ const appMenuItems = [
     'route': '/settings',
   },
   {
-    'title': 'Login',
-    'route': '/login',
+    'title': 'VolumeHandler',
+    'route': '/volume-handler',
   },
 ];
 
@@ -35,30 +35,30 @@ class _MyAppbarState extends State<MyAppbar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
-        title: Text(widget.title),
-        actions: [
-          PopupMenuButton(
-            itemBuilder: (context) => [
-              for (var item in appMenuItems)
-                PopupMenuItem(
-                  value: item['route'],
-                  child: Text(item['title']!),
-                ),
-            ],
-            onSelected: (value) {
-              if (value == '/login') {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                );
-              } else {
-                Navigator.pushNamed(context, value);
-              }
-            },
-            position: PopupMenuPosition.under,
-          )
-        ]);
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+      title: Text(widget.title),
+      actions: [
+        PopupMenuButton(
+          itemBuilder: (context) => [
+            for (var item in appMenuItems)
+              PopupMenuItem(
+                value: item['route'],
+                child: Text(item['title']!),
+              ),
+          ],
+          onSelected: (value) {
+            if (value == '/volume-handler') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const VolumeButtonHandler()),
+              );
+            }
+          },
+          position: PopupMenuPosition.under,
+        ),
+      ],
+    );
   }
 }
