@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class TextInput extends StatefulWidget {
-  const TextInput({required this.label, required this.onChanged, super.key});
+  const TextInput(
+      {required this.label,
+      required this.onChanged,
+      this.keyboardType = TextInputType.number,
+      super.key});
   final String label;
   final void Function(String)? onChanged;
+  final TextInputType keyboardType;
 
   @override
   State<TextInput> createState() => _TextInputState();

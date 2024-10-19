@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
 
-class IncidentMonitorPage extends StatefulWidget {
-  const IncidentMonitorPage({super.key, required this.title});
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key, required this.title});
   final String title;
 
   @override
-  _IncidentMonitorState createState() => _IncidentMonitorState();
+  _SettingsState createState() => _SettingsState();
 }
 
-class _IncidentMonitorState extends State<IncidentMonitorPage> {
+class _SettingsState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;

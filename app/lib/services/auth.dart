@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shahajjo/utils/utils.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -107,5 +108,11 @@ class AuthService {
       print('Error verifying token: $e');
       return false;
     }
+  }
+
+  void logOut(BuildContext context) {
+    _storage.delete(key: 'auth_token').then((v) {
+      Navigator.pushNamed(context, '/login');
+    });
   }
 }

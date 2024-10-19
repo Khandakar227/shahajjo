@@ -80,9 +80,9 @@ class _RegisterFormState extends State<RegisterForm> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               // User Name
               TextInput(
-                label: 'নাম:',
-                onChanged: (value) => name = value,
-              ),
+                  label: 'নাম:',
+                  onChanged: (value) => name = value,
+                  keyboardType: TextInputType.text),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               // Phone number
               TextInput(

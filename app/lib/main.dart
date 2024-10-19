@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:shahajjo/views/incident_monitor.dart';
 import 'package:shahajjo/views/login_page.dart';
 import 'package:shahajjo/views/register_page.dart';
+import 'package:shahajjo/views/settings_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,6 +58,14 @@ class App extends StatelessWidget {
               break;
             case '/login':
               builder = (BuildContext context) => const LoginPage();
+              break;
+            case '/settings':
+              builder =
+                  (BuildContext context) => const SettingsPage(title: 'সেটিংস');
+              break;
+            case '/notification':
+              builder = (BuildContext context) =>
+                  const SettingsPage(title: 'নোটিফিকেশন');
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

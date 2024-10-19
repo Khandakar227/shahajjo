@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
+import 'package:shahajjo/services/auth.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key, required this.title});
@@ -12,6 +13,7 @@ class AccountPage extends StatefulWidget {
 class _AccountState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
+    final AuthService authService = AuthService();
     final double screenHeight = MediaQuery.of(context).size.height;
     const double appBarHeight = kToolbarHeight;
 
@@ -21,7 +23,14 @@ class _AccountState extends State<AccountPage> {
             child: SizedBox(
           height: screenHeight -
               appBarHeight, // Adjust the height to exclude the app bar
-          child: SizedBox(),
+          child: Center(
+            child: ElevatedButton(
+              child: const Text("Log out"),
+              onPressed: () {
+                authService.logOut(context);
+              },
+            ),
+          ),
         )));
   }
 }
