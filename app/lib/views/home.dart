@@ -15,7 +15,7 @@ List<Map<String, String>> features = [
     'navigateTo': 'incident-monitor'
   },
   {
-    'label': 'ঘটনা যোগ করুন',
+    'label': 'ঘটনা রিপোর্ট করুন',
     'image': 'assets/icons/notify.png',
     'navigateTo': 'add-incident'
   },
