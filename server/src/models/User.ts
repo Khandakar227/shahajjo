@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongodb';
 import { Schema, model, Document, models, Model } from 'mongoose';
 
 export interface IUser {
@@ -14,7 +13,7 @@ export interface IUser {
 
 export const UserSchema = new Schema<IUser>({
     name: { type: String, required: true },
-    phoneNumber: { type: String, required: true },
+    phoneNumber: { type: String, required: true, unique: true },
     avatar: { type: String },
     otp: { type: String },
     otpExpiresAt: { type: Date, required: true },

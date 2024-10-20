@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:shahajjo/components/app_bar.dart';
+import 'package:shahajjo/services/location.dart';
 import 'package:shahajjo/utils/utils.dart';
 
 class AddIncidentPage extends StatefulWidget {
@@ -13,10 +17,61 @@ class AddIncidentPage extends StatefulWidget {
 class _AddIncidentPageState extends State<AddIncidentPage> {
   final _formKey = GlobalKey<FormState>();
   final Map<String, dynamic> _formData = {
-    "des": "",
+    "description": "",
     "incidentType": "",
     "showPhoneNo": false
   };
+
+  LocationService locationService = LocationService();
+  late StreamSubscription<ServiceStatus> _statusSubscription;
+  String errorText = "";
+
+  @override
+  void initState() {
+    super.initState();
+    initLocation();
+    _statusSubscription = locationService.onStatusChanged((status) {
+      if (status == ServiceStatus.disabled) {
+        setState(() {
+          errorText = "অনুগ্রহ করে লোকেশন সার্ভিস চালু করুন";
+        });
+      } else {
+        setState(() {
+          errorText = "";
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _statusSubscription.cancel();
+    super.dispose();
+  }
+
+  Future<void> initLocation() async {
+    LocationPermission permission = await locationService.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await locationService.requestPermission();
+    }
+  }
+
+  Future<void> showLocationPermissionText() async {
+    LocationPermission permission = await locationService.checkPermission();
+    if (permission == LocationPermission.deniedForever) {
+      setState(() {
+        errorText = "অনুগ্রহ করে অ্যাপ সেটিংস থেকে লোকেশন পারমিশন অনুমোদন দিন";
+      });
+    } else if (permission == LocationPermission.denied) {
+      setState(() {
+        errorText = "অনুগ্রহ করে লোকেশন পারমিশন অনুমোদন দিন";
+      });
+    } else {
+      setState(() {
+        errorText = "";
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +103,8 @@ class _AddIncidentPageState extends State<AddIncidentPage> {
                     });
                   },
                 ),
-                _input("বিবরণ", "desc", "বিবরণ", true, TextInputType.multiline),
+                _input("বিবরণ", "description", "বিবরণ", true,
+                    TextInputType.multiline),
                 CheckboxListTile(
                   title: const Text("ফোন নম্বর পাবলিক করতে টিক দিন?"),
                   value: _formData["showPhoneNo"],

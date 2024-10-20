@@ -6,6 +6,7 @@ import stationRoute from "./routes/stationData";
 import cron from 'node-cron';
 import floodRoute from "./routes/floodData";
 import userRoute from "./routes/user";
+import incidentRoute from "./routes/incident";
 import { taskFetchFloodData } from "./libs/cron";
 
 dotenv.config();
@@ -35,6 +36,7 @@ app.get("/", (req, res) => res.send("OK"));
 app.use("/api/v1/station", stationRoute);
 app.use("/api/v1/flood", floodRoute);
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/incident", incidentRoute);
 
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
