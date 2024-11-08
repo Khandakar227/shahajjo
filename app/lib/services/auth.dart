@@ -57,7 +57,9 @@ class AuthService {
     if (response.statusCode == 200) {
       showToast('আপনার মোবাইল নম্বরে একটি OTP পাঠানো হয়েছে');
     } else {
-      showToast('Failed to request OTP: ${jsonDecode(response.body).message}');
+      showToast(
+          'Failed to request OTP: ${jsonDecode(response.body)['message']}');
+      throw Exception('Failed to request OTP: ${response.body}');
     }
   }
 
