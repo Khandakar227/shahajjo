@@ -20,6 +20,11 @@ List<Map<String, String>> features = [
     'navigateTo': 'add-incident'
   },
   {
+    'label': 'এস ও এস',
+    'image': 'assets/icons/sos.png',
+    'navigateTo': 'add-incident'
+  },
+  {
     'label': 'একাউন্ট',
     'image': 'assets/icons/user.png',
     'navigateTo': 'account'

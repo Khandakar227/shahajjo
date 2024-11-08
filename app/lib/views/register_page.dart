@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/TextInput.dart';
+import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/utils/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -35,6 +36,7 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  final AuthService _authService = AuthService();
   String phoneNumber = "";
   String name = "";
 
@@ -144,9 +146,14 @@ class _RegisterFormState extends State<RegisterForm> {
     });
 
     try {
-      showToast("লগ ইন সফল হয়েছে $name, $phoneNumber", Toast.LENGTH_SHORT);
+      bool success = await _authService.registerUser(phoneNumber, name);
+      if (success) {
+        Navigator.popAndPushNamed(context, '/otp', arguments: phoneNumber);
+        showToast(
+            "রেজিস্টার সফল হয়েছে $name, $phoneNumber", Toast.LENGTH_SHORT);
+      }
     } catch (e) {
-      showToast("লগ ইন সম্ভব হয়নি: ${e.toString()}", Toast.LENGTH_SHORT);
+      showToast("রেজিস্টার সম্ভব হয়নি: ${e.toString()}", Toast.LENGTH_SHORT);
     } finally {
       setState(() {
         _isLoading = false;
