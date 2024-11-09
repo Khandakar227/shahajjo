@@ -39,8 +39,8 @@ class _OtpPageState extends State<OtpPage> {
 
         //save token
 
-        FirebaseNotification(widget.phoneNumber).requestPermission();
-        FirebaseNotification(widget.phoneNumber).getToken();
+        // FirebaseNotification().requestPermission();
+        // FirebaseNotification().getToken();
 
         Navigator.popAndPushNamed(context, '/home');
       } catch (e) {

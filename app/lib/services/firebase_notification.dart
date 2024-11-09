@@ -3,16 +3,19 @@ import 'package:http/http.dart' as http;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:googleapis_auth/auth_io.dart';
+import 'globals.dart' as globals;
 
 class FirebaseNotification {
   final String phoneNumber;
   String? mtoken;
 
-  FirebaseNotification(this.phoneNumber);
+  FirebaseNotification() : phoneNumber = globals.globalPhoneNumber {
+    print('FirebaseNotification: $phoneNumber');
+  }
 
   Future<String> getAccessToken() async {
     // Your client ID and client secret obtained from Google Cloud Console
-    const serviceAccountJson = "@string/ervice_account_json";
+    const serviceAccountJson = "@string/service_account_json";
 
     List<String> scopes = [
       "https://www.googleapis.com/auth/firebase.messaging"
@@ -58,17 +61,26 @@ class FirebaseNotification {
     await FirebaseMessaging.instance.getToken().then((token) {
       mtoken = token;
       print('Token: $mtoken');
-      saveToken(mtoken!);
+      if (phoneNumber.isNotEmpty) {
+        // Ensure phoneNumber is valid
+        saveToken(mtoken!);
+      } else {
+        print('Error: phoneNumber is empty or null');
+      }
     });
   }
 
   Future<void> saveToken(String token) async {
-    await FirebaseFirestore.instance
-        .collection('user_token')
-        .doc(phoneNumber)
-        .set({
-      'token': token,
-    });
+    if (phoneNumber.isNotEmpty) {
+      await FirebaseFirestore.instance
+          .collection('user_token')
+          .doc(phoneNumber)
+          .set({
+        'token': token,
+      });
+    } else {
+      print('Error: phoneNumber is empty or null');
+    }
   }
 
   Future<void> sendPushMessagetoAllUsers(String title, String body) async {
