@@ -146,7 +146,7 @@ class _RegisterFormState extends State<RegisterForm> {
     });
 
     try {
-      bool success = await _authService.registerUser(phoneNumber, name);
+      bool success = await _authService.registerUser(name, phoneNumber);
       if (success) {
         Navigator.popAndPushNamed(context, '/otp', arguments: phoneNumber);
         showToast(
