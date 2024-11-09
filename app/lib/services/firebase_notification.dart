@@ -12,7 +12,7 @@ class FirebaseNotification {
 
   Future<String> getAccessToken() async {
     // Your client ID and client secret obtained from Google Cloud Console
-    final serviceAccountJson = "@string/ervice_account_json";
+    const serviceAccountJson = "@string/ervice_account_json";
 
     List<String> scopes = [
       "https://www.googleapis.com/auth/firebase.messaging"
