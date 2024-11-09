@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/utils/utils.dart';
+import 'package:shahajjo/services/firebase_notification.dart';
 
 class OtpPage extends StatefulWidget {
   final String phoneNumber;
@@ -35,6 +36,12 @@ class _OtpPageState extends State<OtpPage> {
           return;
         }
         showToast('OTP যাচাই সফল হয়েছে');
+
+        //save token
+
+        FirebaseNotification(widget.phoneNumber).requestPermission();
+        FirebaseNotification(widget.phoneNumber).getToken();
+
         Navigator.popAndPushNamed(context, '/home');
       } catch (e) {
         setState(() {
