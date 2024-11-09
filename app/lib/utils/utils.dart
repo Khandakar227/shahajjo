@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:logger/logger.dart';
 import 'package:intl/intl.dart';
 
@@ -86,3 +87,12 @@ Route createAnimatedRoutes(WidgetBuilder builder) {
     },
   );
 }
+
+const locationServiceErrorText = {
+  LocationPermission.denied: 'অনুগ্রহ করে লোকেশন পারমিশন অনুমোদন দিন',
+  LocationPermission.deniedForever:
+      'অনুগ্রহ করে অ্যাপ সেটিংস থেকে লোকেশন পারমিশন অনুমোদন দিন',
+  LocationPermission.whileInUse: "",
+  LocationPermission.always: "",
+  LocationPermission.unableToDetermine: "..."
+};

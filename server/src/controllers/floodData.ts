@@ -24,9 +24,14 @@ export const getAndAddFloodData = async (req: Request, res: Response) => {
         let fdata = [] as any[];
         // console.log(data);
         Object.keys(data.data).forEach(async (key) => {
-            let date = Object.keys(data.data[key])[0];
-            const floodData = {st_id: key, wl_date: date, waterlevel: data.data[key][date] };
-            fdata.push(floodData);
+            let dates = Object.keys(data.data[key]);
+            dates.forEach(async (date) => {
+                const floodData = {st_id: key, wl_date: date, waterlevel: data.data[key][date] };
+                fdata.push(floodData);
+            })
+            // let date = Object.keys(data.data[key])[0];
+            // const floodData = {st_id: key, wl_date: date, waterlevel: data.data[key][date] };
+            // fdata.push(floodData);
         });
         const floodData = await FloodData.insertMany(fdata, { ordered: false });
         res.status(200).json(floodData);

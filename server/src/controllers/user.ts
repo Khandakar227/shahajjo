@@ -116,7 +116,7 @@ export const checkTokenValidity = async(req:Request, res:Response, next:NextFunc
     try {
         const token = req.headers.authorization?.split(" ")[1];
         if (!token) return res.status(400).json({ error: true, message: "Token is required" });
-        const decoded = verifyJwtToken(token);
+        const decoded: any = verifyJwtToken(token);
         res.locals.user = decoded;
         next();
     } catch (error) {
