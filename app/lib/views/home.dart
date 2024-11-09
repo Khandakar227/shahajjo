@@ -15,7 +15,7 @@ List<Map<String, String>> features = [
     'navigateTo': 'incident-monitor'
   },
   {
-    'label': 'ঘটনা রিপোর্ট করুন',
+    'label': 'রিপোর্ট করুন',
     'image': 'assets/icons/notify.png',
     'navigateTo': 'add-incident'
   },
@@ -60,9 +60,9 @@ class _HomePageState extends State<HomePage> {
           widthFactor: double.infinity,
           child: SingleChildScrollView(
               child: Wrap(
-            runAlignment: WrapAlignment.center,
-            alignment: WrapAlignment.center,
-            crossAxisAlignment: WrapCrossAlignment.center,
+            runAlignment: WrapAlignment.start,
+            alignment: WrapAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.start,
             spacing: 25,
             children: features.map((feature) {
               return pageButton(
