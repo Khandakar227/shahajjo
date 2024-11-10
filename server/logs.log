@@ -17,3 +17,7 @@
 [2024-11-09T11:29:00.030] [INFO] default - Otp Sent: [object Object]
 [2024-11-09T11:40:46.084] [INFO] default - Otp Sent: [object Object]
 [2024-11-09T12:00:02.962] [INFO] default - Flood data fetched and saved to the database at 2024-11-09T06:00:02.962Z
+[2024-11-09T12:41:22.716] [INFO] default - Otp Sent: {"response_code":202,"message_id":31887324,"success_message":"SMS Submitted Successfully 1","error_message":""}
+[2024-11-09T12:41:48.010] [INFO] default - Otp Sent: [object Object]
+[2024-11-09T14:14:48.692] [INFO] default - Otp Sent: [object Object]
+[2024-11-10T18:18:22.795] [INFO] default - Otp Sent: [object Object]

@@ -40,7 +40,7 @@ List<Map<String, dynamic>> features = [
     'label': 'নোটিফিকেশন',
     'image': 'assets/icons/bell.png',
     'navigateTo': 'notification',
-    'onPressed': 'sendNotification' // Added special handler
+    'onPressed': 'sendNotification'
   },
 ];
 
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _handleNotificationTap() async {
     try {
       await _firebaseNotification.sendPushMessagetoAllUsers(
-          "Test Notification", "This is a test notification message");
+          "Test Notification", "This is a test notification message 2");
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Notification sent successfully!')),
       );
