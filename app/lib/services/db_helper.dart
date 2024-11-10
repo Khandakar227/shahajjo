@@ -21,8 +21,7 @@ class DBHelper {
 
   Future<Database> _initDB() async {
     final dbPath = await getDatabasesPath();
-    final path = dbPath + 'shahajjo.db';
-
+    final path = '${dbPath}shahajjo.db';
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
@@ -37,7 +36,9 @@ class DBHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         phoneNumber TEXT,
-        created_at TEXT
+        notificationEnabled INTEGER DEFAULT 1,
+        smsEnabled INTEGER DEFAULT 0,
+        created_at TEXT DEFAULT (DATETIME('now'))
       )
     ''');
   }

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
-import 'package:shahajjo/components/text_button.dart';
+import 'package:shahajjo/components/full_button.dart';
+import 'package:shahajjo/components/sos_contact_card.dart';
+import 'package:shahajjo/components/sos_contact_form.dart';
+import 'package:shahajjo/models/sos_contact.dart';
+import 'package:shahajjo/repository/sos_contact.dart';
+import 'package:shahajjo/utils/utils.dart';
 
 class SOSPage extends StatefulWidget {
   const SOSPage({super.key, required this.title});
@@ -11,6 +16,22 @@ class SOSPage extends StatefulWidget {
 }
 
 class _SOSPageState extends State<SOSPage> {
+  SosContactRepository sosContactRepository = SosContactRepository();
+  List<SOSContact> sosContacts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    sosContactRepository.getSosContacts().then((value) {
+      setState(() {
+        for (var element in value) {
+          sosContacts.add(SOSContact.fromMap(element));
+        }
+      });
+      logger.i(sosContacts);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -19,7 +40,8 @@ class _SOSPageState extends State<SOSPage> {
     return Scaffold(
         appBar: MyAppbar(title: widget.title),
         body: SafeArea(
-            child: SizedBox(
+            child: SingleChildScrollView(
+                child: SizedBox(
           height: screenHeight -
               appBarHeight, // Adjust the height to exclude the app bar
           child: Padding(
@@ -51,7 +73,18 @@ class _SOSPageState extends State<SOSPage> {
                   ),
                   const SizedBox(height: 12),
                   FullButton(
-                    onTap: () {},
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            child: SosContactForm(
+                              refresh: fetchSOSContacts,
+                            ),
+                          );
+                        },
+                      );
+                    },
                     backgroundColor: Colors.black,
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
@@ -61,13 +94,80 @@ class _SOSPageState extends State<SOSPage> {
                           width: 8,
                         ),
                         Text("ইমার্জেন্সি কন্টেক্ট যোগ করুন",
-                            style: TextStyle(color: Colors.white))
+                            style: TextStyle(color: Colors.white)),
                       ],
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 12),
+                  ...sosContacts.map((contact) => SosContactCard(
+                        sosContact: contact,
+                        onEdit: () => onEdit(contact),
+                        onDelete: () => confirmDelete(contact),
+                      )),
                 ]),
           ),
-        )));
+        ))));
+  }
+
+  void onEdit(SOSContact sosContact) async {
+    var res = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          child: SosContactForm(
+            refresh: fetchSOSContacts,
+            sosContact: sosContact,
+          ),
+        );
+      },
+    );
+    if (res != null && res == true) fetchSOSContacts();
+  }
+
+  void onDelete(SOSContact sosContact) async {
+    if (sosContact.id == null) return;
+    await sosContactRepository.deleteSosContact(sosContact.id!);
+    fetchSOSContacts();
+  }
+
+  fetchSOSContacts() {
+    sosContactRepository.getSosContacts().then((value) {
+      setState(() {
+        sosContacts.clear();
+        for (var element in value) {
+          sosContacts.add(SOSContact.fromMap(element));
+        }
+      });
+      logger.i(sosContacts);
+    });
+  }
+
+  void confirmDelete(SOSContact sosContact) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("আপনি কি নিশ্চিত?"),
+          content:
+              const Text("আপনি কি এই ইমার্জেন্সি কন্টেক্ট মুছে ফেলতে চান?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("না"),
+            ),
+            TextButton(
+              onPressed: () {
+                onDelete(sosContact);
+                Navigator.pop(context);
+              },
+              child: const Text("হ্যাঁ"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void sendSOS() {}
