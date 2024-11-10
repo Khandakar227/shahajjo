@@ -19,11 +19,7 @@ List<Map<String, String>> features = [
     'image': 'assets/icons/notify.png',
     'navigateTo': 'add-incident'
   },
-  {
-    'label': 'এস ও এস',
-    'image': 'assets/icons/sos.png',
-    'navigateTo': 'add-incident'
-  },
+  {'label': 'এস ও এস', 'image': 'assets/icons/sos.png', 'navigateTo': 'sos'},
   {
     'label': 'একাউন্ট',
     'image': 'assets/icons/user.png',
@@ -59,16 +55,35 @@ class _HomePageState extends State<HomePage> {
           heightFactor: 1.2,
           widthFactor: double.infinity,
           child: SingleChildScrollView(
-              child: Wrap(
-            runAlignment: WrapAlignment.start,
-            alignment: WrapAlignment.start,
-            crossAxisAlignment: WrapCrossAlignment.start,
-            spacing: 25,
-            children: features.map((feature) {
-              return pageButton(
-                  feature['label']!, feature['image'], feature['navigateTo']);
-            }).toList(),
-          )),
+            child: SizedBox(
+              height: 400,
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                  // Use childAspectRatio to control item size ratio
+                  childAspectRatio:
+                      1, // Adjust this value to change item height/width ratio
+                ),
+                padding: const EdgeInsets.all(12),
+                itemCount: features.length,
+                itemBuilder: (context, index) {
+                  return LayoutBuilder(
+                    builder: (context, constraints) {
+                      return SizedBox(
+                        width: constraints.maxWidth,
+                        child: pageButton(
+                            features[index]['label']!,
+                            features[index]['image'],
+                            features[index]['navigateTo']),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          ),
         )));
   }
 

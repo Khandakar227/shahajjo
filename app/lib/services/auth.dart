@@ -5,6 +5,8 @@ import 'package:shahajjo/utils/utils.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthService {
+  static Map<String, String>? user;
+
   final _storage = const FlutterSecureStorage();
 
   Future<bool> isLoggedIn() async {
@@ -101,6 +103,7 @@ class AuthService {
 
       // Check if the request was successful
       if (response.statusCode == 200) {
+        // user = jsonDecode(response.body);
         return true;
       } else {
         return false;
