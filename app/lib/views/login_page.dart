@@ -178,7 +178,7 @@ class _LoginFormState extends State<LoginForm> {
       }
 
       _authService.requestOtp(phoneNumber).then((value) {
-        Navigator.push(
+        Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (_) => OtpPage(phoneNumber: phoneNumber)));

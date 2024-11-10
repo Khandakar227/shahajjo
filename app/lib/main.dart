@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shahajjo/views/SOS_page.dart';
 import 'package:shahajjo/views/account.dart';
 import 'package:shahajjo/views/add_Incident_page.dart';
 import 'package:shahajjo/views/flood_monitor.dart';
@@ -66,6 +67,10 @@ class App extends StatelessWidget {
             case '/notification':
               builder = (BuildContext context) =>
                   const SettingsPage(title: 'নোটিফিকেশন');
+              break;
+            case '/sos':
+              builder =
+                  (BuildContext context) => const SOSPage(title: 'এস ও এস');
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

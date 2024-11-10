@@ -67,10 +67,10 @@ export const loginByPhone = async(req:Request, res:Response) => {
 
         await user.save();
 
-        sendOTP(otp, mobileNo)
-        .then((res) => res.json())
-        .then((data) => logger.info(`Otp Sent: ${data}`))
-        .catch((err) => logger.error(err));
+        // sendOTP(otp, mobileNo)
+        // .then((res) => res.json())
+        // .then((data) => logger.info(`Otp Sent: ${data}`))
+        // .catch((err) => logger.error(err));
 
         res.status(200).json({
             error: false,
