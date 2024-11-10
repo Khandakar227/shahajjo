@@ -2,9 +2,13 @@ class SOSContact {
   final int? id;
   final String name;
   final String phoneNumber;
+  final bool notificationEnabled;
+  final bool smsEnabled;
 
   SOSContact({
     this.id,
+    this.notificationEnabled = true,
+    this.smsEnabled = false,
     required this.name,
     required this.phoneNumber,
   });
@@ -14,6 +18,8 @@ class SOSContact {
       'id': id,
       'name': name,
       'phoneNumber': phoneNumber,
+      'notificationEnabled': notificationEnabled ? 1 : 0,
+      'smsEnabled': smsEnabled ? 1 : 0,
     };
   }
 
@@ -22,11 +28,13 @@ class SOSContact {
       id: map['id'],
       name: map['name'],
       phoneNumber: map['phoneNumber'],
+      notificationEnabled: map['notificationEnabled'] == 1,
+      smsEnabled: map['smsEnabled'] == 1,
     );
   }
 
   @override
   String toString() {
-    return 'SOSContact{id: $id, name: $name, phoneNumber: $phoneNumber}';
+    return 'SOSContact{id: $id, name: $name, phoneNumber: $phoneNumber, notificationEnabled: $notificationEnabled, smsEnabled: $smsEnabled}';
   }
 }
