@@ -41,7 +41,7 @@ class _TextInputState extends State<TextInput> {
           child: Center(
             child: TextField(
               onChanged: widget.onChanged,
-              keyboardType: TextInputType.phone,
+              keyboardType: widget.keyboardType,
               cursorColor: const Color(0xFFCE0014),
               style: const TextStyle(
                 color: Colors.black,
