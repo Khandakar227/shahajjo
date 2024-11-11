@@ -1,12 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart' as Permission;
 import 'package:shahajjo/components/app_bar.dart';
 import 'package:shahajjo/components/full_button.dart';
 import 'package:shahajjo/components/sos_contact_card.dart';
 import 'package:shahajjo/components/sos_contact_form.dart';
 import 'package:shahajjo/models/sos_contact.dart';
 import 'package:shahajjo/repository/sos_contact.dart';
+import 'package:shahajjo/services/location.dart';
 import 'package:shahajjo/services/sms.dart';
+import 'package:shahajjo/services/sos.dart';
 import 'package:shahajjo/utils/utils.dart';
 
 class SOSPage extends StatefulWidget {
@@ -20,6 +25,13 @@ class SOSPage extends StatefulWidget {
 class _SOSPageState extends State<SOSPage> {
   final SMSService smsService = SMSService();
   SosContactRepository sosContactRepository = SosContactRepository();
+  LocationService locationService = LocationService();
+  // Eabled or disabled
+  ServiceStatus? serviceStatus;
+  LocationPermission locationPermission = LocationPermission.unableToDetermine;
+  bool permissionAskedOnce = false;
+  // String errorText = "";
+  SosService sosService = SosService();
   List<SOSContact> sosContacts = [];
 
   @override
@@ -38,11 +50,37 @@ class _SOSPageState extends State<SOSPage> {
   }
 
   _getPermission() async => await [
-        Permission.sms,
+        Permission.Permission.sms,
       ].request();
 
   Future<bool> _isPermissionGranted() async =>
-      await Permission.sms.status.isGranted;
+      await Permission.Permission.sms.status.isGranted;
+
+  Future<void> initLocation() async {
+    try {
+      LocationPermission permission = await locationService.checkPermission();
+      if ((permission == LocationPermission.denied ||
+              permission == LocationPermission.deniedForever) &&
+          !permissionAskedOnce) {
+        permission = await locationService.requestPermission();
+      }
+      setState(() {
+        locationPermission = permission;
+        permissionAskedOnce = true;
+        // errorText = locationServiceErrorText[permission] ?? "";
+      });
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
+  @override
+  void dispose() {
+    // _statusSubscription.cancel();
+    // checkPermissionTimer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -69,7 +107,7 @@ class _SOSPageState extends State<SOSPage> {
                       style: TextStyle(color: Colors.black54)),
                   const SizedBox(height: 20),
                   FullButton(
-                    onTap: sendSOS,
+                    onTap: _sendSOS,
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -181,8 +219,13 @@ class _SOSPageState extends State<SOSPage> {
     );
   }
 
-  void sendSOS() async {
-    String message = smsService.createMessage("shakib", "01837782939", 0, 0);
-    await smsService.sendSMS(message, "01731975599");
+  void _sendSOS() async {
+    // Check if location enabled and permission granted
+    await initLocation();
+    Position? pos = await locationService.getCurrentLocation();
+
+    String message = smsService.createMessage(
+        "shakib", "01837782939", pos.latitude, pos.longitude);
+    await sosService.sendBulkSosSms(message);
   }
 }
