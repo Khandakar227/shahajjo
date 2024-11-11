@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:shahajjo/components/app_bar.dart';
 import 'package:shahajjo/components/full_button.dart';
 import 'package:shahajjo/components/sos_contact_card.dart';
 import 'package:shahajjo/components/sos_contact_form.dart';
 import 'package:shahajjo/models/sos_contact.dart';
 import 'package:shahajjo/repository/sos_contact.dart';
+import 'package:shahajjo/services/sms.dart';
 import 'package:shahajjo/utils/utils.dart';
 
 class SOSPage extends StatefulWidget {
@@ -16,6 +18,7 @@ class SOSPage extends StatefulWidget {
 }
 
 class _SOSPageState extends State<SOSPage> {
+  final SMSService smsService = SMSService();
   SosContactRepository sosContactRepository = SosContactRepository();
   List<SOSContact> sosContacts = [];
 
@@ -30,8 +33,16 @@ class _SOSPageState extends State<SOSPage> {
       });
       logger.i(sosContacts);
     });
+
+    _getPermission();
   }
 
+  _getPermission() async => await [
+        Permission.sms,
+      ].request();
+
+  Future<bool> _isPermissionGranted() async =>
+      await Permission.sms.status.isGranted;
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -170,5 +181,8 @@ class _SOSPageState extends State<SOSPage> {
     );
   }
 
-  void sendSOS() {}
+  void sendSOS() async {
+    String message = smsService.createMessage("shakib", "01837782939", 0, 0);
+    await smsService.sendSMS(message, "01731975599");
+  }
 }

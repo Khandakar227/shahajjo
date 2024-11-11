@@ -50,6 +50,8 @@ dependencies:
   pinput: ^5.0.0
   flutter_secure_storage: ^9.2.2
   sqflite: ^2.3.3+1
+  background_sms: ^0.0.1
+  permission_handler: ^11.3.1
 
 
 dev_dependencies:
