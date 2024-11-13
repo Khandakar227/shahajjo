@@ -38,12 +38,12 @@ List<Map<String, String>> features = [
   {
     'label': 'প্রমাণ',
     // 'image': 'assets/icons/evidence.png',
-    'image': 'assets/icons/bell.png',
+    'image': 'assets/icons/camera.png',
     'navigateTo': 'evidence'
   },
   {
     'label': 'Gallery',
-    'image': 'assets/icons/bell.png',
+    'image': 'assets/icons/gallery.png',
     'navigateTo': 'gallery'
   },
 ];
