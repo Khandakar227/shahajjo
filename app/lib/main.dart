@@ -10,6 +10,8 @@ import 'package:shahajjo/views/incident_monitor.dart';
 import 'package:shahajjo/views/login_page.dart';
 import 'package:shahajjo/views/register_page.dart';
 import 'package:shahajjo/views/settings_page.dart';
+import 'package:shahajjo/views/evidence_page.dart';
+import 'package:shahajjo/views/gallery_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,6 +73,14 @@ class App extends StatelessWidget {
             case '/sos':
               builder =
                   (BuildContext context) => const SOSPage(title: 'এস ও এস');
+              break;
+            case '/evidence':
+              builder = (BuildContext context) =>
+              const EvidencePage(title: 'Evidence');
+              break;
+            case '/gallery':
+              builder = (BuildContext context) =>
+              const GalleryPage(title: 'Collected Evidence');
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');
