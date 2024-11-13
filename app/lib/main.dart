@@ -10,17 +10,18 @@ import 'package:shahajjo/views/incident_monitor.dart';
 import 'package:shahajjo/views/login_page.dart';
 import 'package:shahajjo/views/register_page.dart';
 import 'package:shahajjo/views/settings_page.dart';
+import 'package:shahajjo/services/volume_button_handler.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  VolumeButtonHandler.initialize();
   runApp(const App());
 }
 
 class App extends StatelessWidget {
   const App({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,15 +41,15 @@ class App extends StatelessWidget {
               break;
             case '/flood-monitor':
               builder = (BuildContext context) =>
-                  const FloodMonitorePage(title: 'বন্যা পর্যবেক্ষণ');
+              const FloodMonitorePage(title: 'বন্যা পর্যবেক্ষণ');
               break;
             case '/incident-monitor':
               builder = (BuildContext context) =>
-                  const IncidentMonitorPage(title: 'ঘটনা পর্যবেক্ষণ');
+              const IncidentMonitorPage(title: 'ঘটনা পর্যবেক্ষণ');
               break;
             case '/add-incident':
               builder = (BuildContext context) =>
-                  const AddIncidentPage(title: 'জরুরি ঘটনা যোগ করুন');
+              const AddIncidentPage(title: 'জরুরি ঘটনা যোগ করুন');
               break;
             case '/account':
               builder =
@@ -66,7 +67,7 @@ class App extends StatelessWidget {
               break;
             case '/notification':
               builder = (BuildContext context) =>
-                  const SettingsPage(title: 'নোটিফিকেশন');
+              const SettingsPage(title: 'নোটিফিকেশন');
               break;
             case '/sos':
               builder =
