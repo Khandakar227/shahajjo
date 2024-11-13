@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'full_screen_image_page.dart';
 
 class GalleryPage extends StatefulWidget {
   final String title;
@@ -23,8 +24,16 @@ class _GalleryPageState extends State<GalleryPage> {
   Future<void> _loadMediaFiles() async {
     final Directory appDir = await getApplicationDocumentsDirectory();
     final List<FileSystemEntity> files = appDir.listSync();
+    files.sort((a, b) => b.statSync().modified.compareTo(a.statSync().modified));
     setState(() {
       _mediaFiles = files.where((file) => file.path.endsWith('.jpg') || file.path.endsWith('.mp4')).toList();
+    });
+  }
+
+  void _deleteFile(File file) {
+    file.delete();
+    setState(() {
+      _mediaFiles.remove(file);
     });
   }
 
@@ -46,8 +55,17 @@ class _GalleryPageState extends State<GalleryPage> {
         itemBuilder: (context, index) {
           final file = _mediaFiles[index];
           return GestureDetector(
-            onTap: () {
-              // Handle media file tap
+            onTap: () async {
+              final result = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FullScreenImagePage(imageFile: File(file.path)),
+                ),
+              );
+              if (result == 'delete') {
+                _deleteFile(File(file.path));
+                _loadMediaFiles(); // Refresh the gallery after deletion
+              }
             },
             child: file.path.endsWith('.mp4')
                 ? Icon(Icons.videocam)

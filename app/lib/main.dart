@@ -42,19 +42,19 @@ class App extends StatelessWidget {
               break;
             case '/flood-monitor':
               builder = (BuildContext context) =>
-                  const FloodMonitorePage(title: 'বন্যা পর্যবেক্ষণ');
+              const FloodMonitorePage(title: 'বন্যা পর্যবেক্ষণ');
               break;
             case '/incident-monitor':
               builder = (BuildContext context) =>
-                  const IncidentMonitorPage(title: 'ঘটনা পর্যবেক্ষণ');
+              const IncidentMonitorPage(title: 'ঘটনা পর্যবেক্ষণ');
               break;
             case '/add-incident':
               builder = (BuildContext context) =>
-                  const AddIncidentPage(title: 'জরুরি ঘটনা যোগ করুন');
+              const AddIncidentPage(title: 'জরুরি ঘটনা যোগ করুন');
               break;
             case '/account':
               builder =
-                  (BuildContext context) => const AccountPage(title: 'একাউন্ট');
+                  (BuildContext context) => const AccountPage(title: 'একাউ��্ট');
               break;
             case '/register':
               builder = (BuildContext context) => const RegisterPage();
@@ -68,7 +68,7 @@ class App extends StatelessWidget {
               break;
             case '/notification':
               builder = (BuildContext context) =>
-                  const SettingsPage(title: 'নোটিফিকেশন');
+              const SettingsPage(title: 'নোটিফিকেশন');
               break;
             case '/sos':
               builder =
