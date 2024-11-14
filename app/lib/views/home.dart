@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
 import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/views/login_page.dart';
+import 'package:shahajjo/services/firebase_location.dart';
+import 'package:shahajjo/services/location.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:shahajjo/utils/utils.dart';
 
 // Feature list definition
 List<Map<String, dynamic>> features = [
@@ -53,6 +57,40 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+  }
+
+  LocationService locationService = LocationService();
+  FirebaseLocationService firebaseLocationService = FirebaseLocationService();
+
+  @override
+  void initState() {
+    super.initState();
+    _requestLocationPermission();
+  }
+
+  Future<void> _requestLocationPermission() async {
+    LocationPermission permission = await locationService.checkPermission();
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      permission = await locationService.requestPermission();
+    }
+
+    if (permission == LocationPermission.whileInUse ||
+        permission == LocationPermission.always) {
+      _getCurrentLocation();
+    } else {
+      showToast("Location permission is required to use this feature.");
+    }
+  }
+
+  Future<void> _getCurrentLocation() async {
+    try {
+      Position position = await locationService.getCurrentLocation();
+      firebaseLocationService.storeUserLocation(position);
+      firebaseLocationService.findOtherUserDistances('test3');
+    } catch (e) {
+      logger.e(e);
+    }
   }
 
   @override
