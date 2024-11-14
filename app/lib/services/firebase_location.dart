@@ -26,7 +26,7 @@ class FirebaseLocationService {
   }
 
   double haversineDistance(GeoPoint point1, GeoPoint point2) {
-    const double earthRadiusMeters = 6371000.0; // Earth's radius in meters
+    const double earthRadiusMeters = 6371000.0;
 
     double dLat = _degreesToRadians(point2.latitude - point1.latitude);
     double dLon = _degreesToRadians(point2.longitude - point1.longitude);
