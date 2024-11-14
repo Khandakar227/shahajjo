@@ -45,9 +45,9 @@ android {
         versionName = flutterVersionName
 
         resValue "string", "google_maps_key", localProperties['MAPS_API_KEY']
-        resValue "string", "service_account_json", localProperties['SERVICE_ACCOUNT_JSON']
-        resValue "string", "notification_private_key_id", localProperties['NOTIFICATION_PRIVATE_KEY_ID']
-        resValue "string", "notification_private_key", localProperties['NOTIFICATION_PRIVATE_KEY']
+        // resValue "string", "service_account_json", localProperties['SERVICE_ACCOUNT_JSON']
+        // resValue "string", "notification_private_key_id", localProperties['NOTIFICATION_PRIVATE_KEY_ID']
+        // resValue "string", "notification_private_key", localProperties['NOTIFICATION_PRIVATE_KEY']
     }
 
     buildTypes {

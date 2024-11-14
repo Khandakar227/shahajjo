@@ -3,20 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shahajjo/utils/utils.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'globals.dart' as globals;
 
 class AuthService {
+  static Map<String, String>? user;
+
   final _storage = const FlutterSecureStorage();
-  String _phoneNumber = '';
 
   Future<bool> isLoggedIn() async {
     String? token = await _storage.read(key: 'auth_token');
-
-    // Check if the token is null
     if (token == null) {
-      return false;
+      return false; // Not logged in
     }
-
     bool isTokenVerified = await _verifyToken(token);
 
     if (!isTokenVerified) {
@@ -26,15 +23,7 @@ class AuthService {
     return isTokenVerified;
   }
 
-  Future<String?> getCurrentUserPhoneNumber() async {
-    return _phoneNumber;
-  }
-
   Future<bool> registerUser(String name, phoneNumber) async {
-    globals.globalPhoneNumber = phoneNumber; // Set the global variable
-    print('Registering user with global phone number: globalPhoneNumber');
-    _phoneNumber = phoneNumber; // This remains for local use if needed
-
     final url = Uri.parse('$serverUrl/api/v1/user/register');
     final response = await http.post(
       url,
@@ -77,9 +66,6 @@ class AuthService {
   }
 
   Future<bool> verifyOtp(String phoneNumber, String otp) async {
-    globals.globalPhoneNumber = phoneNumber;
-    print('Verifying OTP for global phone number: $phoneNumber');
-
     final url = Uri.parse('$serverUrl/api/v1/user/verify-otp');
     final response = await http.post(
       url,
@@ -117,6 +103,7 @@ class AuthService {
 
       // Check if the request was successful
       if (response.statusCode == 200) {
+        // user = jsonDecode(response.body);
         return true;
       } else {
         return false;
@@ -129,9 +116,47 @@ class AuthService {
   }
 
   void logOut(BuildContext context) {
-    globals.globalPhoneNumber = ''; // Clear the global variable
     _storage.delete(key: 'auth_token').then((v) {
       Navigator.pushNamed(context, '/login');
     });
+  }
+
+  void addDeviceTokenToDB(String token) async {
+    final url = Uri.parse('$serverUrl/api/v1/user/device-token');
+    final response = await http.patch(
+      url,
+      headers: {
+        'Authorization': 'Bearer ${await _storage.read(key: 'auth_token')}',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'deviceToken': token,
+      }),
+    );
+    if (response.statusCode == 200) {
+      logger.i('Device token added to DB');
+    } else {
+      logger.e('Failed to add device token to DB: ${response.body}');
+    }
+  }
+
+  void setCurrentLocationInDB(double lat, double long) async {
+    final url = Uri.parse('$serverUrl/api/v1/user/location');
+    final response = await http.patch(
+      url,
+      headers: {
+        'Authorization': 'Bearer ${await _storage.read(key: 'auth_token')}',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'latitude': lat,
+        'longitude': long,
+      }),
+    );
+    if (response.statusCode == 200) {
+      logger.i('Current location added to DB');
+    } else {
+      logger.e('Failed to add current location to DB: ${response.body}');
+    }
   }
 }

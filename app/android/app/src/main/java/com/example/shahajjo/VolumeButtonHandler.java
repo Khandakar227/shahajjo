@@ -12,11 +12,9 @@ public class VolumeButtonHandler extends FlutterActivity {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
             new MethodChannel(getFlutterEngine().getDartExecutor().getBinaryMessenger(), CHANNEL)
                     .invokeMethod("volumeButton", "down");
-            return true;
         } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
             new MethodChannel(getFlutterEngine().getDartExecutor().getBinaryMessenger(), CHANNEL)
                     .invokeMethod("volumeButton", "up");
-            return true;
         }
         return super.onKeyDown(keyCode, event);
     }
