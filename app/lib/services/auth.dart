@@ -144,11 +144,16 @@ class AuthService {
   }
 
   void setCurrentLocationInDB(double lat, double long) async {
+    final token = await _storage.read(key: 'auth_token');
+    if (token == null) {
+      logger.e('Failed to add current location to DB: Token not found');
+      return;
+    }
     final url = Uri.parse('$serverUrl/api/v1/user/location');
     final response = await http.patch(
       url,
       headers: {
-        'Authorization': 'Bearer ${await _storage.read(key: 'auth_token')}',
+        'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
       },
       body: jsonEncode({
