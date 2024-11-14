@@ -101,7 +101,11 @@ export const verifyOTP = async(req:Request, res:Response) => {
         await user.save();
 
         const token = createJwtToken({ phoneNumber: user.phoneNumber, name: user.name });
-        res.status(200).json({ error: false, token });
+        res.status(200).json({ error: false, token, user: {
+            name: user.name,
+            phoneNumber: user.phoneNumber,
+            verified: user.verified,
+        } });
     } catch (error) {
         const err = error as Error;
         console.log(err.message);
@@ -132,7 +136,7 @@ export const checkTokenValidity = async(req:Request, res:Response, next:NextFunc
 export const verifyToken = async(req:Request, res:Response) => {
     try {
         const user = res.locals.user;
-        if(user) res.status(200).json({ error: false });
+        if(user) res.status(200).json({ error: false, user });
         else res.status(401).json({ error: true, message: "Invalid token" });
     } catch (error) {
         const err = error as Error;

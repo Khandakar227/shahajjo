@@ -80,6 +80,7 @@ class AuthService {
     if (response.statusCode == 200) {
       final responseData = jsonDecode(response.body);
       final token = responseData['token'];
+      user = responseData['user'];
       await _storage.write(key: 'auth_token', value: token);
       logger.i('OTP verified, JWT token: $token');
       return true;
@@ -103,7 +104,8 @@ class AuthService {
 
       // Check if the request was successful
       if (response.statusCode == 200) {
-        // user = jsonDecode(response.body);
+        final data = jsonDecode(response.body);
+        user = data['user'];
         return true;
       } else {
         return false;
@@ -117,6 +119,7 @@ class AuthService {
 
   void logOut(BuildContext context) {
     _storage.delete(key: 'auth_token').then((v) {
+      user = null;
       Navigator.pushNamed(context, '/login');
     });
   }
