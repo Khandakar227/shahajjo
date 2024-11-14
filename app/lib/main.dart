@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/views/SOS_page.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shahajjo/services/firebase_notification.dart';
@@ -26,8 +28,51 @@ void main() async {
       await locationService.requestPermission();
     }
   });
-
+  initializeService();
   runApp(const App());
+}
+
+void initializeService() {
+  final service = FlutterBackgroundService();
+}
+
+@pragma('vm:entry-point')
+void onStart(ServiceInstance service) async {
+  if (service is AndroidServiceInstance) {
+    service.on('setAsForeground').listen((event) {
+      service.setAsForegroundService();
+    });
+
+    service.on('stopService').listen((event) {
+      service.stopSelf();
+    });
+  }
+
+  // try {
+  //   // Check if location services are enabled
+  //   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  //   if (!serviceEnabled) {
+  //     logger.w("Location services are disabled.");
+  //     return Future.value(false);
+  //   }
+  //   LocationPermission permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied ||
+  //       permission == LocationPermission.deniedForever) {
+  //     permission = await Geolocator.requestPermission();
+  //     if (permission != LocationPermission.whileInUse &&
+  //         permission != LocationPermission.always) {
+  //       return Future.value(false);
+  //     }
+  //   }
+  //   Position position = await Geolocator.getCurrentPosition(
+  //       desiredAccuracy: LocationAccuracy.high);
+  //   AuthService()
+  //       .setCurrentLocationInDB(position.latitude, position.longitude);
+  //   return Future.value(true); // Indicate success
+  // } catch (e) {
+  //   logger.i("Failed to get current location: $e");
+  //   return Future.value(false); // Indicate failure
+  // }
 }
 
 class App extends StatelessWidget {
