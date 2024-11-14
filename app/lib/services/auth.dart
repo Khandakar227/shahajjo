@@ -5,17 +5,18 @@ import 'package:shahajjo/utils/utils.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthService {
-  static Map<String, String>? user;
+  static Map<String, dynamic>? user;
 
   final _storage = const FlutterSecureStorage();
 
   Future<bool> isLoggedIn() async {
     String? token = await _storage.read(key: 'auth_token');
+    logger.i('Token: $token');
     if (token == null) {
       return false; // Not logged in
     }
     bool isTokenVerified = await _verifyToken(token);
-
+    logger.i('Token verified: $isTokenVerified');
     if (!isTokenVerified) {
       await _storage.delete(key: 'auth_token');
     }
@@ -66,26 +67,32 @@ class AuthService {
   }
 
   Future<bool> verifyOtp(String phoneNumber, String otp) async {
-    final url = Uri.parse('$serverUrl/api/v1/user/verify-otp');
-    final response = await http.post(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({
-        'mobileNo': phoneNumber,
-        'otp': otp,
-      }),
-    );
-    if (response.statusCode == 200) {
-      final responseData = jsonDecode(response.body);
-      final token = responseData['token'];
-      user = responseData['user'];
-      await _storage.write(key: 'auth_token', value: token);
-      logger.i('OTP verified, JWT token: $token');
-      return true;
-    } else {
-      logger.e('Failed to verify OTP: ${response.body}');
+    try {
+      final url = Uri.parse('$serverUrl/api/v1/user/verify-otp');
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'mobileNo': phoneNumber,
+          'otp': otp,
+        }),
+      );
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        final token = responseData['token'];
+        user = responseData['user'];
+        logger.i(responseData['user']['phoneNumber']);
+        await _storage.write(key: 'auth_token', value: token);
+        logger.i('OTP verified, JWT token: $token');
+        return true;
+      } else {
+        logger.e('Failed to verify OTP: ${response.body}');
+        return false;
+      }
+    } catch (e) {
+      logger.e('Failed to verify OTP: $e');
       return false;
     }
   }
