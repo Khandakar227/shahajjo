@@ -15,7 +15,7 @@ class EvidencePage extends StatefulWidget {
 
 class _EvidencePageState extends State<EvidencePage> {
   late CameraController _controller;
-  late Future<void> _initializeControllerFuture;
+  Future<void>? _initializeControllerFuture;
   File? _mediaFile;
 
   @override
@@ -64,7 +64,9 @@ class _EvidencePageState extends State<EvidencePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: FutureBuilder<void>(
+      body: _initializeControllerFuture == null
+          ? const Center(child: CircularProgressIndicator())
+          : FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
