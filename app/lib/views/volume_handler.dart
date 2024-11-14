@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:torch_flashlight/torch_flashlight.dart';
 
 class VolumeButtonHandler extends StatefulWidget {
-  const VolumeButtonHandler({Key? key}) : super(key: key);
+  const VolumeButtonHandler({super.key});
 
   @override
   _VolumeButtonHandlerState createState() => _VolumeButtonHandlerState();
