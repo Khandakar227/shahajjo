@@ -143,3 +143,46 @@ export const verifyToken = async(req:Request, res:Response) => {
         });
     }
 }
+
+export const addDeviceToken = async(req:Request, res:Response) => {
+    try {
+        const { deviceToken } = req.body;
+        const user = res.locals.user;
+        const phoneNumber = user.phoneNumber;
+        const existingUser = await User.findOne({ phoneNumber });
+        if (!existingUser) return res.status(404).json({ error: true, message: "User not found" });
+        existingUser.deviceToken = deviceToken;
+        await existingUser.save();
+        res.status(200).json({ error: false, message: "Device token added successfully" });
+    } catch (error) {
+        const err = error as Error;
+        console.log(err.message);
+        res.status(500).json({
+            error: true,
+            message: `${err.message}`,
+        });
+    }
+}
+
+export const updateUserLocation = async(req:Request, res:Response) => {
+    try {
+        const { latitude, longitude } = req.body;
+        const user = res.locals.user;
+        const phoneNumber = user.phoneNumber;
+        const existingUser = await User.findOne({ phoneNumber });
+        if (!existingUser) return res.status(404).json({ error: true, message: "User not found" });
+        existingUser.currentLocation = {
+            type: "Point",
+            coordinates: [longitude, latitude],
+        };
+        await existingUser.save();
+        res.status(200).json({ error: false, message: "Location updated successfully" });
+    } catch (error) {
+        const err = error as Error;
+        console.log(err.message);
+        res.status(500).json({
+            error: true,
+            message: `${err.message}`,
+        });
+    }
+}

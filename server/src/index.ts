@@ -8,6 +8,7 @@ import floodRoute from "./routes/floodData";
 import userRoute from "./routes/user";
 import incidentRoute from "./routes/incident";
 import { taskFetchFloodData } from "./libs/cron";
+import { sendNotification } from "./libs/notification";
 
 dotenv.config();
 
@@ -31,7 +32,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get("/", (req, res) => res.send("OK"));
+app.get("/", async (req, res) => {
+    res.send("Live")
+});
 
 app.use("/api/v1/station", stationRoute);
 app.use("/api/v1/flood", floodRoute);

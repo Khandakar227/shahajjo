@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/views/SOS_page.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:shahajjo/services/firebase_notification.dart';
+import 'package:shahajjo/services/location.dart';
 import 'package:shahajjo/views/account.dart';
 import 'package:shahajjo/views/add_Incident_page.dart';
 import 'package:shahajjo/views/flood_monitor.dart';
@@ -14,13 +17,22 @@ import 'package:shahajjo/views/settings_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  NotificationService().initialize();
+
+  // Handle location permission
+  LocationService locationService = LocationService();
+  locationService.checkPermission().then((permission) async {
+    if (permission != LocationPermission.always) {
+      await locationService.requestPermission();
+    }
+  });
+
   runApp(const App());
 }
 
 class App extends StatelessWidget {
   const App({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

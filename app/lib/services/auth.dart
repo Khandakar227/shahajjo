@@ -120,4 +120,43 @@ class AuthService {
       Navigator.pushNamed(context, '/login');
     });
   }
+
+  void addDeviceTokenToDB(String token) async {
+    final url = Uri.parse('$serverUrl/api/v1/user/device-token');
+    final response = await http.patch(
+      url,
+      headers: {
+        'Authorization': 'Bearer ${await _storage.read(key: 'auth_token')}',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'deviceToken': token,
+      }),
+    );
+    if (response.statusCode == 200) {
+      logger.i('Device token added to DB');
+    } else {
+      logger.e('Failed to add device token to DB: ${response.body}');
+    }
+  }
+
+  void setCurrentLocationInDB(double lat, double long) async {
+    final url = Uri.parse('$serverUrl/api/v1/user/location');
+    final response = await http.patch(
+      url,
+      headers: {
+        'Authorization': 'Bearer ${await _storage.read(key: 'auth_token')}',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'latitude': lat,
+        'longitude': long,
+      }),
+    );
+    if (response.statusCode == 200) {
+      logger.i('Current location added to DB');
+    } else {
+      logger.e('Failed to add current location to DB: ${response.body}');
+    }
+  }
 }

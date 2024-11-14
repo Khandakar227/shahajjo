@@ -3,7 +3,8 @@ import 'package:shahajjo/components/app_bar.dart';
 import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/views/login_page.dart';
 
-List<Map<String, String>> features = [
+// Feature list definition
+List<Map<String, dynamic>> features = [
   {
     'label': 'বন্যা পর্যবেক্ষণ',
     'image': 'assets/icons/flood.png',
@@ -33,7 +34,8 @@ List<Map<String, String>> features = [
   {
     'label': 'নোটিফিকেশন',
     'image': 'assets/icons/bell.png',
-    'navigateTo': 'notification'
+    'navigateTo': 'notification',
+    'onPressed': 'sendNotification'
   },
 ];
 
@@ -46,6 +48,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final AuthService _authService = AuthService();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,21 +96,28 @@ class _HomePageState extends State<HomePage> {
         )));
   }
 
-  Widget pageButton(String label, imgPath, navigateTo) {
+  Widget pageButton(String label, String? imgPath, String? navigateTo,
+      [String? onPressed]) {
     return TextButton(
       onPressed: () {
-        Navigator.pushNamed(context, '/$navigateTo');
+        if (navigateTo != null) {
+          Navigator.pushNamed(context, '/$navigateTo');
+        }
       },
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Image.asset(
-          imgPath,
-          height: 60,
-        ),
-        Text(
-          label,
-          style: const TextStyle(fontSize: 12),
-        )
-      ]),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (imgPath != null)
+            Image.asset(
+              imgPath,
+              height: 60,
+            ),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 12),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -114,7 +130,7 @@ class AuthWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<bool>(
-      future: _authService.isLoggedIn(), // Check if the user is logged in
+      future: _authService.isLoggedIn(),
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
@@ -123,10 +139,9 @@ class AuthWrapper extends StatelessWidget {
             ),
           );
         } else if (snapshot.hasData && snapshot.data == true) {
-          return const HomePage(
-              title: 'সাহায্য'); // If logged in, go to HomePage
+          return const HomePage(title: 'সাহায্য');
         } else {
-          return const LoginPage(); // If not logged in, go to LoginPage
+          return const LoginPage();
         }
       },
     );

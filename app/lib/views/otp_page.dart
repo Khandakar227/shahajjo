@@ -35,6 +35,12 @@ class _OtpPageState extends State<OtpPage> {
           return;
         }
         showToast('OTP যাচাই সফল হয়েছে');
+
+        //save token
+
+        // FirebaseNotification().requestPermission();
+        // FirebaseNotification().getToken();
+
         Navigator.popAndPushNamed(context, '/home');
       } catch (e) {
         setState(() {
