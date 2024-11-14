@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-const serverUrl = 'http://192.168.0.101:8000'; //'http://192.168.231.116:8000';
+const serverUrl = 'http://192.168.0.102:8000'; //'http://192.168.231.116:8000';
 
 var logger = Logger(
   printer: PrettyPrinter(),
