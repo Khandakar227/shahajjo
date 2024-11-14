@@ -53,7 +53,7 @@ dependencies:
   googleapis: ^13.2.0
   googleapis_auth: ^1.6.0
   firebase_analytics: ^11.3.4
-
+  workmanager: ^0.5.2
 
 dev_dependencies:
   flutter_test:

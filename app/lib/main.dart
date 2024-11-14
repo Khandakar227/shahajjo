@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:shahajjo/services/firebase_notification.dart';
+import 'package:shahajjo/services/location.dart';
 import 'package:shahajjo/views/account.dart';
 import 'package:shahajjo/views/add_Incident_page.dart';
 import 'package:shahajjo/views/flood_monitor.dart';
@@ -9,55 +12,21 @@ import 'package:shahajjo/views/incident_monitor.dart';
 import 'package:shahajjo/views/login_page.dart';
 import 'package:shahajjo/views/register_page.dart';
 import 'package:shahajjo/views/settings_page.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  NotificationService().initialize();
 
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('@mipmap/ic_launcher');
-
-  final InitializationSettings initializationSettings =
-      InitializationSettings(android: initializationSettingsAndroid);
-
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
-
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification}');
-      showNotification(message.notification!);
+  // Handle location permission
+  LocationService locationService = LocationService();
+  locationService.checkPermission().then((permission) async {
+    if (permission != LocationPermission.always) {
+      await locationService.requestPermission();
     }
   });
 
   runApp(const App());
-}
-
-void showNotification(RemoteNotification notification) async {
-  const AndroidNotificationDetails androidPlatformChannelSpecifics =
-      AndroidNotificationDetails(
-    'high_importance_channel', // id
-    'High Importance Notifications', // name// description
-    importance: Importance.max,
-    priority: Priority.high,
-    showWhen: false,
-    icon: '@drawable/ic_app_logo', // Specify the custom icon
-  );
-  const NotificationDetails platformChannelSpecifics =
-      NotificationDetails(android: androidPlatformChannelSpecifics);
-  await flutterLocalNotificationsPlugin.show(
-    0, // notification id
-    notification.title,
-    notification.body,
-    platformChannelSpecifics,
-    payload: 'item x',
-  );
 }
 
 class App extends StatelessWidget {

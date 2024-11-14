@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
 import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/views/login_page.dart';
-import 'package:shahajjo/services/firebase_notification.dart';
 
 // Feature list definition
 List<Map<String, dynamic>> features = [
@@ -54,47 +53,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final AuthService _authService = AuthService();
-  late FirebaseNotification _firebaseNotification;
 
   @override
   void initState() {
     super.initState();
-    _initializeNotifications();
-  }
-
-  // Initialize notifications and request permissions
-  Future<void> _initializeNotifications() async {
-    try {
-      String? phoneNumber = await _authService.getCurrentUserPhoneNumber();
-      if (phoneNumber != null) {
-        _firebaseNotification = FirebaseNotification();
-
-        // Request notification permissions
-        await _firebaseNotification.requestPermission();
-
-        // Get and save the device token
-        await _firebaseNotification.getToken();
-      } else {
-        print('Error: Phone number not found');
-      }
-    } catch (e) {
-      print('Error initializing notifications: $e');
-    }
-  }
-
-  Future<void> _handleNotificationTap() async {
-    try {
-      await _firebaseNotification.sendPushMessagetoAllUsers(
-          "Test Notification", "This is a test notification message 2");
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Notification sent successfully!')),
-      );
-    } catch (e) {
-      print('Error sending notification: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to send notification')),
-      );
-    }
   }
 
   @override
@@ -130,9 +92,7 @@ class _HomePageState extends State<HomePage> {
       [String? onPressed]) {
     return TextButton(
       onPressed: () {
-        if (onPressed == 'sendNotification') {
-          _handleNotificationTap();
-        } else if (navigateTo != null) {
+        if (navigateTo != null) {
           Navigator.pushNamed(context, '/$navigateTo');
         }
       },

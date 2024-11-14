@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:shahajjo/services/auth.dart';
 import 'package:shahajjo/utils/utils.dart';
-import 'package:shahajjo/services/firebase_notification.dart';
 
 class OtpPage extends StatefulWidget {
   final String phoneNumber;
