@@ -8,8 +8,7 @@ class SosContactForm extends StatefulWidget {
   final SOSContact? sosContact;
   final Function()? refresh;
 
-  const SosContactForm({Key? key, this.sosContact, this.refresh})
-      : super(key: key);
+  const SosContactForm({super.key, this.sosContact, this.refresh});
 
   @override
   _SosContactFormState createState() => _SosContactFormState();

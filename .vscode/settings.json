@@ -10,7 +10,7 @@
         ".exe": true,
         "**/.exe": true,
         "node_modules/": true,
-        "**/node_modules": false
+        "**/node_modules": true
     },
     "hide-files.files": [],
     "cmake.sourceDirectory": "D:/Semesters/5/SWE Lab/Shahajjo/app/linux"
