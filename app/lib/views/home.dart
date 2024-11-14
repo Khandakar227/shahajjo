@@ -78,6 +78,7 @@ class _HomePageState extends State<HomePage> {
     try {
       Position position = await locationService.getCurrentLocation();
       firebaseLocationService.storeUserLocation(position);
+      firebaseLocationService.findOtherUserDistances('test3');
     } catch (e) {
       logger.e(e);
     }
