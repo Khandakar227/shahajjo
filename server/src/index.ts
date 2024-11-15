@@ -33,7 +33,9 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get("/", async (req, res) => {
-    res.send("Live")
+    const result = await sendNotification("ffsgs1WYQ7yim8Yq_CvCZl:APA91bFEIhLvmXWBdIUjFj5aETT8VP3_o1R-9dZyo1UttxyUn-0BqTaap0H303FXgHoxczZ8fXTLNYrDrvVMdAfrYL0QyDihHmrROxoQzoySu9OmdL-H1Z8", "This is a test notification", "test");
+    
+    res.send(`Live ${JSON.stringify(result)}`)
 });
 
 app.use("/api/v1/station", stationRoute);
