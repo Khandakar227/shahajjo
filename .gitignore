@@ -1,2 +1,6 @@
 .idea/
 .vscode/
+*.cc
+*.cmake
+*.swift
+*.lock
