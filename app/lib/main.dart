@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
-import 'package:shahajjo/services/auth.dart';
+import 'package:shahajjo/services/volume_listener.dart';
 import 'package:shahajjo/views/SOS_page.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shahajjo/services/firebase_notification.dart';
@@ -28,52 +31,78 @@ void main() async {
       await locationService.requestPermission();
     }
   });
-  initializeService();
+  VolumeButtonListener.initialize();
+  // initializeService();
   runApp(const App());
 }
 
-void initializeService() {
-  final service = FlutterBackgroundService();
-}
+// void initializeService() async {
+//   final service = FlutterBackgroundService();
+//   service.configure(
+//     androidConfiguration: AndroidConfiguration(
+//       // Will execute in foreground, even when the app is closed
+//       onStart: onStart,
+//       isForegroundMode: true,
+//     ),
+//     iosConfiguration: IosConfiguration(
+//       // Does not allow background mode in iOS for now
+//       onForeground: onStart,
+//     ),
+//   );
+//   await service.startService();
+// }
 
-@pragma('vm:entry-point')
-void onStart(ServiceInstance service) async {
-  if (service is AndroidServiceInstance) {
-    service.on('setAsForeground').listen((event) {
-      service.setAsForegroundService();
-    });
+// @pragma('vm:entry-point')
+// Future<void> onStart(ServiceInstance service) async {
+//   DartPluginRegistrant.ensureInitialized();
+//   if (service is AndroidServiceInstance) {
+//     service.on('stopService').listen((event) {
+//       service.stopSelf();
+//     });
 
-    service.on('stopService').listen((event) {
-      service.stopSelf();
-    });
-  }
+//     Future<void> handleVolumeBtnInBg(MethodCall call) async {
+//       logger.d("volume button pressed in background");
+//       switch (call.method) {
+//         case 'volumeButton':
+//           if (call.arguments == 'down') {
+//             logger.d('Volume Down Pressed');
+//           } else if (call.arguments == 'up') {
+//             logger.d('Volume Up Pressed');
+//           }
+//           break;
+//       }
+//     }
 
-  // try {
-  //   // Check if location services are enabled
-  //   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  //   if (!serviceEnabled) {
-  //     logger.w("Location services are disabled.");
-  //     return Future.value(false);
-  //   }
-  //   LocationPermission permission = await Geolocator.checkPermission();
-  //   if (permission == LocationPermission.denied ||
-  //       permission == LocationPermission.deniedForever) {
-  //     permission = await Geolocator.requestPermission();
-  //     if (permission != LocationPermission.whileInUse &&
-  //         permission != LocationPermission.always) {
-  //       return Future.value(false);
-  //     }
-  //   }
-  //   Position position = await Geolocator.getCurrentPosition(
-  //       desiredAccuracy: LocationAccuracy.high);
-  //   AuthService()
-  //       .setCurrentLocationInDB(position.latitude, position.longitude);
-  //   return Future.value(true); // Indicate success
-  // } catch (e) {
-  //   logger.i("Failed to get current location: $e");
-  //   return Future.value(false); // Indicate failure
-  // }
-}
+//     const channelVolumeBtn = MethodChannel('volume_button');
+//     channelVolumeBtn.setMethodCallHandler(handleVolumeBtnInBg);
+
+//     // try {
+//     //   // Check if location services are enabled
+//     //   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+//     //   if (!serviceEnabled) {
+//     //     logger.w("Location services are disabled.");
+//     //     return Future.value(false);
+//     //   }
+//     //   LocationPermission permission = await Geolocator.checkPermission();
+//     //   if (permission == LocationPermission.denied ||
+//     //       permission == LocationPermission.deniedForever) {
+//     //     permission = await Geolocator.requestPermission();
+//     //     if (permission != LocationPermission.whileInUse &&
+//     //         permission != LocationPermission.always) {
+//     //       return Future.value(false);
+//     //     }
+//     //   }
+//     //   Position position = await Geolocator.getCurrentPosition(
+//     //       desiredAccuracy: LocationAccuracy.high);
+//     //   AuthService()
+//     //       .setCurrentLocationInDB(position.latitude, position.longitude);
+//     //   return Future.value(true); // Indicate success
+//     // } catch (e) {
+//     //   logger.i("Failed to get current location: $e");
+//     //   return Future.value(false); // Indicate failure
+//     // }
+//   }
+// }
 
 class App extends StatelessWidget {
   const App({super.key});
