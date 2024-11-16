@@ -6,7 +6,7 @@ import io.flutter.plugin.common.MethodChannel;
 
 public class VolumeButtonHandler extends FlutterActivity {
     private static final String CHANNEL = "volume_button";
-
+    private static final MethodChannel methodChannel = new MethodChannel(getFlutterEngine().getDartExecutor().getBinaryMessenger(), CHANNEL);
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {

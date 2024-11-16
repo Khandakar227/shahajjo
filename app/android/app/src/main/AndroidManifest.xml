@@ -13,6 +13,8 @@
         android:label="shahajjo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+    <!-- <service android:name=".VolumeButtonHandlerService"
+             android:foregroundServiceType="specialUse" /> -->
         <activity
             android:name=".VolumeButtonHandler"
             android:exported="true"
