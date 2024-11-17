@@ -16,8 +16,8 @@ import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodChannel;
 
 public class MainActivity extends FlutterActivity {
-    private static final String CHANNEL = "volume_button_channel";
-    private static final String EVENT_CHANNEL = "volume_button_events";
+    private static final String CHANNEL = "com.example.shahajjo/volume_button";
+    private static final String EVENT_CHANNEL = CHANNEL + "_events";
     private static final String TAG = "MainActivity";
 
     private BroadcastReceiver volumeReceiver;
@@ -32,6 +32,7 @@ public class MainActivity extends FlutterActivity {
 
         // Ensure Accessibility Service is enabled
         checkAccessibilityServiceEnabled();
+        Log.d(TAG, "onCreate");
     }
 
     private void checkAccessibilityServiceEnabled() {
@@ -59,10 +60,12 @@ public class MainActivity extends FlutterActivity {
                 .setMethodCallHandler((call, result) -> {
                     switch (call.method) {
                         case "checkAccessibilityService":
+                            Log.d(TAG, "checkAccessibilityService");
                             checkAccessibilityServiceEnabled();
                             result.success(null);
                             break;
                         default:
+                            Log.d(TAG, "Method not implemented: " + call.method);
                             result.notImplemented();
                             break;
                     }
@@ -73,11 +76,13 @@ public class MainActivity extends FlutterActivity {
                 .setStreamHandler(new EventChannel.StreamHandler() {
                     @Override
                     public void onListen(Object arguments, EventChannel.EventSink events) {
+                        Log.d(TAG, "onListen: " + arguments);
                         volumeEventSink = events;
                     }
 
                     @Override
                     public void onCancel(Object arguments) {
+                        Log.d(TAG, "onCancel: " + arguments);
                         volumeEventSink = null;
                     }
                 });
@@ -87,6 +92,7 @@ public class MainActivity extends FlutterActivity {
         volumeReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, "WTF is happening");
                 if (volumeEventSink != null) {
                     switch (intent.getAction()) {
                         case "VOLUME_UP_ACTION":

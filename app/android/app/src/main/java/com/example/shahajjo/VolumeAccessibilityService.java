@@ -38,10 +38,12 @@ public class VolumeAccessibilityService extends AccessibilityService {
         
         if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) 
             && event.getAction() == KeyEvent.ACTION_DOWN) {
-            
+            Log.d(TAG, "Volume button pressed: " + keyCode);
             if (volumeButtonCallback != null) {
+                Log.d(TAG, "Volume button callback");
                 volumeButtonCallback.onVolumeButtonPress(keyCode);
             }
+            return true; // Consume the event
         }
         return super.onKeyEvent(event);
     }
