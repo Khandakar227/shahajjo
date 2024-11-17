@@ -1,9 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_background_service/flutter_background_service.dart';
-import 'package:shahajjo/services/volume_listener.dart';
 import 'package:shahajjo/views/SOS_page.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shahajjo/services/firebase_notification.dart';
@@ -31,7 +27,6 @@ void main() async {
       await locationService.requestPermission();
     }
   });
-  VolumeButtonListener.initialize();
   // initializeService();
   runApp(const App());
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shahajjo/views/volume_handler.dart'; // Import the VolumeHandler page
 
 const appMenuItems = [
   {
@@ -13,11 +12,7 @@ const appMenuItems = [
   {
     'title': 'সেটিংস',
     'route': '/settings',
-  },
-  {
-    'title': 'VolumeHandler',
-    'route': '/volume-handler',
-  },
+  }
 ];
 
 class MyAppbar extends StatefulWidget implements PreferredSizeWidget {
@@ -47,15 +42,6 @@ class _MyAppbarState extends State<MyAppbar> {
                 child: Text(item['title']!),
               ),
           ],
-          onSelected: (value) {
-            if (value == '/volume-handler') {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const VolumeButtonHandler()),
-              );
-            }
-          },
           position: PopupMenuPosition.under,
         ),
       ],

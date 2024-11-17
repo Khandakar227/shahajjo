@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
 import 'package:shahajjo/services/auth.dart';
+import 'package:shahajjo/services/volume_button_listener.dart';
 import 'package:shahajjo/views/login_page.dart';
 
 // Feature list definition
@@ -49,10 +52,33 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final AuthService _authService = AuthService();
+  StreamSubscription? _volumeButtonSubscription;
 
   @override
   void initState() {
     super.initState();
+    _checkAndSetupVolumeListener();
+  }
+
+  Future<void> _checkAndSetupVolumeListener() async {
+    bool hasPermission =
+        await VolumeButtonListener.checkAccessibilityPermission();
+    if (!hasPermission) {
+      // Show dialog to request permission
+      await VolumeButtonListener.openAccessibilitySettings();
+    }
+
+    _volumeButtonSubscription =
+        VolumeButtonListener.volumeButtonStream.listen((String button) {
+      print('Volume button pressed: $button'); // 'up' or 'down'
+      // Handle the volume button press
+    });
+  }
+
+  @override
+  void dispose() {
+    _volumeButtonSubscription?.cancel();
+    super.dispose();
   }
 
   @override
