@@ -9,12 +9,15 @@ import android.content.Context;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.MethodChannel;
+import io.flutter.embedding.engine.FlutterEngineCache;
+
+import java.util.Collections;
 
 
 public class VolumeAccessibilityService extends AccessibilityService {
     private FlutterEngine flutterEngine;
     private MethodChannel methodChannel;
-    private static final String CHANNEL = "com.example.shahajjo/volume_button_channel";
+    private static final String CHANNEL_NAME = "com.example.shahajjo/volume_button_channel";
     private static final String TAG = "VolumeAccessibilityService";
 
     @Override
@@ -22,15 +25,14 @@ public class VolumeAccessibilityService extends AccessibilityService {
         super.onCreate();
 
         // Initialize FlutterEngine and MethodChannel
-        flutterEngine = new FlutterEngine(this);
-        flutterEngine.getDartExecutor().executeDartEntrypoint(
-            DartExecutor.DartEntrypoint.createDefault()
-        );
+        // flutterEngine = new FlutterEngine(this);
+        // flutterEngine.getDartExecutor().executeDartEntrypoint(
+        //     DartExecutor.DartEntrypoint.createDefault()
+        // );
 
-        methodChannel = new MethodChannel(
-            flutterEngine.getDartExecutor().getBinaryMessenger(),
-            CHANNEL
-        );
+        flutterEngine = FlutterEngineCache.getInstance().get("1");
+
+        methodChannel = new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL_NAME);
     }
 
     @Override
@@ -66,7 +68,13 @@ public class VolumeAccessibilityService extends AccessibilityService {
         // Intent intent = new Intent("com.example.VOLUME_BUTTON_PRESSED");
         // intent.putExtra("action", action);
         // sendBroadcast(intent);
-        if(methodChannel != null) methodChannel.invokeMethod("onVolumeButtonEvent", action);
+        if(methodChannel == null)
+            methodChannel = new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL_NAME);
+            
+        if(methodChannel != null) {
+            methodChannel.invokeMethod("onVolumeButtonEvent", Collections.singletonMap("action", action));
+            Log.d(TAG, "Emitting volume button event: " + action);
+        }
     }
 
 }
