@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shahajjo/components/app_bar.dart';
 import 'package:shahajjo/services/auth.dart';
+import 'package:shahajjo/utils/utils.dart';
 import 'package:shahajjo/views/login_page.dart';
 
 // Feature list definition
@@ -48,11 +50,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final AuthService _authService = AuthService();
+  static const platformChannel =
+      MethodChannel('com.example.shahajjo/volume_button_channel');
 
   @override
   void initState() {
     super.initState();
+    logger.d(platformChannel);
+    platformChannel.setMethodCallHandler((call) async {
+      logger.d("Method: ${call.method}");
+      if (call.method == 'onVolumeButtonEvent') {
+        final action = call.arguments['action'];
+        logger.d("Volume Button Pressed: $action");
+        // Perform task here
+      }
+
+      return Future.value(true);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    platformChannel.setMethodCallHandler(null);
   }
 
   @override

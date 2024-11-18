@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart' as Permission;
 import 'package:shahajjo/components/app_bar.dart';
@@ -23,6 +24,8 @@ class SOSPage extends StatefulWidget {
 }
 
 class _SOSPageState extends State<SOSPage> {
+  static const platform = MethodChannel('com.example.shahajjo/accessibility');
+
   final SMSService smsService = SMSService();
   SosContactRepository sosContactRepository = SosContactRepository();
   LocationService locationService = LocationService();
@@ -47,6 +50,7 @@ class _SOSPageState extends State<SOSPage> {
     });
 
     _getPermission();
+    _openAccessibilitySettings();
   }
 
   _getPermission() async => await [
@@ -79,6 +83,14 @@ class _SOSPageState extends State<SOSPage> {
     // _statusSubscription.cancel();
     // checkPermissionTimer.cancel();
     super.dispose();
+  }
+
+  Future<void> _openAccessibilitySettings() async {
+    try {
+      await platform.invokeMethod('openAccessibilitySettings');
+    } on PlatformException catch (e) {
+      print("Failed to open settings: '${e.message}'.");
+    }
   }
 
   @override
