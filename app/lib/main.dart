@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
-import 'package:shahajjo/services/volume_listener.dart';
 import 'package:shahajjo/views/SOS_page.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shahajjo/services/firebase_notification.dart';
@@ -31,52 +30,58 @@ void main() async {
       await locationService.requestPermission();
     }
   });
-  VolumeButtonListener.initialize();
-  // initializeService();
+  initializeService();
+
   runApp(const App());
 }
 
-// void initializeService() async {
-//   final service = FlutterBackgroundService();
-//   service.configure(
-//     androidConfiguration: AndroidConfiguration(
-//       // Will execute in foreground, even when the app is closed
-//       onStart: onStart,
-//       isForegroundMode: true,
-//     ),
-//     iosConfiguration: IosConfiguration(
-//       // Does not allow background mode in iOS for now
-//       onForeground: onStart,
-//     ),
-//   );
-//   await service.startService();
-// }
+void initializeService() async {
+  final service = FlutterBackgroundService();
+  service.configure(
+    androidConfiguration: AndroidConfiguration(
+      // Will execute in foreground, even when the app is closed
+      onStart: onStart,
+      isForegroundMode: true,
+    ),
+    iosConfiguration: IosConfiguration(
+      // Does not allow background mode in iOS for now
+      onForeground: onStart,
+    ),
+  );
+  await service.startService();
+}
 
-// @pragma('vm:entry-point')
-// Future<void> onStart(ServiceInstance service) async {
-//   DartPluginRegistrant.ensureInitialized();
-//   if (service is AndroidServiceInstance) {
-//     service.on('stopService').listen((event) {
-//       service.stopSelf();
-//     });
+@pragma('vm:entry-point')
+Future<bool> onIosBackground(ServiceInstance service) async {
+  return true;
+}
 
-//     Future<void> handleVolumeBtnInBg(MethodCall call) async {
-//       logger.d("volume button pressed in background");
-//       switch (call.method) {
-//         case 'volumeButton':
-//           if (call.arguments == 'down') {
-//             logger.d('Volume Down Pressed');
-//           } else if (call.arguments == 'up') {
-//             logger.d('Volume Up Pressed');
-//           }
-//           break;
-//       }
-//     }
+@pragma('vm:entry-point')
+Future<bool> onStart(ServiceInstance service) async {
+  if (service is AndroidServiceInstance) {
+    service.on('setAsForeground').listen((event) {
+      service.setAsForegroundService();
+    });
 
-//     const channelVolumeBtn = MethodChannel('volume_button');
-//     channelVolumeBtn.setMethodCallHandler(handleVolumeBtnInBg);
+    service.on('setAsBackground').listen((event) {
+      service.setAsBackgroundService();
+    });
+  }
 
-//     // try {
+  service.on('stopService').listen((event) {
+    service.stopSelf();
+  });
+
+  try {
+    const platformChannel = MethodChannel('volume_button_channel');
+    platformChannel.setMethodCallHandler((call) async {
+      logger.d("Method: ${call.method}");
+      if (call.method == 'onVolumeButtonEvent') {
+        final action = call.arguments['action'];
+        logger.d("Volume Button Pressed: $action");
+        // Perform task here
+      }
+    });
 //     //   // Check if location services are enabled
 //     //   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
 //     //   if (!serviceEnabled) {
@@ -96,13 +101,13 @@ void main() async {
 //     //       desiredAccuracy: LocationAccuracy.high);
 //     //   AuthService()
 //     //       .setCurrentLocationInDB(position.latitude, position.longitude);
-//     //   return Future.value(true); // Indicate success
-//     // } catch (e) {
-//     //   logger.i("Failed to get current location: $e");
-//     //   return Future.value(false); // Indicate failure
-//     // }
+    return Future.value(true); // Indicate success
+  } catch (e) {
+    logger.i("OnStart Error: $e");
+    return Future.value(false); // Indicate failure
+  }
 //   }
-// }
+}
 
 class App extends StatelessWidget {
   const App({super.key});

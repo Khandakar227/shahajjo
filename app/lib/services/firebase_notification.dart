@@ -15,6 +15,7 @@ class NotificationService {
     }
     _firebaseMessaging.getToken().then((token) {
       logger.d('Token: $token');
+      if (token != null) _saveTokenToDB(token);
     });
     // Listen to token refresh
     FirebaseMessaging.instance.onTokenRefresh.listen(_saveTokenToDB);
