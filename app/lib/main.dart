@@ -73,14 +73,17 @@ Future<bool> onStart(ServiceInstance service) async {
   });
 
   try {
-    const platformChannel = MethodChannel('volume_button_channel');
-    platformChannel.setMethodCallHandler((call) async {
+    const platformChannel =
+        MethodChannel('com.example.shahajjo/volume_button_channel');
+
+    platformChannel.setMethodCallHandler((call) {
       logger.d("Method: ${call.method}");
       if (call.method == 'onVolumeButtonEvent') {
         final action = call.arguments['action'];
         logger.d("Volume Button Pressed: $action");
         // Perform task here
       }
+      return Future.value(true);
     });
 //     //   // Check if location services are enabled
 //     //   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();

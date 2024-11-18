@@ -10,16 +10,20 @@ import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.Context;
 import android.view.accessibility.AccessibilityManager;
 import android.accessibilityservice.AccessibilityService;
+import io.flutter.embedding.engine.FlutterEngineCache;
 
 import java.util.List;
 
 public class MainActivity extends FlutterActivity {
-    private static final String CHANNEL = "com.example.shahajjo/accessibility";
+    private static final String CHANNEL_NAME = "com.example.shahajjo/accessibility";
 
     @Override
     public void configureFlutterEngine(FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
-        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
+
+        FlutterEngineCache.getInstance().put("1", flutterEngine);
+        
+        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL_NAME)
             .setMethodCallHandler(
                 (call, result) -> {
                     if (call.method.equals("isAccessibilityServiceEnabled")) {
