@@ -1,3 +1,4 @@
+import 'package:shahajjo/utils/utils.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DBHelper {
@@ -21,7 +22,9 @@ class DBHelper {
 
   Future<Database> _initDB() async {
     final dbPath = await getDatabasesPath();
-    final path = '${dbPath}shahajjo.db';
+    final path = '$dbPath/shahajjo.db';
+    logger.i('DB Path: $path');
+    // deleteDatabase(path);
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
