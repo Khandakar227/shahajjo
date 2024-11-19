@@ -10,6 +10,8 @@ import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.embedding.engine.FlutterEngineCache;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.Collections;
 
@@ -75,6 +77,26 @@ public class VolumeAccessibilityService extends AccessibilityService {
             methodChannel.invokeMethod("onVolumeButtonEvent", Collections.singletonMap("action", action));
             Log.d(TAG, "Emitting volume button event: " + action);
         }
+    }
+
+    public void accessDatabase() {
+        // Get the database path
+        String databasePath = getApplicationContext().getDatabasePath("shahajjo.db").getAbsolutePath();
+        // Open the database (make sure the mode is appropriate: read/write or readonly)
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(databasePath, null, SQLiteDatabase.OPEN_READWRITE);
+        // Perform a query
+        Cursor cursor = db.rawQuery("SELECT * FROM sos_contacts", null);
+        // Iterate through the results
+        if (cursor.moveToFirst()) {
+            do {
+                String columnValue = cursor.getString(cursor.getColumnIndex("phoneNumber"));
+                Log.d(TAG, "Value: " + columnValue);
+            } while (cursor.moveToNext());
+        }
+    
+        // Close the cursor and database
+        cursor.close();
+        db.close();
     }
 
 }
