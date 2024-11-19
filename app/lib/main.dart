@@ -30,7 +30,6 @@ void main() async {
       await locationService.requestPermission();
     }
   });
-  initializeService();
 
   runApp(const App());
 }
