@@ -12,29 +12,56 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.embedding.engine.FlutterEngineCache;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.LocationManager;
+import android.location.Location;
+import android.content.pm.PackageManager;
 
 import java.util.Collections;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class VolumeAccessibilityService extends AccessibilityService {
     private FlutterEngine flutterEngine;
     private MethodChannel methodChannel;
     private static final String CHANNEL_NAME = "com.example.shahajjo/volume_button_channel";
     private static final String TAG = "VolumeAccessibilityService";
+    private static long timeAfterLastVolumeButtonPress = 0;
+
+    private static final List<Integer> PATTERN = List.of(
+        KeyEvent.KEYCODE_VOLUME_UP,
+        KeyEvent.KEYCODE_VOLUME_UP,
+        KeyEvent.KEYCODE_VOLUME_UP,
+        KeyEvent.KEYCODE_VOLUME_UP,
+        KeyEvent.KEYCODE_VOLUME_DOWN,
+        KeyEvent.KEYCODE_VOLUME_DOWN,
+        KeyEvent.KEYCODE_VOLUME_DOWN,
+        KeyEvent.KEYCODE_VOLUME_DOWN,
+        KeyEvent.KEYCODE_VOLUME_UP,
+        KeyEvent.KEYCODE_VOLUME_UP,
+        KeyEvent.KEYCODE_VOLUME_DOWN,
+        KeyEvent.KEYCODE_VOLUME_DOWN
+    );
+
+    private static int currentIndex = 0;
+    private static long TIMEOUT = 2000;
+
+    private LocationManager locationManager;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         // Initialize FlutterEngine and MethodChannel
-        // flutterEngine = new FlutterEngine(this);
-        // flutterEngine.getDartExecutor().executeDartEntrypoint(
-        //     DartExecutor.DartEntrypoint.createDefault()
-        // );
-
         flutterEngine = FlutterEngineCache.getInstance().get("1");
-
         methodChannel = new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL_NAME);
+    }
+
+    @Override
+    public void onServiceConnected() {
+        super.onServiceConnected();
+        // Initialize LocationManager
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     }
 
     @Override
@@ -49,33 +76,60 @@ public class VolumeAccessibilityService extends AccessibilityService {
 
     @Override
     protected boolean onKeyEvent(KeyEvent event) {
-        // Log.d(TAG, "onKeyEvent: " + event.toString());
-        // if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch(event.getKeyCode()) {
-                case KeyEvent.KEYCODE_VOLUME_UP:
-                    Log.d(TAG, "Volume UP");
-                    emitVolumeButtonEvent("VOLUME_UP");
-                    return false;
-                case KeyEvent.KEYCODE_VOLUME_DOWN:
-                    Log.d(TAG, "Volume DOWN");
-                    emitVolumeButtonEvent("VOLUME_DOWN");
-                    return false;
-            // }
-        }
+        int keyCode = event.getKeyCode();
+        
+        if (KeyEvent.KEYCODE_VOLUME_UP == keyCode || KeyEvent.KEYCODE_VOLUME_DOWN == keyCode) {
+            // Check if interval between each volume button press is less than 1 second
+            Log.d(TAG, "Volume button pressed: " + keyCode);
+            if(timeAfterLastVolumeButtonPress == 0) timeAfterLastVolumeButtonPress = System.currentTimeMillis();
+            else {
+                Log.d(TAG, "Time between volume button press: " + (System.currentTimeMillis() - timeAfterLastVolumeButtonPress));
+                if(System.currentTimeMillis() - timeAfterLastVolumeButtonPress > TIMEOUT) {
+                    currentIndex = 0;
+                    Log.d(TAG, "TIMEOUT, Resetting current index");
+                }
+            }
+            
+            timeAfterLastVolumeButtonPress = System.currentTimeMillis();
 
+            if(keyCode == PATTERN.get(currentIndex)) currentIndex++;
+            else currentIndex = 0;
+            
+            Log.d(TAG, "Incremented Current index: " + currentIndex);
+
+            // Pattern matched
+            if(currentIndex == PATTERN.size()) {
+                currentIndex = 0;
+                Log.d(TAG, "Volume button pattern matched");
+                Location location = getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                // Get user name from SharedPreferences
+                String userName = getSharedPreferences("user", MODE_PRIVATE).getString("name", "User");
+                // Get sos contacts from sqlite db
+                // Send sms and push notification to sos contacts
+                emitVolumeButtonEvent("VOLUME_PATTERN");
+                return false;
+            }
+        }
+        
         return super.onKeyEvent(event);
     }
 
     private void emitVolumeButtonEvent(String action) {
-        // Intent intent = new Intent("com.example.VOLUME_BUTTON_PRESSED");
-        // intent.putExtra("action", action);
-        // sendBroadcast(intent);
         if(methodChannel == null)
             methodChannel = new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL_NAME);
-            
+
         if(methodChannel != null) {
             methodChannel.invokeMethod("onVolumeButtonEvent", Collections.singletonMap("action", action));
             Log.d(TAG, "Emitting volume button event: " + action);
+        }
+    }
+
+    public Location getLastKnownLocation(String provider) {
+        if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            return locationManager.getLastKnownLocation(provider);
+        } else {
+            Log.d(TAG, "Location permission not granted. Cannot fetch location.");
+            return null;
         }
     }
 
@@ -99,4 +153,9 @@ public class VolumeAccessibilityService extends AccessibilityService {
         db.close();
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

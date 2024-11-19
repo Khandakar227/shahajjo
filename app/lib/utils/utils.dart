@@ -6,8 +6,8 @@ import 'package:intl/intl.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-const serverUrl = 'http://192.168.0.109:8000'; // Dadu Kingdom
-// const serverUrl = 'http://192.168.231.116:8000'; // Narzo 50i
+// const serverUrl = 'http://192.168.0.102:8000'; // Dadu Kingdom
+const serverUrl = 'http://192.168.251.147:8000'; // Narzo 50i
 // const serverUrl = 'http://192.168.93.116:8000'; //Yum
 //const serverUrl = 'http://10.0.0.14:8000'; //Shadab
 
