@@ -11,6 +11,7 @@ import android.content.Context;
 import android.view.accessibility.AccessibilityManager;
 import android.accessibilityservice.AccessibilityService;
 import io.flutter.embedding.engine.FlutterEngineCache;
+import android.content.SharedPreferences;
 
 import java.util.List;
 
@@ -31,6 +32,11 @@ public class MainActivity extends FlutterActivity {
                         result.success(isEnabled);
                     } else if (call.method.equals("openAccessibilitySettings")) {
                         openAccessibilitySettings();
+                        result.success(null);
+                    } else if (call.method.equals("upateSharedPref")) {
+                        String key = call.argument("key");
+                        String value = call.argument("value");
+                        getSharedPreferences("shahajjo", MODE_PRIVATE).edit().putString(key, value).apply();
                         result.success(null);
                     } else {
                         result.notImplemented();

@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shahajjo/utils/utils.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter/services.dart';
 
 class AuthService {
   static Map<String, dynamic>? user;
+  final methodChannel =
+      const MethodChannel('com.example.shahajjo/accessibility');
 
   final _storage = const FlutterSecureStorage();
 
@@ -113,6 +116,8 @@ class AuthService {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         user = data['user'];
+        await updateSharedPreference('phoneNumber', user!['phoneNumber']);
+        await updateSharedPreference('username', user!['name']);
         return true;
       } else {
         return false;
@@ -172,6 +177,17 @@ class AuthService {
       logger.i('Current location added to DB');
     } else {
       logger.e('Failed to add current location to DB: ${response.body}');
+    }
+  }
+
+  Future<void> updateSharedPreference(String key, String value) async {
+    try {
+      await methodChannel.invokeMethod('upateSharedPref', {
+        'key': key,
+        'value': value,
+      });
+    } catch (e) {
+      logger.e("Error updating shared preference: $e");
     }
   }
 }

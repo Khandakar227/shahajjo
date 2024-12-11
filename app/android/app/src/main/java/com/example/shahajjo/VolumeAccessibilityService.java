@@ -15,6 +15,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.location.LocationManager;
 import android.location.Location;
 import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
+import android.os.Vibrator;
 
 import java.util.Collections;
 import java.util.ArrayList;
@@ -27,12 +29,9 @@ public class VolumeAccessibilityService extends AccessibilityService {
     private static final String CHANNEL_NAME = "com.example.shahajjo/volume_button_channel";
     private static final String TAG = "VolumeAccessibilityService";
     private static long timeAfterLastVolumeButtonPress = 0;
+    private SmsService smsService = new SmsService();
 
     private static final List<Integer> PATTERN = List.of(
-        KeyEvent.KEYCODE_VOLUME_UP,
-        KeyEvent.KEYCODE_VOLUME_UP,
-        KeyEvent.KEYCODE_VOLUME_UP,
-        KeyEvent.KEYCODE_VOLUME_UP,
         KeyEvent.KEYCODE_VOLUME_DOWN,
         KeyEvent.KEYCODE_VOLUME_DOWN,
         KeyEvent.KEYCODE_VOLUME_DOWN,
@@ -101,11 +100,8 @@ public class VolumeAccessibilityService extends AccessibilityService {
             if(currentIndex == PATTERN.size()) {
                 currentIndex = 0;
                 Log.d(TAG, "Volume button pattern matched");
-                Location location = getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                // Get user name from SharedPreferences
-                String userName = getSharedPreferences("user", MODE_PRIVATE).getString("name", "User");
-                // Get sos contacts from sqlite db
                 // Send sms and push notification to sos contacts
+                sendSmsToSosContacts();
                 emitVolumeButtonEvent("VOLUME_PATTERN");
                 return false;
             }
@@ -124,16 +120,21 @@ public class VolumeAccessibilityService extends AccessibilityService {
         }
     }
 
-    public Location getLastKnownLocation(String provider) {
+    public Location getLastKnownLocation() {
         if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            return locationManager.getLastKnownLocation(provider);
+
+            Location gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if(gpsLocation != null) return gpsLocation;
+            Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            return networkLocation;
         } else {
             Log.d(TAG, "Location permission not granted. Cannot fetch location.");
             return null;
         }
     }
 
-    public void accessDatabase() {
+    public ArrayList<String> getPhoneNumbers() {
+        ArrayList<String> phoneNums = new ArrayList<>();
         // Get the database path
         String databasePath = getApplicationContext().getDatabasePath("shahajjo.db").getAbsolutePath();
         // Open the database (make sure the mode is appropriate: read/write or readonly)
@@ -143,16 +144,49 @@ public class VolumeAccessibilityService extends AccessibilityService {
         // Iterate through the results
         if (cursor.moveToFirst()) {
             do {
-                String columnValue = cursor.getString(cursor.getColumnIndex("phoneNumber"));
-                Log.d(TAG, "Value: " + columnValue);
+                String phoneNumber = cursor.getString(cursor.getColumnIndex("phoneNumber"));
+                int smsEnabled = cursor.getInt(cursor.getColumnIndex("smsEnabled"));
+                if (smsEnabled == 1) phoneNums.add(phoneNumber);
             } while (cursor.moveToNext());
         }
     
         // Close the cursor and database
         cursor.close();
         db.close();
+
+        return phoneNums;
     }
 
+    public void sendSmsToSosContacts() {
+        // get data from shared preferences
+        SharedPreferences sharedPreferences = getSharedPreferences("shahajjo", MODE_PRIVATE);
+        String username = sharedPreferences.getString("username", "");
+        String phoneNum = sharedPreferences.getString("phoneNumber", "");
+
+        Log.d(TAG, "Username: " + username + ", Phone Number: " + phoneNum);
+
+        // Get sos contacts from sqlite db
+        ArrayList<String> phoneNumbers = getPhoneNumbers();
+        Location location = getLastKnownLocation();
+        
+        // Send SMS to sos contacts
+        String locationUrl = (location != null) 
+            ? "https://maps.google.com/?q=" + location.getLatitude() + "," + location.getLongitude()
+            : "Location not available";
+
+        String sms = "SOS Alert!\n" + 
+                    "User Name: " + username + "\n" + 
+                    "Phone Number: " + phoneNum + "\n" + 
+                    "Location: " + locationUrl;
+        Log.d(TAG, sms);
+        smsService.sendSmsToMultipleNumbers(phoneNumbers.toArray(new String[0]), sms);
+        // Trigger vibration
+        Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        if (vibrator != null && vibrator.hasVibrator()) {
+            vibrator.vibrate(2000); // Vibrates for 5 seconds
+        }
+        
+    }
 
     @Override
     public void onDestroy() {
