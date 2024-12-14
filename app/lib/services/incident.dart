@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shahajjo/utils/utils.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,6 +20,13 @@ class IncidentService {
       },
       body: jsonEncode(incidentData),
     );
+    return jsonDecode(response.body);
+  }
+
+  Future<Map<String, dynamic>> getNearbyIncidents(LatLng coord) async {
+    final url = Uri.parse(
+        '$serverUrl/api/v1/incident?lng=${coord.longitude}&lat=${coord.latitude}');
+    final response = await http.get(url);
     return jsonDecode(response.body);
   }
 }

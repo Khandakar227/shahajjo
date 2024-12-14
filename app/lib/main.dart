@@ -19,7 +19,6 @@ import 'package:shahajjo/views/settings_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  NotificationService().initialize();
 
   // Handle location permission
   LocationService locationService = LocationService();
@@ -29,6 +28,7 @@ void main() async {
     }
   });
 
+  initializeService();
   runApp(const App());
 }
 
@@ -39,6 +39,9 @@ void initializeService() async {
       // Will execute in foreground, even when the app is closed
       onStart: onStart,
       isForegroundMode: true,
+      initialNotificationTitle: 'Shahajjo is active',
+      initialNotificationContent:
+          'Shahajjo is actively listening for incidents',
     ),
     iosConfiguration: IosConfiguration(
       // Does not allow background mode in iOS for now
@@ -46,6 +49,7 @@ void initializeService() async {
     ),
   );
   await service.startService();
+  NotificationService().initialize();
 }
 
 @pragma('vm:entry-point')
@@ -70,37 +74,7 @@ Future<bool> onStart(ServiceInstance service) async {
   });
 
   try {
-    const platformChannel =
-        MethodChannel('com.example.shahajjo/volume_button_channel');
-
-    platformChannel.setMethodCallHandler((call) {
-      logger.d("Method: ${call.method}");
-      if (call.method == 'onVolumeButtonEvent') {
-        final action = call.arguments['action'];
-        logger.d("Volume Button Pressed: $action");
-        // Perform task here
-      }
-      return Future.value(true);
-    });
-//     //   // Check if location services are enabled
-//     //   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-//     //   if (!serviceEnabled) {
-//     //     logger.w("Location services are disabled.");
-//     //     return Future.value(false);
-//     //   }
-//     //   LocationPermission permission = await Geolocator.checkPermission();
-//     //   if (permission == LocationPermission.denied ||
-//     //       permission == LocationPermission.deniedForever) {
-//     //     permission = await Geolocator.requestPermission();
-//     //     if (permission != LocationPermission.whileInUse &&
-//     //         permission != LocationPermission.always) {
-//     //       return Future.value(false);
-//     //     }
-//     //   }
-//     //   Position position = await Geolocator.getCurrentPosition(
-//     //       desiredAccuracy: LocationAccuracy.high);
-//     //   AuthService()
-//     //       .setCurrentLocationInDB(position.latitude, position.longitude);
+    starSendingLocationPeriod();
     return Future.value(true); // Indicate success
   } catch (e) {
     logger.i("OnStart Error: $e");

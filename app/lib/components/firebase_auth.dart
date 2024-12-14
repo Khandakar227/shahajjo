@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shahajjo/utils/utils.dart';
 
 class FirebaseAuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -12,9 +13,9 @@ class FirebaseAuthServices {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        logger.e('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        logger.e('Wrong password provided for that user.');
       }
       return null;
     }
@@ -30,13 +31,13 @@ class FirebaseAuthServices {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        logger.e('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        logger.e('The account already exists for that email.');
       }
       return null;
     } catch (e) {
-      print(e);
+      logger.e(e);
       return null;
     }
   }

@@ -59,6 +59,7 @@ dependencies:
   firebase_analytics: ^11.3.4
   flutter_background_service: ^5.0.10
   volume_watcher: ^2.0.1
+  workmanager: ^0.5.2
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { Incident } from "../models/Incident";
+import { User } from "../models/User";
+import { sendNotification } from "../libs/notification";
 
 export const addNewIncident = async (req: Request, res: Response) => {
     try {
@@ -21,6 +23,23 @@ export const addNewIncident = async (req: Request, res: Response) => {
         });
         await incident.save();
         // may need to send notifications to nearby devices
+        const users = await User.find({
+            currentLocation: {
+                $near: {
+                    $geometry: {
+                        type: "Point",
+                        coordinates: [lng, lat],
+                    },
+                    $maxDistance: 5000, // 5 km
+                },
+            },
+        });
+
+        for (const user of users) {
+            // send notification to user
+            await sendNotification(user.deviceToken, incidentType + " near you", description);
+            console.log("Notification sent to user: ", user.deviceToken);
+        }
 
         res.status(200).json({error: false, message: "ঘটনা পাব্লিক করা হয়েছে।"})
     } catch (error) {
