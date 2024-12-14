@@ -8,6 +8,15 @@ import 'package:http/http.dart' as http;
 class IncidentService {
   final _storage = const FlutterSecureStorage();
 
+  final incidentIcons = {
+    "অগ্নিসংযোগ": "assets/icons/arson.png",
+    "উপাসনালয় হামলা": "assets/icons/book.png",
+    "ভাংচুর": "assets/icons/broken-bottle.png",
+    "হয়রানি/অবমাননা": "assets/icons/harassment.png",
+    "চুরি-ডাকাতি": "assets/icons/robber.png",
+    "অন্যান্য": "assets/icons/marker.png",
+  };
+
   Future<Map<String, dynamic>> addIncident(
       Map<String, dynamic> incidentData) async {
     String? token = await _storage.read(key: 'auth_token');
@@ -27,6 +36,7 @@ class IncidentService {
     final url = Uri.parse(
         '$serverUrl/api/v1/incident?lng=${coord.longitude}&lat=${coord.latitude}');
     final response = await http.get(url);
+    logger.d(response.body);
     return jsonDecode(response.body);
   }
 }

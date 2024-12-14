@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shahajjo/services/incident.dart';
 import 'package:shahajjo/services/location.dart';
@@ -8,8 +9,7 @@ import 'package:shahajjo/utils/map_styles.dart';
 import 'package:shahajjo/utils/utils.dart';
 
 class IncidentMap extends StatefulWidget {
-  final LatLng center;
-  const IncidentMap({super.key, required this.center});
+  const IncidentMap({super.key});
 
   @override
   _IncidentMapState createState() => _IncidentMapState();
@@ -18,7 +18,36 @@ class IncidentMap extends StatefulWidget {
 class _IncidentMapState extends State<IncidentMap> {
   LocationService locationService = LocationService();
   IncidentService incidentService = IncidentService();
+  Map<String, BitmapDescriptor> markerIcons = {};
   Set<Marker> markers = <Marker>{};
+
+  // Eabled or disabled
+  ServiceStatus? serviceStatus;
+  LocationPermission locationPermission = LocationPermission.unableToDetermine;
+  bool permissionAskedOnce = false;
+  late StreamSubscription<ServiceStatus> _statusSubscription;
+  late Timer checkPermissionTimer;
+  String errorText = "";
+
+  LatLng _center = const LatLng(23.7810672, 90.2548764);
+
+  Future<void> initLocation() async {
+    try {
+      LocationPermission permission = await locationService.checkPermission();
+      if ((permission == LocationPermission.denied ||
+              permission == LocationPermission.deniedForever) &&
+          !permissionAskedOnce) {
+        permission = await locationService.requestPermission();
+      }
+      setState(() {
+        locationPermission = permission;
+        permissionAskedOnce = true;
+        errorText = locationServiceErrorText[permission] ?? "";
+      });
+    } catch (e) {
+      logger.e(e);
+    }
+  }
 
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
@@ -37,10 +66,70 @@ class _IncidentMapState extends State<IncidentMap> {
   @override
   void initState() {
     super.initState();
-    incidentService.getNearbyIncidents(widget.center).then((res) {
-      if (res['status'] != 'success') return;
-      var data = res['data'];
-      if (data['error'] != null && data['error']) showToast(data['message']);
+    // Polling for checking permission
+    checkPermissionTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
+      initLocation();
+    });
+
+    _statusSubscription = locationService.onStatusChanged((status) {
+      if (status == ServiceStatus.disabled) {
+        setState(() {
+          errorText = "অনুগ্রহ করে লোকেশন সার্ভিস চালু করুন";
+          serviceStatus = status;
+        });
+      } else {
+        setState(() {
+          errorText = locationServiceErrorText[locationPermission] ?? "";
+          serviceStatus = status;
+        });
+      }
+      if (errorText.isNotEmpty) _dialogBuilder(context);
+    });
+
+    loadAsset();
+
+    locationService.getCurrentLocation().then((pos) {
+      setState(() {
+        _center = LatLng(pos.latitude, pos.longitude);
+      });
+      getIncidents(LatLng(pos.latitude, pos.longitude));
+    });
+  }
+
+  @override
+  void dispose() {
+    _statusSubscription.cancel();
+    checkPermissionTimer.cancel();
+    super.dispose();
+  }
+
+  void loadAsset() async {
+    incidentService.incidentIcons.forEach((key, value) {
+      BitmapDescriptor.asset(
+              const ImageConfiguration(size: Size(17, 20)), value)
+          .then((value) {
+        setState(() {
+          markerIcons[key] = value;
+        });
+      });
+    });
+  }
+
+  void getIncidents(LatLng pos) async {
+    incidentService.getNearbyIncidents(pos).then((res) async {
+      if (res['error'] != null && res['error']) showToast(res['message']);
+
+      for (var incident in res['incidents']) {
+        setState(() {
+          markers.add(Marker(
+            markerId: MarkerId(incident['id'].toString()),
+            position: LatLng(incident['location']['coordinates'][1],
+                incident['location']['coordinates'][0]),
+            icon:
+                markerIcons[incident['type']] ?? BitmapDescriptor.defaultMarker,
+          ));
+        });
+      }
     });
   }
 
@@ -50,7 +139,7 @@ class _IncidentMapState extends State<IncidentMap> {
       GoogleMap(
         style: darkMapStyle,
         mapType: MapType.normal,
-        initialCameraPosition: CameraPosition(target: widget.center, zoom: 13),
+        initialCameraPosition: CameraPosition(target: _center, zoom: 13),
         onMapCreated: _onMapCreated,
         cameraTargetBounds: CameraTargetBounds(bangladeshBounds),
         zoomControlsEnabled: true,
@@ -58,11 +147,31 @@ class _IncidentMapState extends State<IncidentMap> {
         markers: {
           Marker(
             markerId: const MarkerId('current_location'),
-            position: widget.center,
+            position: _center,
             icon: BitmapDescriptor.defaultMarker,
           ),
+          ...markers,
         },
       ),
     ]);
+  }
+
+  Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('WARNING'),
+          content: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(errorText,
+                style: const TextStyle(
+                  color: Colors.red,
+                  // backgroundColor: Colors.white
+                )),
+          ),
+        );
+      },
+    );
   }
 }

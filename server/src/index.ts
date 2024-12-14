@@ -8,6 +8,7 @@ import floodRoute from "./routes/floodData";
 import userRoute from "./routes/user";
 import incidentRoute from "./routes/incident";
 import { taskFetchFloodData } from "./libs/cron";
+import path from "node:path";
 
 dotenv.config();
 
@@ -27,13 +28,21 @@ app.use(cors({
     methods: "GET,POST,PUT,DELETE",
 }));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
+app.use(express.static(path.join(__dirname, '../../public')));
 
 
 app.get("/", async (req, res) => {
     res.send(`Live`);
 });
+
+app.get('/incident-monitor', (req, res) => {
+    res.render('index', { mapApiKey: process.env.GOOGLE_MAP_API_KEY });
+});
+
 
 app.use("/api/v1/station", stationRoute);
 app.use("/api/v1/flood", floodRoute);
