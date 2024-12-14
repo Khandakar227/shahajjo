@@ -61,6 +61,7 @@ class _IncidentMapState extends State<IncidentMap> {
 
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
+    // _mapController = controller;
   }
 
   @override
@@ -92,6 +93,10 @@ class _IncidentMapState extends State<IncidentMap> {
       setState(() {
         _center = LatLng(pos.latitude, pos.longitude);
       });
+      _controller.future.then((controller) {
+        controller.animateCamera(
+            CameraUpdate.newLatLng(LatLng(pos.latitude, pos.longitude)));
+      });
       getIncidents(LatLng(pos.latitude, pos.longitude));
     });
   }
@@ -106,7 +111,7 @@ class _IncidentMapState extends State<IncidentMap> {
   void loadAsset() async {
     incidentService.incidentIcons.forEach((key, value) {
       BitmapDescriptor.asset(
-              const ImageConfiguration(size: Size(17, 20)), value)
+              const ImageConfiguration(size: Size(48, 48)), value)
           .then((value) {
         setState(() {
           markerIcons[key] = value;
@@ -125,11 +130,24 @@ class _IncidentMapState extends State<IncidentMap> {
             markerId: MarkerId(incident['id'].toString()),
             position: LatLng(incident['location']['coordinates'][1],
                 incident['location']['coordinates'][0]),
-            icon:
-                markerIcons[incident['type']] ?? BitmapDescriptor.defaultMarker,
+            icon: markerIcons[incident['incidentType']] ??
+                BitmapDescriptor.defaultMarker,
           ));
         });
       }
+    });
+  }
+
+  void updateCurrentLocation() {
+    locationService.getCurrentLocation().then((pos) {
+      setState(() {
+        _center = LatLng(pos.latitude, pos.longitude);
+      });
+      _controller.future.then((controller) {
+        controller.animateCamera(
+            CameraUpdate.newLatLng(LatLng(pos.latitude, pos.longitude)));
+      });
+      getIncidents(LatLng(pos.latitude, pos.longitude));
     });
   }
 
@@ -152,6 +170,19 @@ class _IncidentMapState extends State<IncidentMap> {
           ),
           ...markers,
         },
+      ),
+      Positioned(
+        bottom: 10,
+        left: 10,
+        child: FloatingActionButton(
+          onPressed: updateCurrentLocation,
+          tooltip: 'Current Location',
+          backgroundColor: Colors.red[800],
+          foregroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(28))),
+          child: const Icon(Icons.location_searching_sharp, size: 22),
+        ),
       ),
     ]);
   }

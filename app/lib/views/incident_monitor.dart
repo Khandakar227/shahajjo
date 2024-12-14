@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
-import 'package:shahajjo/components/incident_map_v2.dart';
+import 'package:shahajjo/components/incident_map.dart';
 
 class IncidentMonitorPage extends StatefulWidget {
   const IncidentMonitorPage({super.key, required this.title});
