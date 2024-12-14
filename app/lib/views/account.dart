@@ -20,17 +20,88 @@ class _AccountState extends State<AccountPage> {
     return Scaffold(
         appBar: MyAppbar(title: widget.title),
         body: SafeArea(
-            child: SizedBox(
-          height: screenHeight -
-              appBarHeight, // Adjust the height to exclude the app bar
-          child: Center(
-            child: ElevatedButton(
-              child: const Text("Log out"),
-              onPressed: () {
-                authService.logOut(context);
-              },
+          child: SizedBox(
+            height: screenHeight -
+                appBarHeight, // Adjust the height to exclude the app bar
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 10),
+                    ProfileWidget(authService.getUser()),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFCE0014),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      onPressed: () {
+                        authService.logOut(context);
+                      },
+                      child: const Text("Log out"),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-        )));
+        ));
+  }
+}
+
+class ProfileWidget extends StatelessWidget {
+  final Future<Map<String, dynamic>> user;
+
+  const ProfileWidget(this.user, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<Map<String, dynamic>>(
+      future: user,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError) {
+            return const Text("Error loading profile");
+          }
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 0),
+                child: Container(
+                    padding:
+                        const EdgeInsets.all(16), // Padding around the text
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color(0xFFCE0014), // Border color
+                      ),
+                      borderRadius: BorderRadius.circular(8), // round corners
+                    ),
+                    child: Text(snapshot.data!['name'])),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 0),
+                child: Container(
+                  padding: const EdgeInsets.all(16), // Padding around the text
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color(0xFFCE0014), // Border color
+                    ),
+                    borderRadius: BorderRadius.circular(8), // round corners
+                  ),
+                  child: Text(snapshot.data!['phoneNumber']),
+                ),
+              ),
+            ],
+          );
+        } else {
+          return const CircularProgressIndicator();
+        }
+      },
+    );
   }
 }

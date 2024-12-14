@@ -41,6 +41,12 @@ String formatDate(String dateStr) {
   return formatter.format(dateTime);
 }
 
+String formatDateTime(String datetimeStr) {
+  DateTime dateTime = DateTime.parse(datetimeStr);
+  DateFormat formatter = DateFormat('dd/MM/yyyy hh:mm a');
+  return formatter.format(dateTime);
+}
+
 MaterialColor createMaterialColor(Color color) {
   List strengths = <double>[.05];
   final swatch = <int, Color>{};

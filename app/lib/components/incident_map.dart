@@ -7,6 +7,7 @@ import 'package:shahajjo/services/incident.dart';
 import 'package:shahajjo/services/location.dart';
 import 'package:shahajjo/utils/map_styles.dart';
 import 'package:shahajjo/utils/utils.dart';
+import 'package:shahajjo/components/vote_widget.dart';
 
 class IncidentMap extends StatefulWidget {
   const IncidentMap({super.key});
@@ -127,7 +128,8 @@ class _IncidentMapState extends State<IncidentMap> {
       for (var incident in res['incidents']) {
         setState(() {
           markers.add(Marker(
-            markerId: MarkerId(incident['id'].toString()),
+            markerId: MarkerId(incident['_id'].toString()),
+            onTap: () => showIncidentDetails(context, incident),
             position: LatLng(incident['location']['coordinates'][1],
                 incident['location']['coordinates'][0]),
             icon: markerIcons[incident['incidentType']] ??
@@ -151,6 +153,48 @@ class _IncidentMapState extends State<IncidentMap> {
     });
   }
 
+  void showIncidentDetails(
+      BuildContext context, Map<String, dynamic> incident) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(incident['incidentType']),
+          content: SingleChildScrollView(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              VoteWidget(incidentId: incident['_id'].toString()),
+              Text(formatDateTime(incident['createdAt'].toString()),
+                  style: const TextStyle(fontSize: 12)),
+              const SizedBox(height: 2),
+              Text(
+                  incident['isUserVerified']
+                      ? "ইউজার ভেরিফাইড ✅"
+                      : "ইউজার আনভেরিফাইড ❌",
+                  style: const TextStyle(fontSize: 12)),
+              Text(incident['showPhoneNo'] ? incident['phoneNumber'] : ""),
+              const SizedBox(height: 5),
+              Text(incident['description']),
+              const SizedBox(height: 5),
+              Text(
+                  "Coordinates: ${incident['location']['coordinates'][1]}, ${incident['location']['coordinates'][0]}",
+                  style: const TextStyle(fontSize: 13)),
+            ],
+          )),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('বন্ধ করুন'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
@@ -163,13 +207,26 @@ class _IncidentMapState extends State<IncidentMap> {
         zoomControlsEnabled: true,
         zoomGesturesEnabled: true,
         markers: {
+          ...markers,
           Marker(
             markerId: const MarkerId('current_location'),
             position: _center,
             icon: BitmapDescriptor.defaultMarker,
           ),
-          ...markers,
         },
+      ),
+      Positioned(
+        top: 10,
+        right: 10,
+        child: FloatingActionButton(
+          onPressed: showIncidentLegend,
+          tooltip: 'Map Legend',
+          backgroundColor: Colors.red[800],
+          foregroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(28))),
+          child: const Icon(Icons.question_mark, size: 22),
+        ),
       ),
       Positioned(
         bottom: 10,
@@ -204,5 +261,24 @@ class _IncidentMapState extends State<IncidentMap> {
         );
       },
     );
+  }
+
+  void showIncidentLegend() {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return ListView(
+            children: [
+              const ListTile(
+                title: Text("ঘটনার ধরণ"),
+                leading: Icon(Icons.info),
+              ),
+              ...incidentService.incidentIcons.entries.map((e) => ListTile(
+                    leading: Image.asset(e.value),
+                    title: Text(e.key),
+                  )),
+            ],
+          );
+        });
   }
 }

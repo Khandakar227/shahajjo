@@ -1,10 +1,14 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shahajjo/services/auth.dart';
+import 'package:shahajjo/services/local_notification_service.dart';
 import 'package:shahajjo/utils/utils.dart';
 
 class NotificationService {
   final AuthService _authService = AuthService();
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   Future<void> initialize() async {
     // Request permission for iOS
@@ -30,10 +34,15 @@ class NotificationService {
   }
 
   void _onMessageReceived(RemoteMessage message) {
-    logger.i('Message data: ${message.data}');
+    logger.i('Message data: ${message.notification}');
+    LocalNotificationService.showNotification({
+      "title": message.notification?.title ?? 'Shahajjo',
+      "description": message.notification?.body ?? ''
+    });
   }
 
   void _onMessageOpened(RemoteMessage message) {
-    logger.i('Notification clicked!');
+    logger.i('Message data: ${message.data}');
+    navigatorKey.currentState?.pushNamed('/incident-monitor');
   }
 }

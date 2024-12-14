@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shahajjo/views/SOS_page.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shahajjo/services/firebase_notification.dart';
@@ -13,8 +13,13 @@ import 'package:shahajjo/utils/utils.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shahajjo/views/incident_monitor.dart';
 import 'package:shahajjo/views/login_page.dart';
+import 'package:shahajjo/views/notification_page.dart';
 import 'package:shahajjo/views/register_page.dart';
 import 'package:shahajjo/views/settings_page.dart';
+import 'package:shahajjo/services/local_notification_service.dart';
+
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +34,8 @@ void main() async {
   });
 
   initializeService();
+
+  LocalNotificationService.init(flutterLocalNotificationsPlugin);
   runApp(const App());
 }
 
@@ -131,7 +138,7 @@ class App extends StatelessWidget {
               break;
             case '/notification':
               builder = (BuildContext context) =>
-                  const SettingsPage(title: 'নোটিফিকেশন');
+                  const NotificationPage(title: 'নোটিফিকেশন');
               break;
             case '/sos':
               builder =

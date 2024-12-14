@@ -35,7 +35,6 @@ List<Map<String, dynamic>> features = [
     'label': 'নোটিফিকেশন',
     'image': 'assets/icons/bell.png',
     'navigateTo': 'notification',
-    'onPressed': 'sendNotification'
   },
 ];
 

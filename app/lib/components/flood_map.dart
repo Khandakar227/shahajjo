@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shahajjo/utils/map_styles.dart';
 import 'package:shahajjo/utils/utils.dart';
 
 enum FloodLevel { normal, warning, flood, severe, unknown }
@@ -50,6 +51,7 @@ class MapSampleState extends State<FloodMonitorMap> {
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       GoogleMap(
+        style: floodMonitorMapStyle,
         mapType: MapType.normal,
         initialCameraPosition: CameraPosition(target: _center, zoom: 7),
         onMapCreated: _onMapCreated,

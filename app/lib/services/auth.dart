@@ -18,7 +18,7 @@ class AuthService {
     if (token == null) {
       return false; // Not logged in
     }
-    bool isTokenVerified = await _verifyToken(token);
+    bool isTokenVerified = await verifyToken(token);
     logger.i('Token verified: $isTokenVerified');
     if (!isTokenVerified) {
       await _storage.delete(key: 'auth_token');
@@ -100,7 +100,7 @@ class AuthService {
     }
   }
 
-  Future<bool> _verifyToken(String token) async {
+  Future<bool> verifyToken(String token) async {
     const String url = '$serverUrl/api/v1/user/token';
 
     try {
@@ -126,6 +126,35 @@ class AuthService {
       // Handle any exceptions like network errors
       print('Error verifying token: $e');
       return false;
+    }
+  }
+
+  Future<Map<String, dynamic>> getUser() async {
+    const String url = '$serverUrl/api/v1/user/token';
+    String? token = await _storage.read(key: 'auth_token');
+
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json',
+        },
+      );
+
+      // Check if the request was successful
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        user = data['user'];
+
+        return user!;
+      } else {
+        return {};
+      }
+    } catch (e) {
+      // Handle any exceptions like network errors
+      print('Error verifying token: $e');
+      throw Exception('Failed to get user: $e');
     }
   }
 

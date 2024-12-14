@@ -21,7 +21,13 @@ class _NotificationPageState extends State<NotificationPage> {
             child: SizedBox(
           height: screenHeight -
               appBarHeight, // Adjust the height to exclude the app bar
-          child: const SizedBox(),
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Container(
+              alignment: Alignment.center,
+              child: const Text("কোনো নোটিফিকেশন নেই"),
+            ),
+          ),
         )));
   }
 }
