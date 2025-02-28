@@ -1,0 +1,2621 @@
+[
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Ramna",
+        "phoneNumber": "01713373125"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Dhanmondi",
+        "phoneNumber": "01713373126"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Shahbag",
+        "phoneNumber": "01713373126"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "New Market",
+        "phoneNumber": "01713373126"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Lalbagh",
+        "phoneNumber": "01713373134"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Kotwali",
+        "phoneNumber": "01713373135"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Hazaribagh",
+        "phoneNumber": "01713373136"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Kamrangirchar",
+        "phoneNumber": "01713373136"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Sutrapur",
+        "phoneNumber": "01713373143"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Demra",
+        "phoneNumber": "01713373144"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Shampur",
+        "phoneNumber": "01713373145"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Jatrabari",
+        "phoneNumber": "01713373147"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Motijheel",
+        "phoneNumber": "01713373152"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Sabujbagh",
+        "phoneNumber": "01713373153"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Khilgaon",
+        "phoneNumber": "01713373154"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "platoon",
+        "phoneNumber": "01713373155"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Uttara",
+        "phoneNumber": "01713373171"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Airport",
+        "phoneNumber": "01713373172"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Turag",
+        "phoneNumber": "01713373173"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "20 OC Uttarkhan",
+        "phoneNumber": "01713373174"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Dakshin Khan",
+        "phoneNumber": "01713373175"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Gulshan",
+        "phoneNumber": "01713373171"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Cantonment",
+        "phoneNumber": "01713373172"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Badda",
+        "phoneNumber": "01713373173"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Khilkhet",
+        "phoneNumber": "01713373174"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Tejgaon",
+        "phoneNumber": "01713373160"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Tejgaon Shi / A",
+        "phoneNumber": "01713373171"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Mohammadpur",
+        "phoneNumber": "01713373172"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Adabar",
+        "phoneNumber": "01713373173"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "30 OC Mirpur",
+        "phoneNumber": "01713373179"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Pallabi",
+        "phoneNumber": "01713373190"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Kafrul",
+        "phoneNumber": "01713373191"
+    },
+    {
+        "district": "DMP, Dhaka",
+        "thana": "Shah Ali",
+        "phoneNumber": "01713373192"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Kotwali, CMP",
+        "phoneNumber": "01713373256"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Pahartali (North Zone)",
+        "phoneNumber": "01713373256"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Pachlaish",
+        "phoneNumber": "01713373256"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Chandgaon",
+        "phoneNumber": "01713373259"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Khulsi",
+        "phoneNumber": "01713373270"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Bakulia",
+        "phoneNumber": "01713373271"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "OC Bayezid Bostami",
+        "phoneNumber": "01713373272"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Port",
+        "phoneNumber": "0171337327"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Double Mooring",
+        "phoneNumber": "0171337327"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Halishahar",
+        "phoneNumber": "01713373279"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Patenga",
+        "phoneNumber": "01713373270"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Karnafuli",
+        "phoneNumber": "01713373271"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Immigration (Port)",
+        "phoneNumber": "01713373272"
+    },
+    {
+        "district": "CMP, Chittagong",
+        "thana": "Pahartali (Port Zone)",
+        "phoneNumber": "01713373263"
+    },
+    {
+        "district": "KMP, Khulna",
+        "thana": "Khulna",
+        "phoneNumber": "01713373275"
+    },
+    {
+        "district": "KMP, Khulna",
+        "thana": "Sonadanga",
+        "phoneNumber": "0171337327"
+    },
+    {
+        "district": "KMP, Khulna",
+        "thana": "Khalishpur",
+        "phoneNumber": "0171337327"
+    },
+    {
+        "district": "KMP, Khulna",
+        "thana": "Daulatpur",
+        "phoneNumber": "0171337327"
+    },
+    {
+        "district": "KMP, Khulna",
+        "thana": "Khanjahan Ali",
+        "phoneNumber": "01713373289"
+    },
+    {
+        "district": "RMP, Rajshahi",
+        "thana": "Boalia",
+        "phoneNumber": "01713373309"
+    },
+    {
+        "district": "RMP, Rajshahi",
+        "thana": "Rajapur",
+        "phoneNumber": "01713373310"
+    },
+    {
+        "district": "RMP, Rajshahi",
+        "thana": "Motihar",
+        "phoneNumber": "01713373311"
+    },
+    {
+        "district": "RMP, Rajshahi",
+        "thana": "Shah Makdum",
+        "phoneNumber": "01713373312"
+    },
+    {
+        "district": "Dhaka Division",
+        "thana": "Savar",
+        "phoneNumber": "01713373327"
+    },
+    {
+        "district": "Dhaka Division",
+        "thana": "Dhamrai",
+        "phoneNumber": "01713373327"
+    },
+    {
+        "district": "Dhaka Division",
+        "thana": "Keraniganj",
+        "phoneNumber": "01713373329"
+    },
+    {
+        "district": "Dhaka Division",
+        "thana": "Nawabganj",
+        "phoneNumber": "01713373330"
+    },
+    {
+        "district": "Dhaka Division",
+        "thana": "Dohar",
+        "phoneNumber": "01713373331"
+    },
+    {
+        "district": "Dhaka Division",
+        "thana": "Ashulia",
+        "phoneNumber": "01713373332"
+    },
+    {
+        "district": "Dhaka Division",
+        "thana": "South Keraniganj",
+        "phoneNumber": "017133733333"
+    },
+    {
+        "district": "Narayanganj",
+        "thana": "Narayanganj",
+        "phoneNumber": "01713373345"
+    },
+    {
+        "district": "Narayanganj",
+        "thana": "Fatullah",
+        "phoneNumber": "01713373347"
+    },
+    {
+        "district": "Narayanganj",
+        "thana": "Port",
+        "phoneNumber": "01713373347"
+    },
+    {
+        "district": "Narayanganj",
+        "thana": "Siddirganj",
+        "phoneNumber": "01713373347"
+    },
+    {
+        "district": "Narayanganj",
+        "thana": "Araihazar",
+        "phoneNumber": "01713373349"
+    },
+    {
+        "district": "Narayanganj",
+        "thana": "Sonargaon",
+        "phoneNumber": "01713373350"
+    },
+    {
+        "district": "Narayanganj",
+        "thana": "Rupganj",
+        "phoneNumber": "01713373351"
+    },
+    {
+        "district": "Gazipur",
+        "thana": "Joydevpur 01713373373"
+    },
+    {
+        "district": "Gazipur",
+        "thana": "Tongi",
+        "phoneNumber": "01713373374"
+    },
+    {
+        "district": "Gazipur",
+        "thana": "Kaliakair",
+        "phoneNumber": "01713373375"
+    },
+    {
+        "district": "Gazipur",
+        "thana": "Sreepur",
+        "phoneNumber": "0171337337"
+    },
+    {
+        "district": "Gazipur",
+        "thana": "Kapasia",
+        "phoneNumber": "0171337336"
+    },
+    {
+        "district": "Gazipur",
+        "thana": "Kaliganj",
+        "phoneNumber": "0171337337"
+    },
+    {
+        "district": "Manikganj",
+        "thana": "Manikganj",
+        "phoneNumber": "01713373369"
+    },
+    {
+        "district": "Manikganj",
+        "thana": "Ghior",
+        "phoneNumber": "01713373360"
+    },
+    {
+        "district": "Manikganj",
+        "thana": "Shibalaya",
+        "phoneNumber": "01713373371"
+    },
+    {
+        "district": "Manikganj",
+        "thana": "Daulatpur",
+        "phoneNumber": "01713373372"
+    },
+    {
+        "district": "Manikganj",
+        "thana": "Harirampur",
+        "phoneNumber": "01713373373"
+    },
+    {
+        "district": "Manikganj",
+        "thana": "Saturia",
+        "phoneNumber": "01713373374"
+    },
+    {
+        "district": "Manikganj",
+        "thana": "Singair",
+        "phoneNumber": "01713373375"
+    },
+    {
+        "district": "Munshiganj",
+        "thana": "Munshiganj",
+        "phoneNumber": "01713373396"
+    },
+    {
+        "district": "Munshiganj",
+        "thana": "Tongibari",
+        "phoneNumber": "01713373396"
+    },
+    {
+        "district": "Munshiganj",
+        "thana": "Louhjong",
+        "phoneNumber": "01713373396"
+    },
+    {
+        "district": "Munshiganj",
+        "thana": "Srinagar",
+        "phoneNumber": "01713373399"
+    },
+    {
+        "district": "Munshiganj",
+        "thana": "Sirajdikhan",
+        "phoneNumber": "01713373400"
+    },
+    {
+        "district": "Munshiganj",
+        "thana": "Gazaria",
+        "phoneNumber": "01713373401"
+    },
+    {
+        "district": "Narsingdi",
+        "thana": "Narsingdi",
+        "phoneNumber": "01713373412"
+    },
+    {
+        "district": "Narsingdi",
+        "thana": "Raipur",
+        "phoneNumber": "01713373413"
+    },
+    {
+        "district": "Narsingdi",
+        "thana": "Shibpur",
+        "phoneNumber": "01713373414"
+    },
+    {
+        "district": "Narsingdi",
+        "thana": "Belabo",
+        "phoneNumber": "01713373415"
+    },
+    {
+        "district": "Narsingdi",
+        "thana": "Manohardi",
+        "phoneNumber": "01713373418"
+    },
+    {
+        "district": "Narsingdi",
+        "thana": "Palash",
+        "phoneNumber": "01713373418"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Kotwali Mymensingh",
+        "phoneNumber": "01713373430"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Muktagachha",
+        "phoneNumber": "01713373431"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Phulbari",
+        "phoneNumber": "01713373432"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Trishal",
+        "phoneNumber": "01713373433"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Gauripur",
+        "phoneNumber": "01713373434"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Ishwarganj",
+        "phoneNumber": "01713373435"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Nandail",
+        "phoneNumber": "01713373436"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Phulpur",
+        "phoneNumber": "01713373436"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Haluaghat",
+        "phoneNumber": "01713373436"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Dhobaura",
+        "phoneNumber": "01713373439"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Gafargaon",
+        "phoneNumber": "01713373440"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Bhaluka",
+        "phoneNumber": "01713373441"
+    },
+    {
+        "district": "Mymensingh",
+        "thana": "Tarakanda",
+        "phoneNumber": "01713373442"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Tangail",
+        "phoneNumber": "01713373454"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Mirzapur",
+        "phoneNumber": "01713373455"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Nagarpur",
+        "phoneNumber": "01713373456"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Sakhipur",
+        "phoneNumber": "01713373456"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Basail",
+        "phoneNumber": "01713373456"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Delduar",
+        "phoneNumber": "01713373459"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Madhupur",
+        "phoneNumber": "01713373480"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Ghatail",
+        "phoneNumber": "01713373481"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Kalihati",
+        "phoneNumber": "01713373482"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Bhuapur",
+        "phoneNumber": "01713373483"
+    },
+    {
+        "district": "Tangail",
+        "thana": "OC Jamuna Bridge East",
+        "phoneNumber": "01713373484"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Dhanbari",
+        "phoneNumber": "01713373465"
+    },
+    {
+        "district": "Tangail",
+        "thana": "Gopalpur",
+        "phoneNumber": "0171337348"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Kishoreganj",
+        "phoneNumber": "01713373480"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Karimganj",
+        "phoneNumber": "01713373481"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Tarail",
+        "phoneNumber": "01713373482"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Hossainpur",
+        "phoneNumber": "01713373483"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Katiadi",
+        "phoneNumber": "01713373484"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Bajitpur",
+        "phoneNumber": "01713373465"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Kuliyarchar",
+        "phoneNumber": "0171337348"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Bhairab",
+        "phoneNumber": "0171337348"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Itna",
+        "phoneNumber": "0171337348"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Mithamin",
+        "phoneNumber": "01713373489"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Nikli",
+        "phoneNumber": "01713373490"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Pakundia",
+        "phoneNumber": "01713373491"
+    },
+    {
+        "district": "Kishoreganj",
+        "thana": "Ashtagram",
+        "phoneNumber": "01713373492"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Netrokona",
+        "phoneNumber": "01713373505"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Barhatta",
+        "phoneNumber": "01713373506"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Kalmakanda",
+        "phoneNumber": "01713373506"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Atpara",
+        "phoneNumber": "01713373506"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Durgapur",
+        "phoneNumber": "01713373509"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Purbadhala",
+        "phoneNumber": "01713373510"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Kendua",
+        "phoneNumber": "01713373511"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Madan",
+        "phoneNumber": "01713373512"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Mohanganj",
+        "phoneNumber": "01713373513"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Khalijuri",
+        "phoneNumber": "01713373514"
+    },
+    {
+        "district": "Netrokon",
+        "thana": "Sherpur",
+        "phoneNumber": "01713373523"
+    },
+    {
+        "district": "Sherpur",
+        "thana": "Nakla",
+        "phoneNumber": "01713373524"
+    },
+    {
+        "district": "Sherpur",
+        "thana": "Nalitabari",
+        "phoneNumber": "01713373525"
+    },
+    {
+        "district": "Sherpur",
+        "thana": "Srivardi",
+        "phoneNumber": "01713373526"
+    },
+    {
+        "district": "Sherpur",
+        "thana": "Jhenaigati",
+        "phoneNumber": "01713373526"
+    },
+    {
+        "district": "Jamalpur",
+        "thana": "Jamalpur",
+        "phoneNumber": "01713373537"
+    },
+    {
+        "district": "Jamalpur",
+        "thana": "Melandah",
+        "phoneNumber": "01713373539"
+    },
+    {
+        "district": "Jamalpur",
+        "thana": "Sarishabari",
+        "phoneNumber": "01713373540"
+    },
+    {
+        "district": "Jamalpur",
+        "thana": "Dewanganj",
+        "phoneNumber": "01713373541"
+    },
+    {
+        "district": "Jamalpur",
+        "thana": "Islampur",
+        "phoneNumber": "01713373542"
+    },
+    {
+        "district": "Jamalpur",
+        "thana": "Madarganj",
+        "phoneNumber": "01713373543"
+    },
+    {
+        "district": "Jamalpur",
+        "thana": "Bakshiganj",
+        "phoneNumber": "01713373544"
+    },
+    {
+        "district": "Jamalpur",
+        "thana": "Bahadurabad",
+        "phoneNumber": "01713373545"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Kotwali Faridpur",
+        "phoneNumber": "01713373556"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Madhukhali",
+        "phoneNumber": "01713373556"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Boalmari",
+        "phoneNumber": "01713373556"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Alfadanga",
+        "phoneNumber": "01713373559"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Charbhadrasan",
+        "phoneNumber": "01713373560"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Nagarkanda",
+        "phoneNumber": "01713373571"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Sadarpur",
+        "phoneNumber": "01713373562"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Salta",
+        "phoneNumber": "01713373573"
+    },
+    {
+        "district": "Faridpur",
+        "thana": "Bhanga",
+        "phoneNumber": "01713373574"
+    },
+    {
+        "district": "Gopalganj",
+        "thana": "Gopalganj",
+        "phoneNumber": "01713373562"
+    },
+    {
+        "district": "Gopalganj",
+        "thana": "Maksudpur",
+        "phoneNumber": "01713373573"
+    },
+    {
+        "district": "Gopalganj",
+        "thana": "Kashiani",
+        "phoneNumber": "01713373574"
+    },
+    {
+        "district": "Gopalganj",
+        "thana": "Kotalipara",
+        "phoneNumber": "01713373575"
+    },
+    {
+        "district": "Gopalganj",
+        "thana": "Tungipara",
+        "phoneNumber": "0171337356"
+    },
+    {
+        "district": "Madaripur",
+        "thana": "Madaripur",
+        "phoneNumber": "01713373575"
+    },
+    {
+        "district": "Madaripur",
+        "thana": "Rajoir",
+        "phoneNumber": "0171337356"
+    },
+    {
+        "district": "Madaripur",
+        "thana": "Kalkini",
+        "phoneNumber": "0171337356"
+    },
+    {
+        "district": "Madaripur",
+        "thana": "Shivchar",
+        "phoneNumber": "0171337356"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Rajbari",
+        "phoneNumber": "01713373596"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Baliakandi",
+        "phoneNumber": "01713373599"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Pangsha",
+        "phoneNumber": "01713373600"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Goalanda",
+        "phoneNumber": "01713373601"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Gosairhat",
+        "phoneNumber": "01713373612"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Vederganj",
+        "phoneNumber": "01713373613"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Damudda",
+        "phoneNumber": "01713373614"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Jajira",
+        "phoneNumber": "01713373615"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Naria",
+        "phoneNumber": "01713373617"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Palang",
+        "phoneNumber": "01713373617"
+    },
+    {
+        "district": "Rajbari",
+        "thana": "Shakhipur",
+        "phoneNumber": "01713373617"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Raozan",
+        "phoneNumber": "01713373739"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Hathazari",
+        "phoneNumber": "01713373740"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Fatikchhari",
+        "phoneNumber": "01713373641"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Rangunia",
+        "phoneNumber": "01713373642"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Patia",
+        "phoneNumber": "01713373743"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Mirsarai",
+        "phoneNumber": "01713373644"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Sitakundu",
+        "phoneNumber": "01713373745"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Anwara",
+        "phoneNumber": "01713373748"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Boalkhali",
+        "phoneNumber": "01713373748"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Bashkhali",
+        "phoneNumber": "01713373748"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Satkania",
+        "phoneNumber": "01713373749"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Lohagarh",
+        "phoneNumber": "01713373750"
+    },
+    {
+        "district": "Chittagong Division",
+        "thana": "Chandnaish",
+        "phoneNumber": "01713373751"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Sandeep",
+        "phoneNumber": "01713373752"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Cox’s Bazar",
+        "phoneNumber": "0171337373"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Ramu",
+        "phoneNumber": "0171337364"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Ukhia",
+        "phoneNumber": "0171337375"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Teknaf",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Chakoria",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Kutubdia",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Maheshkhali",
+        "phoneNumber": "0171337369"
+    },
+    {
+        "district": "Cox’s Bazar",
+        "thana": "Pekua",
+        "phoneNumber": "01713373670"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Kotwali Comilla",
+        "phoneNumber": "0171337375"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Chauddagram",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Debiddar",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Homna",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Laksam",
+        "phoneNumber": "0171337369"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Daudkandi",
+        "phoneNumber": "01713373690"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Burichang",
+        "phoneNumber": "01713373691"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Chandina",
+        "phoneNumber": "01713373692"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Barura",
+        "phoneNumber": "01713373693"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Langalkot",
+        "phoneNumber": "01713373694"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Muradnagar",
+        "phoneNumber": "01713373695"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Brahmanpara",
+        "phoneNumber": "01713373698"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Meghna",
+        "phoneNumber": "01713373698"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Manoharganj",
+        "phoneNumber": "01713373698"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Titas",
+        "phoneNumber": "01713373799"
+    },
+    {
+        "district": "Comilla",
+        "thana": "Sadar South Comilla",
+        "phoneNumber": "01713373600"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Chandpur",
+        "phoneNumber": "01713373612"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Hajiganj",
+        "phoneNumber": "01713373613"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "means",
+        "phoneNumber": "01713373614"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "means Answer",
+        "phoneNumber": "01713373614"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "means South",
+        "phoneNumber": "01713373615"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Shaharasti",
+        "phoneNumber": "01713373617"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Kachua",
+        "phoneNumber": "01713373617"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Faridganj",
+        "phoneNumber": "01713373617"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Haimchar",
+        "phoneNumber": "01713373619"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Brahmanbaria Sadar",
+        "phoneNumber": "01713373630"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Sarail",
+        "phoneNumber": "01713373731"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "12 OC Ashuganj",
+        "phoneNumber": "01713373632"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Nasirnagar",
+        "phoneNumber": "01713373633"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Nabinagar",
+        "phoneNumber": "01713373734"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Bancharampur",
+        "phoneNumber": "01713373635"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Kasba",
+        "phoneNumber": "01713373736"
+    },
+    {
+        "district": "Chandpur",
+        "thana": "Akhaura",
+        "phoneNumber": "01713373736"
+    },
+    {
+        "district": "Noakhali",
+        "thana": "Sudharam, Noakhali",
+        "phoneNumber": "01713373647"
+    },
+    {
+        "district": "Noakhali",
+        "thana": "Begumganj",
+        "phoneNumber": "01713373749"
+    },
+    {
+        "district": "Noakhali",
+        "thana": "Senbagh",
+        "phoneNumber": "01713373750"
+    },
+    {
+        "district": "Noakhali",
+        "thana": "Sonaimuri",
+        "phoneNumber": "01713373751"
+    },
+    {
+        "district": "Noakhali",
+        "thana": "Companiganj",
+        "phoneNumber": "01713373652"
+    },
+    {
+        "district": "Noakhali",
+        "thana": "Chatkhil",
+        "phoneNumber": "01713373753"
+    },
+    {
+        "district": "Noakhali",
+        "thana": "Hatia",
+        "phoneNumber": "01713373754"
+    },
+    {
+        "district": "Noakhali",
+        "thana": "Charjabbar",
+        "phoneNumber": "01713373755"
+    },
+    {
+        "district": "Laxmipur",
+        "thana": "Laxmipur",
+        "phoneNumber": "0171337375"
+    },
+    {
+        "district": "Laxmipur",
+        "thana": "Raipura",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Laxmipur",
+        "thana": "Ramganj",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Laxmipur",
+        "thana": "Ramgati",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Feni",
+        "thana": "Feni",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Feni",
+        "thana": "Sonagazi",
+        "phoneNumber": "0171337369"
+    },
+    {
+        "district": "Feni",
+        "thana": "Fulgazi",
+        "phoneNumber": "0171337360"
+    },
+    {
+        "district": "Feni",
+        "thana": "Parashuram",
+        "phoneNumber": "0171337361"
+    },
+    {
+        "district": "Feni",
+        "thana": "Chagalnaiya",
+        "phoneNumber": "0171337362"
+    },
+    {
+        "district": "Feni",
+        "thana": "Daganbhuiyan",
+        "phoneNumber": "0171337373"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Paba",
+        "phoneNumber": "01713373600"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Gudagari",
+        "phoneNumber": "01713373601"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Tanar",
+        "phoneNumber": "01713373602"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Mohanpur",
+        "phoneNumber": "01713373603"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Puthia",
+        "phoneNumber": "01713373604"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Bagmara",
+        "phoneNumber": "01713373605"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Durgapur",
+        "phoneNumber": "01713373606"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Charghat",
+        "phoneNumber": "01713373606"
+    },
+    {
+        "district": "Rajshahi Division",
+        "thana": "Bagha",
+        "phoneNumber": "01713373606"
+    },
+    {
+        "district": "Chapai Nawabganj",
+        "thana": "Chapai Nawabganj",
+        "phoneNumber": "01713373619"
+    },
+    {
+        "district": "Chapai Nawabganj",
+        "thana": "Shibganj",
+        "phoneNumber": "01713373620"
+    },
+    {
+        "district": "Chapai Nawabganj",
+        "thana": "Gomstapur",
+        "phoneNumber": "01713373621"
+    },
+    {
+        "district": "Chapai Nawabganj",
+        "thana": "Nachol",
+        "phoneNumber": "01713373622"
+    },
+    {
+        "district": "Chapai Nawabganj",
+        "thana": "Bholahat",
+        "phoneNumber": "01713373623"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Naogaon",
+        "phoneNumber": "01713373736"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Rayanagar",
+        "phoneNumber": "01713373736"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Atrai",
+        "phoneNumber": "01713373636"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Dhamrai",
+        "phoneNumber": "01713373639"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Budalgachhi",
+        "phoneNumber": "01713373740"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Mahadevpur",
+        "phoneNumber": "01713373641"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Patnitala",
+        "phoneNumber": "01713373642"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Niamatpur",
+        "phoneNumber": "01713373743"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Manda",
+        "phoneNumber": "01713373644"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Sapahar",
+        "phoneNumber": "01713373745"
+    },
+    {
+        "district": "Naogaon",
+        "thana": "Parsha",
+        "phoneNumber": "01713373748"
+    },
+    {
+        "district": "Natore",
+        "thana": "Natore",
+        "phoneNumber": "01713373758"
+    },
+    {
+        "district": "Natore",
+        "thana": "Singra",
+        "phoneNumber": "01713373758"
+    },
+    {
+        "district": "Natore",
+        "thana": "Baghatipara",
+        "phoneNumber": "01713373759"
+    },
+    {
+        "district": "Natore",
+        "thana": "Gurudaspur",
+        "phoneNumber": "0171337360"
+    },
+    {
+        "district": "Natore",
+        "thana": "Lalpur",
+        "phoneNumber": "0171337361"
+    },
+    {
+        "district": "Natore",
+        "thana": "Borigram",
+        "phoneNumber": "0171337362"
+    },
+    {
+        "district": "Natore",
+        "thana": "Naldanga",
+        "phoneNumber": "0171337373"
+    },
+    {
+        "district": "Rangpur",
+        "thana": "Kotwali, Rangpur",
+        "phoneNumber": "0171337364"
+    },
+    {
+        "district": "Rangpur",
+        "thana": "Gangachura",
+        "phoneNumber": "0171337375"
+    },
+    {
+        "district": "Rangpur",
+        "thana": "Bhodarganj",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Rangpur",
+        "thana": "Taraganj",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Rangpur",
+        "thana": "Mithapukur",
+        "phoneNumber": "017133736"
+    },
+    {
+        "district": "Rangpur",
+        "thana": "Pirgachha",
+        "phoneNumber": "0171337369"
+    },
+    {
+        "district": "Rangpur",
+        "thana": "Kaunia",
+        "phoneNumber": "0171337360"
+    },
+    {
+        "district": "Rangpur",
+        "thana": "Pirganj",
+        "phoneNumber": "0171337361"
+    },
+    {
+        "district": "Gaibandha",
+        "thana": "Gaibandha",
+        "phoneNumber": "01713373692"
+    },
+    {
+        "district": "Gaibandha",
+        "thana": "Sadullapur",
+        "phoneNumber": "01713373693"
+    },
+    {
+        "district": "Gaibandha",
+        "thana": "Sundarganj",
+        "phoneNumber": "01713373694"
+    },
+    {
+        "district": "Gaibandha",
+        "thana": "Palashbari",
+        "phoneNumber": "01713373695"
+    },
+    {
+        "district": "Gaibandha",
+        "thana": "Gobindganj",
+        "phoneNumber": "01713373698"
+    },
+    {
+        "district": "Gaibandha",
+        "thana": "Satghata",
+        "phoneNumber": "01713373698"
+    },
+    {
+        "district": "Gaibandha",
+        "thana": "Fulchhari",
+        "phoneNumber": "01713373698"
+    },
+    {
+        "district": "Nilphamari",
+        "thana": "Nilphamari",
+        "phoneNumber": "01713373909"
+    },
+    {
+        "district": "Nilphamari",
+        "thana": "Syedpur",
+        "phoneNumber": "01713373910"
+    },
+    {
+        "district": "Nilphamari",
+        "thana": "Jaldhaka",
+        "phoneNumber": "01713373911"
+    },
+    {
+        "district": "Nilphamari",
+        "thana": "Kishoreganj (Nilphamari)",
+        "phoneNumber": "01713373912"
+    },
+    {
+        "district": "Nilphamari",
+        "thana": "Domar",
+        "phoneNumber": "01713373913"
+    },
+    {
+        "district": "Nilphamari",
+        "thana": "Dimla",
+        "phoneNumber": "01713373914"
+    },
+    {
+        "district": "Nilphamari",
+        "thana": "Syedpur Police Outpost",
+        "phoneNumber": "01713373915"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Kurigram",
+        "phoneNumber": "01713373926"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Rajarhat",
+        "phoneNumber": "01713373926"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Phulbari",
+        "phoneNumber": "01713373926"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Nageshwar",
+        "phoneNumber": "01713373929"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Burungamari",
+        "phoneNumber": "01713373930"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Ulipur",
+        "phoneNumber": "01713373931"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Chilmari",
+        "phoneNumber": "01713373932"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Roumari",
+        "phoneNumber": "01713373933"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Rajibpur",
+        "phoneNumber": "01713373934"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Dusmara",
+        "phoneNumber": "01713373935"
+    },
+    {
+        "district": "Kurigram",
+        "thana": "Kochakata",
+        "phoneNumber": "01713373936"
+    },
+    {
+        "district": "Lalmonirhat",
+        "thana": "Lalmonirhat",
+        "phoneNumber": "01713373948"
+    },
+    {
+        "district": "Lalmonirhat",
+        "thana": "Aditmari",
+        "phoneNumber": "01713373948"
+    },
+    {
+        "district": "Lalmonirhat",
+        "thana": "Kaliganj",
+        "phoneNumber": "01713373948"
+    },
+    {
+        "district": "Lalmonirhat",
+        "thana": "Hatibanda",
+        "phoneNumber": "01713373949"
+    },
+    {
+        "district": "Lalmonirhat",
+        "thana": "Patgram",
+        "phoneNumber": "01713373950"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Kotwali Dinajpur",
+        "phoneNumber": "01713373983"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Chiri Port",
+        "phoneNumber": "01713373974"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Real",
+        "phoneNumber": "01713373985"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Parbatipur",
+        "phoneNumber": "0171337396"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Birganj",
+        "phoneNumber": "0171337396"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Bochaganj",
+        "phoneNumber": "0171337396"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Kaharol",
+        "phoneNumber": "01713373969"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Khansama",
+        "phoneNumber": "01713373970"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Phulbari",
+        "phoneNumber": "01713373971"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Birampur",
+        "phoneNumber": "01713373972"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Nawabganj (Dinajpur)",
+        "phoneNumber": "01713373963"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Ghoraghat",
+        "phoneNumber": "01713373974"
+    },
+    {
+        "district": "Dinajpur",
+        "thana": "Hakimpur",
+        "phoneNumber": "01713373985"
+    },
+    {
+        "district": "Thakurgaon",
+        "thana": "Thakurgaon",
+        "phoneNumber": "01713373975"
+    },
+    {
+        "district": "Thakurgaon",
+        "thana": "Baliadangi",
+        "phoneNumber": "0171337396"
+    },
+    {
+        "district": "Thakurgaon",
+        "thana": "Rani Sankoul",
+        "phoneNumber": "0171337396"
+    },
+    {
+        "district": "Thakurgaon",
+        "thana": "Pirganj",
+        "phoneNumber": "0171337396"
+    },
+    {
+        "district": "Thakurgaon",
+        "thana": "Haripur",
+        "phoneNumber": "01713373969"
+    },
+    {
+        "district": "Panchagarh",
+        "thana": "Panchagarh",
+        "phoneNumber": "01713373999"
+    },
+    {
+        "district": "Panchagarh",
+        "thana": "Boda",
+        "phoneNumber": "01713374000"
+    },
+    {
+        "district": "Panchagarh",
+        "thana": "Atwari",
+        "phoneNumber": "01713374001"
+    },
+    {
+        "district": "Panchagarh",
+        "thana": "Tetulia",
+        "phoneNumber": "01713374002"
+    },
+    {
+        "district": "Panchagarh",
+        "thana": "Debiganj",
+        "phoneNumber": "01713374003"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Pabna",
+        "phoneNumber": "01713374018"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Ishwardi",
+        "phoneNumber": "01713374018"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Atgharia",
+        "phoneNumber": "01713374018"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Chatmohar",
+        "phoneNumber": "01713374019"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Bhangora",
+        "phoneNumber": "01713374020"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Faridpur (Pabna)",
+        "phoneNumber": "01713374021"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Suryanagar",
+        "phoneNumber": "01713374022"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Fence",
+        "phoneNumber": "01713374023"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Sathya",
+        "phoneNumber": "01713374024"
+    },
+    {
+        "district": "Pabna",
+        "thana": "Ataikula",
+        "phoneNumber": "01713374025"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Sirajganj",
+        "phoneNumber": "01713374037"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Shahjadpur",
+        "phoneNumber": "01713374039"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Ullapara",
+        "phoneNumber": "01713374040"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Chowhali",
+        "phoneNumber": "01713374041"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Taras",
+        "phoneNumber": "01713374042"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Kazipur",
+        "phoneNumber": "01713374043"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Kamarkhand",
+        "phoneNumber": "01713374044"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Raiganj",
+        "phoneNumber": "01713374045"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Belkuchi",
+        "phoneNumber": "01713374048"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Jamuna Bridge West",
+        "phoneNumber": "01713374048"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Salanga",
+        "phoneNumber": "01713374048"
+    },
+    {
+        "district": "Sirajganj",
+        "thana": "Enayetpur",
+        "phoneNumber": "01713374049"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Bogra",
+        "phoneNumber": "01713374071"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Shibganj",
+        "phoneNumber": "01713374072"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Sonatala",
+        "phoneNumber": "01713374063"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Gabtali",
+        "phoneNumber": "01713374064"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Sariakandi",
+        "phoneNumber": "01713374065"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Adamdighi",
+        "phoneNumber": "0171337406"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Dhupchachia",
+        "phoneNumber": "0171337406"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Kahalu",
+        "phoneNumber": "0171337406"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Sherpur",
+        "phoneNumber": "01713374069"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Dhunat",
+        "phoneNumber": "01713374060"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Nandigram",
+        "phoneNumber": "01713374071"
+    },
+    {
+        "district": "Bogra",
+        "thana": "Shahjahanpur",
+        "phoneNumber": "01713374072"
+    },
+    {
+        "district": "Joypurhat",
+        "thana": "Joypurhat",
+        "phoneNumber": "01713374072"
+    },
+    {
+        "district": "Joypurhat",
+        "thana": "Kalai",
+        "phoneNumber": "01713374063"
+    },
+    {
+        "district": "Joypurhat",
+        "thana": "Khetlal",
+        "phoneNumber": "01713374064"
+    },
+    {
+        "district": "Joypurhat",
+        "thana": "Akkelpur",
+        "phoneNumber": "01713374085"
+    },
+    {
+        "district": "Joypurhat",
+        "thana": "Pachbibi",
+        "phoneNumber": "0171337406"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Fultala",
+        "phoneNumber": "01713374103"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Dighalia",
+        "phoneNumber": "01713374104"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Paikgachha",
+        "phoneNumber": "01713374105"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Batiaghata",
+        "phoneNumber": "01713374107"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Dumuria",
+        "phoneNumber": "01713374107"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Terkhada",
+        "phoneNumber": "01713374106"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Rupsa",
+        "phoneNumber": "01713374109"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Dakop",
+        "phoneNumber": "01713374110"
+    },
+    {
+        "district": "Khulna Division",
+        "thana": "Koira",
+        "phoneNumber": "01713374111"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Bagerhat",
+        "phoneNumber": "01713374122"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Fakirhat",
+        "phoneNumber": "01713374123"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Mollarhat",
+        "phoneNumber": "01713374124"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Chitalmari",
+        "phoneNumber": "01713374125"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Kachua",
+        "phoneNumber": "01713374127"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Moralganj",
+        "phoneNumber": "01713374127"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Sharankhola",
+        "phoneNumber": "01713374126"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Mongla",
+        "phoneNumber": "01713374129"
+    },
+    {
+        "district": "Bagerhat",
+        "thana": "Rampal",
+        "phoneNumber": "01713374130"
+    },
+    {
+        "district": "Satkhira",
+        "thana": "Satkhira",
+        "phoneNumber": "01713374141"
+    },
+    {
+        "district": "Satkhira",
+        "thana": "Kalaroa",
+        "phoneNumber": "01713374142"
+    },
+    {
+        "district": "Satkhira",
+        "thana": "lock",
+        "phoneNumber": "01713374143"
+    },
+    {
+        "district": "Satkhira",
+        "thana": "Kaliganj",
+        "phoneNumber": "01713374144"
+    },
+    {
+        "district": "Satkhira",
+        "thana": "Shyamnagar",
+        "phoneNumber": "01713374145"
+    },
+    {
+        "district": "Satkhira",
+        "thana": "Debhata",
+        "phoneNumber": "01713374146"
+    },
+    {
+        "district": "Satkhira",
+        "thana": "Asashuni",
+        "phoneNumber": "01713374147"
+    },
+    {
+        "district": "Satkhira",
+        "thana": "Patkelghata",
+        "phoneNumber": "01713374146"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Kotwali Jessore",
+        "phoneNumber": "01713374171"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Jhikargachha",
+        "phoneNumber": "01713374172"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Sharsha",
+        "phoneNumber": "01713374173"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Chougachha",
+        "phoneNumber": "01713374174"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Monirampur",
+        "phoneNumber": "01713374175"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Keshabpur",
+        "phoneNumber": "0171337418"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Abhaynagar",
+        "phoneNumber": "0171337418"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Bagharpara",
+        "phoneNumber": "0171337418"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Benapole Port",
+        "phoneNumber": "01713374179"
+    },
+    {
+        "district": "Jessore",
+        "thana": "Benapole Check Post",
+        "phoneNumber": "01713374170"
+    },
+    {
+        "district": "Magura",
+        "thana": "Magura",
+        "phoneNumber": "01713374179"
+    },
+    {
+        "district": "Magura",
+        "thana": "Shalikha",
+        "phoneNumber": "01713374170"
+    },
+    {
+        "district": "Magura",
+        "thana": "Sreepur",
+        "phoneNumber": "01713374171"
+    },
+    {
+        "district": "Magura",
+        "thana": "Mohammadpur",
+        "phoneNumber": "01713374172"
+    },
+    {
+        "district": "Magura",
+        "thana": "Jhenaidah",
+        "phoneNumber": "01713374192"
+    },
+    {
+        "district": "Magura",
+        "thana": "Kaliganj",
+        "phoneNumber": "01713374193"
+    },
+    {
+        "district": "Magura",
+        "thana": "Shailkupa",
+        "phoneNumber": "01713374194"
+    },
+    {
+        "district": "Magura",
+        "thana": "Harinakundu",
+        "phoneNumber": "01713374195"
+    },
+    {
+        "district": "Magura",
+        "thana": "Kotchadpur",
+        "phoneNumber": "01713374196"
+    },
+    {
+        "district": "Magura",
+        "thana": "Maheshpur",
+        "phoneNumber": "01713374196"
+    },
+    {
+        "district": "Narail",
+        "thana": "Narail",
+        "phoneNumber": "01713374207"
+    },
+    {
+        "district": "Narail",
+        "thana": "Kalia",
+        "phoneNumber": "01713374207"
+    },
+    {
+        "district": "Narail",
+        "thana": "Lohagarh",
+        "phoneNumber": "01713374207"
+    },
+    {
+        "district": "Narail",
+        "thana": "Naragati",
+        "phoneNumber": "01713374209"
+    },
+    {
+        "district": "Kushtia",
+        "thana": "Kushtia",
+        "phoneNumber": "01713374220"
+    },
+    {
+        "district": "Kushtia",
+        "thana": "Khoksa",
+        "phoneNumber": "01713374221"
+    },
+    {
+        "district": "Kushtia",
+        "thana": "Kumarkhali",
+        "phoneNumber": "01713374222"
+    },
+    {
+        "district": "Kushtia",
+        "thana": "Bheramara",
+        "phoneNumber": "01713374223"
+    },
+    {
+        "district": "Kushtia",
+        "thana": "Daulatpur",
+        "phoneNumber": "01713374224"
+    },
+    {
+        "district": "Kushtia",
+        "thana": "Mirpur",
+        "phoneNumber": "01713374225"
+    },
+    {
+        "district": "Kushtia",
+        "thana": "Islamic University",
+        "phoneNumber": "01713374228"
+    },
+    {
+        "district": "Chuadanga",
+        "thana": "Chuadanga",
+        "phoneNumber": "01713374236"
+    },
+    {
+        "district": "Chuadanga",
+        "thana": "Alamdanga",
+        "phoneNumber": "01713374237"
+    },
+    {
+        "district": "Chuadanga",
+        "thana": "Jivannagar",
+        "phoneNumber": "01713374237"
+    },
+    {
+        "district": "Chuadanga",
+        "thana": "Damurhuda",
+        "phoneNumber": "01713374239"
+    },
+    {
+        "district": "Chuadanga",
+        "thana": "Meherpur",
+        "phoneNumber": "01713374249"
+    },
+    {
+        "district": "Chuadanga",
+        "thana": "Gangni",
+        "phoneNumber": "01713374250"
+    },
+    {
+        "district": "Chuadanga",
+        "thana": "Mujibnagar",
+        "phoneNumber": "01713374251"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Kotwali Barisal",
+        "phoneNumber": "0171337428"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Hijla",
+        "phoneNumber": "0171337428"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Mehediganj",
+        "phoneNumber": "01713374279"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Muladi",
+        "phoneNumber": "01713374260"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Babuganj",
+        "phoneNumber": "01713374271"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Bakerganj",
+        "phoneNumber": "01713374272"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Banaripara",
+        "phoneNumber": "01713374273"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Agauljhara",
+        "phoneNumber": "01713374284"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Gournadi",
+        "phoneNumber": "01713374275"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Wazirpur",
+        "phoneNumber": "0171337428"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Jhalokati",
+        "phoneNumber": "0171337428"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Nalchithi",
+        "phoneNumber": "0171337428"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Rajapur",
+        "phoneNumber": "0171337428"
+    },
+    {
+        "district": "Barisal Division",
+        "thana": "Kathalia",
+        "phoneNumber": "01713374279"
+    },
+    {
+        "district": "Bhola",
+        "thana": "Bhola",
+        "phoneNumber": "01713374300"
+    },
+    {
+        "district": "Bhola",
+        "thana": "Daulatkhan",
+        "phoneNumber": "01713374301"
+    },
+    {
+        "district": "Bhola",
+        "thana": "Tajumuddin",
+        "phoneNumber": "01713374302"
+    },
+    {
+        "district": "Bhola",
+        "thana": "Borhanuddin",
+        "phoneNumber": "01713374303"
+    },
+    {
+        "district": "Bhola",
+        "thana": "Lalmohan",
+        "phoneNumber": "01713374304"
+    },
+    {
+        "district": "Bhola",
+        "thana": "Char Fashion",
+        "phoneNumber": "01713374305"
+    },
+    {
+        "district": "Bhola",
+        "thana": "Monpura",
+        "phoneNumber": "01713374306"
+    },
+    {
+        "district": "Patuakhali",
+        "thana": "Patuakhali",
+        "phoneNumber": "01713374318"
+    },
+    {
+        "district": "Patuakhali",
+        "thana": "Baufal",
+        "phoneNumber": "01713374319"
+    },
+    {
+        "district": "Patuakhali",
+        "thana": "Galachipa",
+        "phoneNumber": "01713374320"
+    },
+    {
+        "district": "Patuakhali",
+        "thana": "Dashmina",
+        "phoneNumber": "01713374321"
+    },
+    {
+        "district": "Patuakhali",
+        "thana": "Dumki",
+        "phoneNumber": "01713374322"
+    },
+    {
+        "district": "Patuakhali",
+        "thana": "Kalapara",
+        "phoneNumber": "01713374323"
+    },
+    {
+        "district": "Patuakhali",
+        "thana": "Mirzaganj",
+        "phoneNumber": "01713374324"
+    },
+    {
+        "district": "Patuakhali",
+        "thana": "Rangabali",
+        "phoneNumber": "01713374325"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Pirojpur",
+        "phoneNumber": "01713374337"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Bhandaria",
+        "phoneNumber": "01713374337"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Nesarabad",
+        "phoneNumber": "01713374337"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Kaukhali",
+        "phoneNumber": "01713374339"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Nazirpur",
+        "phoneNumber": "01713374340"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Zia Nagar",
+        "phoneNumber": "01713374341"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Mathbaria",
+        "phoneNumber": "01713374342"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Barguna",
+        "phoneNumber": "01713374353"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Amtali",
+        "phoneNumber": "01713374354"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Patharghata",
+        "phoneNumber": "01713374355"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Betagi",
+        "phoneNumber": "01713374356"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Bamna",
+        "phoneNumber": "01713374356"
+    },
+    {
+        "district": "Pirojpur",
+        "thana": "Taltali",
+        "phoneNumber": "01713374356"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Habiganj",
+        "phoneNumber": "01713374396"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Madhabpur",
+        "phoneNumber": "01713374399"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Chunarughat",
+        "phoneNumber": "01713374400"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Bahubal",
+        "phoneNumber": "01713374401"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Lakhai",
+        "phoneNumber": "01713374402"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Nabiganj",
+        "phoneNumber": "01713374403"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Baniachang",
+        "phoneNumber": "01713374404"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Ajmiriganj",
+        "phoneNumber": "01713374405"
+    },
+    {
+        "district": "Habiganj",
+        "thana": "Shayestaganj",
+        "phoneNumber": "01713374406"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Sunamganj",
+        "phoneNumber": "01713374418"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Chhatak",
+        "phoneNumber": "01713374419"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Jagannathpur",
+        "phoneNumber": "01713374420"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Tahirpur",
+        "phoneNumber": "01713374421"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Bishwambarpur",
+        "phoneNumber": "01713374422"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Doarabazar",
+        "phoneNumber": "01713374423"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Dirai",
+        "phoneNumber": "01713374424"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Salna",
+        "phoneNumber": "01713374425"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Jamalganj",
+        "phoneNumber": "01713374427"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Dharmapasha",
+        "phoneNumber": "01713374427"
+    },
+    {
+        "district": "Sunamganj",
+        "thana": "Madhyanagar",
+        "phoneNumber": "01713374427"
+    },
+    {
+        "district": "Moulvibazar",
+        "thana": "Moulvibazar",
+        "phoneNumber": "01713374439"
+    },
+    {
+        "district": "Moulvibazar",
+        "thana": "Srimangal",
+        "phoneNumber": "01713374440"
+    },
+    {
+        "district": "Moulvibazar",
+        "thana": "Kamalganj",
+        "phoneNumber": "01713374441"
+    },
+    {
+        "district": "Moulvibazar",
+        "thana": "Rajnagar",
+        "phoneNumber": "01713374442"
+    },
+    {
+        "district": "Moulvibazar",
+        "thana": "Kulaura",
+        "phoneNumber": "01713374443"
+    },
+    {
+        "district": "Moulvibazar",
+        "thana": "Baralekha",
+        "phoneNumber": "01713374444"
+    },
+    {
+        "district": "Moulvibazar",
+        "thana": "Jury",
+        "phoneNumber": "01713374445"
+    }
+]

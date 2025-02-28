@@ -10,9 +10,10 @@ import 'package:shahajjo/services/auth.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 // const serverUrl = 'http://192.168.0.102:8000'; // Dadu Kingdom
-const serverUrl = 'http://192.168.27.141:8000'; // Narzo 50i
+// const serverUrl = 'http://192.168.27.141:8000'; // Narzo 50i
 // const serverUrl = 'http://192.168.93.116:8000'; //Yum
 //const serverUrl = 'http://10.0.0.14:8000'; //Shadab
+const serverUrl = 'http://localhost:8000'; //adb forward tcp:8000 tcp:8000
 
 var logger = Logger(
   printer: PrettyPrinter(),
