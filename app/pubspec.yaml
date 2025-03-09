@@ -61,7 +61,15 @@ dependencies:
   volume_watcher: ^2.0.1
   workmanager: ^0.5.2
   flutter_inappwebview: ^6.0.0
-
+  flutter_google_places:
+    git: 
+      url: https://github.com/Khandakar227/flutter_google_places.git
+      ref: 8a994c36e62b685b11a067afaf9586801aaafc8e
+  google_maps_webservice:
+    git: 
+      url: https://github.com/Khandakar227/google_maps_webservice.git
+      ref: 401d427530c03eacf9e64f549fe7925435bbbd83
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

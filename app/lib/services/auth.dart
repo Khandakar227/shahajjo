@@ -15,9 +15,8 @@ class AuthService {
   Future<bool> isLoggedIn() async {
     String? token = await _storage.read(key: 'auth_token');
     logger.i('Token: $token');
-    if (token == null) {
-      return false; // Not logged in
-    }
+    if (token == null) return false; // Not logged in
+
     bool isTokenVerified = await verifyToken(token);
     logger.i('Token verified: $isTokenVerified');
     if (!isTokenVerified) {

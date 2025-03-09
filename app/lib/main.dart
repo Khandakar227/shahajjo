@@ -7,6 +7,7 @@ import 'package:shahajjo/services/firebase_notification.dart';
 import 'package:shahajjo/services/location.dart';
 import 'package:shahajjo/views/account.dart';
 import 'package:shahajjo/views/add_Incident_page.dart';
+import 'package:shahajjo/views/emergency_contacts_page.dart';
 import 'package:shahajjo/views/flood_monitor.dart';
 import 'package:shahajjo/views/home.dart';
 import 'package:shahajjo/utils/utils.dart';
@@ -143,6 +144,10 @@ class App extends StatelessWidget {
             case '/sos':
               builder =
                   (BuildContext context) => const SOSPage(title: 'এস ও এস');
+              break;
+            case '/emergency-helpline':
+              builder = (BuildContext context) =>
+                  const EmergencyContactsPage(title: 'জরুরি হেল্পলাইন');
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

@@ -13,6 +13,7 @@ class IncidentService {
     "উপাসনালয় হামলা": "assets/icons/book.png",
     "ভাংচুর": "assets/icons/broken-bottle.png",
     "হয়রানি/অবমাননা": "assets/icons/harassment.png",
+    // "চাঁদাবাজি": "assets/icons/extortion.png",
     "চুরি-ডাকাতি": "assets/icons/robber.png",
     "অন্যান্য": "assets/icons/marker.png",
   };

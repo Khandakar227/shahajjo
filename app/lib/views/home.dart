@@ -20,6 +20,11 @@ List<Map<String, dynamic>> features = [
     'image': 'assets/icons/notify.png',
     'navigateTo': 'add-incident'
   },
+  {
+    'label': 'জরুরি হেল্পলাইন',
+    'image': 'assets/icons/ambulance.png',
+    'navigateTo': 'emergency-helpline'
+  },
   {'label': 'এস ও এস', 'image': 'assets/icons/sos.png', 'navigateTo': 'sos'},
   {
     'label': 'একাউন্ট',
@@ -61,13 +66,13 @@ class _HomePageState extends State<HomePage> {
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
                   // Use childAspectRatio to control item size ratio
                   childAspectRatio:
                       1, // Adjust this value to change item height/width ratio
                 ),
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(10),
                 itemCount: features.length,
                 itemBuilder: (context, index) {
                   return LayoutBuilder(
@@ -106,7 +111,7 @@ class _HomePageState extends State<HomePage> {
             ),
           Text(
             label,
-            style: const TextStyle(fontSize: 12),
+            style: const TextStyle(fontSize: 11),
           ),
         ],
       ),

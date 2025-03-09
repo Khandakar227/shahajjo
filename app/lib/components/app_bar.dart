@@ -13,10 +13,6 @@ const appMenuItems = [
     'title': 'সেটিংস',
     'route': '/settings',
   },
-  {
-    'title': 'VolumeHandler',
-    'route': '/volume-handler',
-  },
 ];
 
 class MyAppbar extends StatefulWidget implements PreferredSizeWidget {

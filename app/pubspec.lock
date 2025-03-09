@@ -318,6 +318,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.2"
+  flutter_google_places:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "8a994c36e62b685b11a067afaf9586801aaafc8e"
+      resolved-ref: "8a994c36e62b685b11a067afaf9586801aaafc8e"
+      url: "https://github.com/Khandakar227/flutter_google_places.git"
+    source: git
+    version: "0.4.0"
   flutter_inappwebview:
     dependency: "direct main"
     description:
@@ -536,6 +545,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.3"
+  google_api_headers:
+    dependency: transitive
+    description:
+      name: google_api_headers
+      sha256: b27a55935d5c51cedda8a925f5df8388cc327c94a47fef5a4335e8707e089878
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.6.0"
   google_identity_services_web:
     dependency: transitive
     description:
@@ -592,6 +609,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.10"
+  google_maps_webservice:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "401d427530c03eacf9e64f549fe7925435bbbd83"
+      resolved-ref: "401d427530c03eacf9e64f549fe7925435bbbd83"
+      url: "https://github.com/Khandakar227/google_maps_webservice.git"
+    source: git
+    version: "0.0.20-nullsafety.1"
   googleapis:
     dependency: "direct main"
     description:
@@ -728,6 +754,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.12.0"
+  package_info_plus:
+    dependency: transitive
+    description:
+      name: package_info_plus
+      sha256: "7e76fad405b3e4016cd39d08f455a4eb5199723cf594cd1b8916d47140d93017"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.0"
+  package_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: package_info_plus_platform_interface
+      sha256: "9bc8ba46813a4cc42c66ab781470711781940780fd8beddd0c3da62506d3a6c6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   path:
     dependency: transitive
     description:
@@ -864,6 +906,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.27.7"
   sanitize_html:
     dependency: transitive
     description:
