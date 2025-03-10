@@ -3,3 +3,15 @@
 [2025-02-28T11:33:05.350] [INFO] default - Otp Sent: [object Object]
 [2025-03-09T11:07:54.725] [INFO] default - Otp Sent: [object Object]
 [2025-03-09T12:00:02.829] [INFO] default - Flood data fetched and saved to the database at 2025-03-09T06:00:02.826Z
+[2025-03-10T12:00:01.331] [INFO] default - Flood data fetched and saved to the database at 2025-03-10T06:00:01.326Z
+[2025-03-10T13:35:20.195] [ERROR] default - TypeError: fetch failed
+    at Object.fetch (node:internal/deps/undici/undici:11522:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  cause: Error: getaddrinfo ENOTFOUND bulksmsbd.net
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:119:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'bulksmsbd.net'
+  }
+}

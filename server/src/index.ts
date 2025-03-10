@@ -44,6 +44,9 @@ app.get('/incident-monitor', (req, res) => {
     res.render('index', { mapApiKey: process.env.GOOGLE_MAP_API_KEY });
 });
 
+app.get('/emergency-contact', (req, res) => {
+    res.render('emergency_contact', { mapApiKey: process.env.GOOGLE_MAP_API_KEY });
+});
 
 app.use("/api/v1/station", stationRoute);
 app.use("/api/v1/flood", floodRoute);

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shahajjo/components/app_bar.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:shahajjo/utils/utils.dart';
 
 class EmergencyContactsPage extends StatefulWidget {
   const EmergencyContactsPage({super.key, required this.title});
@@ -11,6 +13,7 @@ class EmergencyContactsPage extends StatefulWidget {
 
 class _EmergencyContactsPageState extends State<EmergencyContactsPage> {
   bool isLoading = false;
+  late InAppWebViewController webViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -18,25 +21,43 @@ class _EmergencyContactsPageState extends State<EmergencyContactsPage> {
     const double appBarHeight = kToolbarHeight;
 
     return Scaffold(
-        appBar: MyAppbar(title: widget.title),
-        body: SafeArea(
-            child: SizedBox(
-          height: screenHeight -
-              appBarHeight, // Adjust the height to exclude the app bar
-          child: const Padding(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [],
+      appBar: MyAppbar(title: widget.title),
+      body: SafeArea(
+        child: SizedBox(
+          height: screenHeight - appBarHeight,
+          child: Column(
+            children: [
+              Expanded(
+                child: InAppWebView(
+                  initialUrlRequest: URLRequest(
+                    url: WebUri("$serverUrl/emergency-contact"),
+                  ),
+                  onWebViewCreated: (controller) {
+                    webViewController = controller;
+                  },
+                  onLoadStart: (controller, url) {
+                    setState(() {
+                      isLoading = true;
+                    });
+                  },
+                  onLoadStop: (controller, url) {
+                    setState(() {
+                      isLoading = false;
+                    });
+                  },
+                  initialSettings: InAppWebViewSettings(
+                    javaScriptEnabled: true,
+                    useShouldOverrideUrlLoading: true,
+                    mediaPlaybackRequiresUserGesture: false,
+                    transparentBackground: true,
                   ),
                 ),
-              ],
-            ),
+              ),
+              if (isLoading) const LinearProgressIndicator() else Container(),
+            ],
           ),
-        )));
+        ),
+      ),
+    );
   }
 }

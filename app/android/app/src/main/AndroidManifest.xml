@@ -12,7 +12,8 @@
     <application
         android:label="shahajjo"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
         <service
             android:exported="true"
             android:name=".VolumeAccessibilityService"

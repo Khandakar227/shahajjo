@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shahajjo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= mapApiKey %>&libraries=places&loading=async&callback=init"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        #search-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+        .search-btn {
+            border: 0px;
+            outline: none;
+            padding: 5px 8px;
+            width: fit-content;
+            border-radius: 100%;
+            background-color: #940000;
+            color: white;
+            filter: drop-shadow(0px 2px 3px #343400);
+            cursor: pointer;
+        }
+        .location-name {
+            padding: 1rem;
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+        .container {
+            padding: 1rem;
+        }
+        .type-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        .type-container button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            background-color: #ffdbdb;
+            cursor: pointer;
+            outline: none;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .result {
+            padding: 1rem;
+            display: grid;
+            gap: 1rem;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .card h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+        .card p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .card .status {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            width: fit-content;
+        }
+        .card .status.updated {
+            background-color: #e0f7fa;
+            color: #00796b;
+        }
+        .card .status.outdated {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .active {
+            background-color: #940000!important;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input id="search-input" type="text" placeholder="এলাকা, শহর, জায়গার নাম সার্চ করে সিলেক্ট করুন..." />
+            <button class="search-btn">
+                <span class="material-icons">search</span>
+            </button>
+        </div>
+        <div class="type-container">
+            <button data-value="" class="active">সব</button>
+            <button data-value="Hospital">হাসপাতাল</button>
+            <button data-value="Police Station">পুলিশ স্টেশন</button>
+            <button data-value="Fire Station">ফায়ার সার্ভিস</button>
+        </div>
+    </div>
+    <p class="location-name"></p>
+
+    <div class="result"></div>
+    <script defer>
+        const input = document.getElementById("search-input");
+        const locationNameTag = document.querySelector(".location-name");
+        const typeContainer = document.querySelector(".type-container");
+        const resultContainer = document.querySelector(".result");
+        const searchBtn = document.querySelector(".search-btn");
+        let type = "";
+        let searchCoordinates = { lat: 23.8002302959404, lng: 90.40662455502002 };
+
+        typeContainer.addEventListener("click", (event) => {
+            if (event.target.tagName === "BUTTON") {
+                // Remove active class from all buttons
+                typeContainer.querySelectorAll("button").forEach(button => {
+                    button.classList.remove("active");
+                });
+                // Add active class to the clicked button
+                event.target.classList.add("active");
+                // Update the selected type
+                type = event.target.dataset.value;
+            }
+        });
+
+
+        searchBtn.addEventListener("click", async () => {
+            if (searchCoordinates.lat === -1 || searchCoordinates.lng === -1) {
+                return;
+            }
+            // Fetch emergency contacts
+            fetchContacts();
+        });
+
+        const fetchContacts = () => {
+            // Fetch emergency contacts
+            fetch(`/api/v1/emergency-contact?lat=${searchCoordinates.lat}&lng=${searchCoordinates.lng}&type=${type}`)
+            .then(res => res.json())
+            .then(data => {
+                displayResults(data.contacts);
+            });
+        }
+        async function init() {
+            const searchParams = new URLSearchParams(location.search);
+            let gpsLocation = { lat: 23.8002302959404, lng: 90.40662455502002 };
+            // Check if the URL has the lat and lng query parameters
+            const targetCord = { lat: +searchParams.get('lat'), lng: +searchParams.get('lng') };
+            // If the URL has the lat and lng query parameters, use them as the GPS location
+            if (targetCord.lat && targetCord.lng) gpsLocation = targetCord;
+
+            const options = {
+                componentRestrictions: { country: "bd" },
+                strictBounds: false,
+            };
+            const autocomplete = new google.maps.places.Autocomplete(input, options);
+
+            // Listen for when a place is selected
+            autocomplete.addListener("place_changed", () => {
+                const place = autocomplete.getPlace();
+
+                if (!place.geometry || !place.geometry.location) {
+                    console.log("No details available for input: " + place.name);
+                    return;
+                }
+
+                // Log the place details
+                console.log("Place Name:", place.name);
+                console.log("Place Address:", place.formatted_address);
+                locationNameTag.textContent = "Available helplines near " + place.formatted_address;
+
+                searchCoordinates.lat = place.geometry.location.lat();
+                searchCoordinates.lng = place.geometry.location.lng();
+            });
+        }
+
+        function displayResults(data) {
+            resultContainer.innerHTML = ""; // Clear previous results
+            data.forEach(item => {
+                const card = createContactCard(item);
+                resultContainer.appendChild(card);
+            });
+        }
+
+        const createContactCard = (item={}) => {
+            const card = document.createElement("div");
+                card.className = "card";
+
+                const name = document.createElement("h3");
+                name.textContent += `${item.type == "Fire Station" ? "🚒" : item.type == "Police Station" ? "👮‍♂️" : item.type == "Hospital" ? "🏥" : "" } ${item.name}`;
+                card.appendChild(name);
+
+                const address = document.createElement("p");
+                address.textContent = item.address;
+                card.appendChild(address);
+
+                const contact = document.createElement("p");
+                contact.textContent = `Contact: `;
+                const phoneNumber = document.createElement("a");
+                phoneNumber.href = `tel:${item.contact_number}`;
+                phoneNumber.textContent = item.contact_number;
+                
+                if (!item.contact_number || item.contact_number == "N/A") {
+                    phoneNumber.style.color = "#f44336";
+                    phoneNumber.style .pointerEvents = "none";
+                    phoneNumber.href = "";
+                }
+                contact.appendChild(phoneNumber);
+                card.appendChild(contact);
+                card.classList.add(item.type == "Fire Station" ? "fire-station" : item.type == "Police Station" ? "police-station" : item.type == "Hospital" ? "hospital" : "");
+                const status = document.createElement("div");
+                status.className = `status ${item.status}`;
+                status.textContent = item.status === 'updated' ? 'Updated' : 'Outdated';
+                card.appendChild(status);
+
+                return card;
+        }
+
+        fetchContacts();
+    </script>
+</body>
+
+</html>
