@@ -41,6 +41,17 @@ List<Map<String, dynamic>> features = [
     'image': 'assets/icons/bell.png',
     'navigateTo': 'notification',
   },
+  {
+    'label': 'প্রমাণ',
+    // 'image': 'assets/icons/evidence.png',
+    'image': 'assets/icons/camera.png',
+    'navigateTo': 'evidence'
+  },
+  {
+    'label': 'Gallery',
+    'image': 'assets/icons/gallery.png',
+    'navigateTo': 'gallery'
+  },
 ];
 
 class HomePage extends StatefulWidget {

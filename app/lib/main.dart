@@ -18,6 +18,8 @@ import 'package:shahajjo/views/notification_page.dart';
 import 'package:shahajjo/views/register_page.dart';
 import 'package:shahajjo/views/settings_page.dart';
 import 'package:shahajjo/services/local_notification_service.dart';
+import 'package:shahajjo/views/evidence_page.dart';
+import 'package:shahajjo/views/gallery_page.dart';
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -124,8 +126,8 @@ class App extends StatelessWidget {
                   const AddIncidentPage(title: 'জরুরি ঘটনা যোগ করুন');
               break;
             case '/account':
-              builder =
-                  (BuildContext context) => const AccountPage(title: 'একাউন্ট');
+              builder = (BuildContext context) =>
+                  const AccountPage(title: 'একাউ��্ট');
               break;
             case '/register':
               builder = (BuildContext context) => const RegisterPage();
@@ -148,6 +150,14 @@ class App extends StatelessWidget {
             case '/emergency-helpline':
               builder = (BuildContext context) =>
                   const EmergencyContactsPage(title: 'জরুরি হেল্পলাইন');
+              break;
+            case '/evidence':
+              builder = (BuildContext context) =>
+                  const EvidencePage(title: 'Evidence');
+              break;
+            case '/gallery':
+              builder = (BuildContext context) =>
+                  const GalleryPage(title: 'Collected Evidence');
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

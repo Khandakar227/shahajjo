@@ -52,6 +52,9 @@ dependencies:
   sqflite: ^2.3.3+1
   background_sms: ^0.0.1
   permission_handler: ^11.3.1
+  camera: ^0.11.0+2
+  path_provider: ^2.1.5
+  share_plus: ^10.1.2
   firebase_messaging: ^15.1.3
   cloud_firestore: ^5.4.4
   googleapis: ^13.2.0
@@ -61,14 +64,6 @@ dependencies:
   volume_watcher: ^2.0.1
   workmanager: ^0.5.2
   flutter_inappwebview: ^6.0.0
-  flutter_google_places:
-    git: 
-      url: https://github.com/Khandakar227/flutter_google_places.git
-      ref: 8a994c36e62b685b11a067afaf9586801aaafc8e
-  google_maps_webservice:
-    git: 
-      url: https://github.com/Khandakar227/google_maps_webservice.git
-      ref: 401d427530c03eacf9e64f549fe7925435bbbd83
   
 dev_dependencies:
   flutter_test:
