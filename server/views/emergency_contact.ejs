@@ -46,7 +46,7 @@
             border-radius: 100%;
             background-color: #940000;
             color: white;
-            filter: drop-shadow(0px 2px 3px #343400);
+            filter: drop-shadow(0px 2px 2px #6868689b);
             cursor: pointer;
         }
         .location-name {
@@ -117,6 +117,13 @@
         .active {
             background-color: #940000!important;
             color: white;
+        }
+        .copy-btn {
+            font-size: 10px;
+            outline: none;
+            color: #81C784;
+            border: none;
+            background: transparent;
         }
     </style>
 </head>
@@ -232,17 +239,29 @@
                 card.appendChild(address);
 
                 const contact = document.createElement("p");
-                contact.textContent = `Contact: `;
-                const phoneNumber = document.createElement("a");
-                phoneNumber.href = `tel:${item.contact_number}`;
-                phoneNumber.textContent = item.contact_number;
-                
+                contact.innerHTML = `<span>Contact:  </span>`;
+                const phoneNumber = document.createElement("span");
+                phoneNumber.textContent =" " + item.contact_number;
+
+                const copyBtn = document.createElement("button");
+                copyBtn.classList.add("copy-btn");
+                copyBtn.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ef5350"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>`;
+
+                copyBtn.addEventListener('click', (e) => {
+                    navigator.clipboard.writeText(item.contact_number);
+                    copyBtn.innerHTML = "Copied!";
+                    setTimeout(() => {
+                        copyBtn.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ef5350"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>`;
+                    }, 1000);
+                });
+
                 if (!item.contact_number || item.contact_number == "N/A") {
                     phoneNumber.style.color = "#f44336";
                     phoneNumber.style .pointerEvents = "none";
                     phoneNumber.href = "";
                 }
                 contact.appendChild(phoneNumber);
+                contact.appendChild(copyBtn);
                 card.appendChild(contact);
                 card.classList.add(item.type == "Fire Station" ? "fire-station" : item.type == "Police Station" ? "police-station" : item.type == "Hospital" ? "hospital" : "");
                 const status = document.createElement("div");

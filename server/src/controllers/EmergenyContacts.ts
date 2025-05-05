@@ -18,7 +18,8 @@ export const getEmergencyContacts = async (req: Request, res: Response) => {
                     },
                     $maxDistance: 10000
                 }
-            }
+            },
+            contact_number: { $ne: "N/A" }
         };
 
         if (type && type !== 'All') {

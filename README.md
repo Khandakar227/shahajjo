@@ -13,7 +13,7 @@ project-root/
 ## Backend Setup (Express.js)
 
 ### Prerequisites
-- Node.js (v14 or higher)
+- Node.js (v22.1.0 or higher)
 - MongoDB database
 
 ### Environment Variables

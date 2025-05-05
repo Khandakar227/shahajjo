@@ -36,14 +36,12 @@ public class VolumeAccessibilityService extends AccessibilityService {
         KeyEvent.KEYCODE_VOLUME_DOWN,
         KeyEvent.KEYCODE_VOLUME_DOWN,
         KeyEvent.KEYCODE_VOLUME_DOWN,
-        KeyEvent.KEYCODE_VOLUME_UP,
-        KeyEvent.KEYCODE_VOLUME_UP,
         KeyEvent.KEYCODE_VOLUME_DOWN,
         KeyEvent.KEYCODE_VOLUME_DOWN
     );
 
     private static int currentIndex = 0;
-    private static long TIMEOUT = 2000;
+    private static long TIMEOUT = 800;
 
     private LocationManager locationManager;
 

@@ -1,7 +1,4 @@
 .idea/
 .vscode/
 serviceAccount.json
-<<<<<<< HEAD
-=======
-server/docker/
->>>>>>> a5542b2db843de25df8c3dc303306b1db460e461
+google-services.json

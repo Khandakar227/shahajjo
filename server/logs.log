@@ -15,3 +15,5 @@
     hostname: 'bulksmsbd.net'
   }
 }
+[2025-03-13T22:50:05.178] [INFO] default - Otp Sent: [object Object]
+[2025-03-13T22:54:06.589] [INFO] default - Otp Sent: [object Object]
